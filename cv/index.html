@@ -3,7 +3,8 @@
     <head>
         <title>Aaron Perez Sanchez - Curriculum Vitae</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width
+              <li>initial-scale=1.0">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
@@ -11,10 +12,360 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="theme-color" content="#ffffff">
         <style>
+            body
+            {
+                margin: 0;
+                font-family: sans-serif;
+                color: #323232;
+            }
             
+            img.mepic
+            {
+                float: left;
+                margin: 0 16px;
+                border-radius: 6px;
+                box-shadow: 2px 2px 2px;
+            }
+
+            ul.basic-info > li { list-style: none; }
+            ul.basic-info > li span { font-weight: bolder; }
+
+            ul.basic-info > li.icon-links a { padding: 0 8px; text-decoration: none; }
+
+            ul.spoken-languages { display: inline-block; padding: 0; margin: 0; vertical-align: middle; }
+            ul.spoken-languages li { list-style: none; }
+            @media (min-width: 500px)
+            {
+                ul.spoken-languages li { display: inline; }
+                ul.spoken-languages li:after { content: ", "; }
+                ul.spoken-languages li:last-child:after { content: ""; }
+            }
+
+            div.clear { clear: both; }
+
+            h1,h2,h3,h4 { margin: 0; }
+            
+            h2.section-title
+            {
+                clear: both;
+            }
+            
+            h3.company-name
+            {
+                padding-top: 12px;
+                border-bottom: 1px solid #999;
+            }
+            
+            @media (min-width: 700px)
+            {
+                .block
+                {
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 30%;
+                }
+            }
+
+            .block h4
+            {
+                text-align: center;
+                font-size: larger;
+                margin-bottom: 4px;
+                padding-top: 12px;
+            }
+
+            .block ul { margin: 0; }
+            
+            .block p { margin: 0; }
+
+            ul.functions li { padding: 2px 0; }
+
+            ul.positions
+            {
+                /*display: block;*/
+                padding: 0;
+                margin: 0;
+            }
+
+            ul.positions li
+            {
+                list-style: none;
+                text-align: center;
+            }
+
+            ul.positions li span
+            {
+                display: inline-block;
+                border: 2px solid #4f80de;
+                border-radius: 1em; 
+                padding: 2px 4px;
+            }
+
+            ul.positions li:after
+            {
+                content: "↑";
+                display: block;
+            }
+
+            ul.positions li:last-child:after
+            {
+                content: "";
+            }
+
+            .technology-block ul
+            {
+                display: inline;
+                padding: 0;
+                margin: 0;
+            }
+
+            .technology-block ul li
+            {
+                display: inline-block;
+                border: 2px solid;
+                border-radius: 1em;
+                padding: 2px 0.5em;
+                margin: 2px;
+                vertical-align: middle;
+            }
+
+            ul.operating-systems li     { border-color: #6f8b1b; }
+            ul.programming-languages li { border-color: #b70b0f; }
+            ul.database-tech li li      { border-color: #112233; }
+            ul.communication-tech li    { border-color: #5e4ef2; }
+            ul.web-tech li              { border-color: #4db4ef; }
+            ul.libs  li                 { border-color: #a6719f; }
+            ul.tools li                 { border-color: #112233; }
+
         </style>
     </head>
     <body>
         <div>This is work in progress, please come back later.</div>
+        <section class="content">
+            <img alt="me" src="../images/me3.jpg" class="mepic">
+            <ul class="basic-info">
+                <li><span>Name:</span> Aaron Perez Sanchez</li>
+                <li><span>Bird Date:</span> 1979-03-17</li>
+                <li><span>Marital Status:</span> Married</li>
+                <li><span>Languages:</span> <ul class="spoken-languages"><li>Spanish<li>English<li>Chinese</ul></li>
+                <li><span>Email:</span> <a href="mailto:aaronperezsanchez@hotmail.com">aaronperezsanchez@hotmail.com</a></li>
+                <li><span>Email:</span> <a href="mailto:aaronps@gmail.com">aaronps@gmail.com</a></li>
+                <li><span>Phone:</span> +86 18618347115</li>
+                <li><span>Homepage:</span> <a href="http://aaronps.com">http://aaronps.com</a></li>
+                <li class="icon-links">
+                    <a href="https://github.com/aaronps">
+                        <img alt="github link image" src="../images/GitHub-Mark-32px.png">
+                    </a><a href="https://www.linkedin.com/in/AaronPerezSanchez-23173b18">
+                        <img alt="linked in link" src="../images/In-2C-34px-R.png">
+                    </a><a href="https://www.npmjs.com/~aaronps">
+                        <img alt="npmjs icon" src="../images/npm-32px.png">
+                    </a>
+                </li>
+                <li>Try -> Fail -> Learn -> Succeed!!!</li>
+            </ul>
+
+            <!--<div class="clear"></div>-->
+
+            <h2 class="section-title">Work Experience</h2>
+            <div class="work-experience">
+                <div class="company-block">
+                    <h3 class="company-name">Schneider-Electric (Telvent China, 2006-2016)</h3>
+
+                    <div class="block">
+                        <h4>Positions</h4>
+                        <ul class="positions">
+                            <li><span>Senior System Architect</span></li>
+                            <li><span>Software Department Manager</span></li>
+                            <li><span>Software Team Leader</span></li>
+                            <li><span>Software Engineer</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="block">
+                        <h4>Functions</h4>
+                        <ul class="functions">
+                            <li>Design, development, implementation, installation and maintenance of systems</li>
+                            <li>Coaching the team</li>
+                            <li>Research And Development</li>
+                            <li>Technology expert</li>
+                        </ul>
+                    </div>
+
+                    <div class="block">
+                        <h4>Projects</h4>
+                        <p>Multiple projects on</p>
+                        <ul class="projects">
+                            <li>System Integration</li>
+                            <li>Urban Traffic</li>
+                            <li>Automatic Fare Collection</li>
+                            <li><span style="color: red; font-weight: bold;">NEED TO ADD THE Work sites</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="company-block">
+                    <h3 class="company-name">Indra (Grupo Espacio-Industrial, 1997-2006)</h3>
+
+                    <div class="block">
+                        <h4>Positions</h4>
+                        <ul class="positions">
+                            <li><span style="color: red; font-weight: bold;">NEED TO ADD THE LAST POSITION</span></li>
+                            <li><span>Team Leader</span></li>
+                            <li><span>Maintenance Engineer</span></li>
+                            <li><span>Specialist</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="block">
+                        <h4>Functions</h4>
+                        <ul class="functions">
+                            <li><span style="color: red; font-weight: bold;">NEED TO ADD THE Functions</span></li>
+                            <li>Coaching the team</li>
+                        </ul>
+                    </div>
+
+                    <div class="block">
+                        <h4>Projects</h4>
+                        <p>Multiple projects on</p>
+                        <ul class="projects">
+                            <li>System Integration</li>
+                            <li>Automatic Fare Collection</li>
+                            <li>Interurban Traffic Systems</li>
+                            <li><span style="color: red; font-weight: bold;">NEED TO ADD THE Work sites</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Technology</h2>
+            <div class="technology-block">
+                <ul class="operating-systems">
+                    <li style="font-size: 200%;">Linux
+                    <li style="font-size: 160%;">Ubuntu
+                    <li style="font-size: 140%;">Redhat
+                    <li style="font-size: 180%;">Centos
+                    <li style="font-size: 150%;">Fedora
+                    <li style="font-size: 200%;">Arch Linux
+                    <li>Gentoo
+                    <li>Debian
+                    <li>Linux Mint
+                    <li style="font-size: 80%;">Suse
+                    <li>lfs
+                    <li>android
+                    <li style="font-size: 160%;">Windows
+                    <li style="font-size: 60%;">Windows CE
+                    <li style="font-size: 80%;">Mac OS X
+                    <li style="font-size: 80%;">FreeBSD
+                    <li style="font-size: 60%;">Solaris 10
+                    <li style="font-size: 70%;">QNX
+                    <li style="font-size: 70%;">HP-UX
+                    <li style="font-size: 90%;">VxWorks
+                </ul>
+
+                <ul class="programming-languages">
+                    <li style="font-size: 180%;">c/c++
+                    <li style="font-size: 200%;">java
+                    <li style="font-size: 200%;">javascript
+                    <li style="font-size: 160%;">erlang
+                    <li>elm
+                    <li>freepascal/delphi
+                    <li>shell scripting
+                    <li style="font-size: 90%;">Lua
+                    <li>Gdscript
+                    <li>Awk
+                    <li style="font-size: 80%;">Perl 5
+                    <li style="font-size: 90%;">Python
+                    <li style="font-size: 80%;">Php
+                    <li>NodeJS
+                    <li style="font-size: 80%;">Actionscript3
+                    <li>x86 assembly
+                </ul>
+
+                <ul class="database-tech">
+                    <li style="font-size: 150%;">postgresql
+                    <li>oracle
+                    <li style="font-size: 150%;">couchdb
+                    <li style="font-size: 80%;">mysql/mariadb
+                    <li>sql
+                    <li style="font-size: 80%;">pl/sql
+                </ul>
+
+                <ul class="communication-tech">
+                    <li style="font-size: 160%">Networking
+                    <li>Routing
+                    <li>IP network
+                    <li>tcp
+                    <li>udp
+                    <li style="font-size: 150%">sockets
+                    <li>ftp
+                    <li style="font-size: 150%">http
+                    <li style="font-size: 90%">smtp
+                    <li style="font-size: 140%">ntcip
+                    <li style="font-size: 130%">snmp
+                    <li>une-135401
+                    <li>custom protocols
+                    <li style="font-size: 150%">serial port
+                    <li>cctalk
+                    <li style="color: red;">clustering, add cloud things, maybe luci?
+                </ul>
+
+                <ul class="web-tech">
+                    <li style="font-size: 150%">html
+                    <li style="font-size: 150%">html5
+                    <li style="font-size: 130%">css
+                    <li>xml
+                    <li style="font-size: 140%">json
+                    <li style="font-size: 120%">jsp
+                    <li style="font-size: 130%">websockets
+                    <li style="font-size: 130%">canvas
+                    <li>jboss
+                    <li>tomcat
+                    <li>tomee
+                    <li style="font-size: 140%">JavaEE
+                    <li style="font-size: 140%">REST
+                    <li style="font-size: 120%">EJB
+                    <li style="font-size: 130%">JMS
+                    <li>SOAP
+                    <li style="font-size: 120%">ActiveMQ
+                    <li style="font-size: 90%">Portlets
+                    <li>ajax
+                    <li>jquery
+                    <li style="font-size: 90%">jqueryui
+                    <li style="font-size: 140%">RequireJS
+                    <li style="font-size: 90%">dojo toolkit
+                    <li>bootstrap
+                    <li style="font-size: 120%">npm
+                    <li style="font-size: 80%">grunt
+                    <li style="font-size: 80%">bower
+                    <li>SPA
+                    <li>GIS(openlayers,baidu/sogou/soso maps)
+                </ul>
+
+                <ul class="libs">
+                    <li>POCO c++ libraries
+                    <li>libSDL
+                    <li>DirectShow
+                    <li>yuv
+                    <li>godot engine
+                    <li>v4l
+                    <li>swing
+                    <li>erlang/otp
+                </ul>
+
+                <ul class="tools">
+                    <li>netbeans
+                    <li>intellij
+                    <li>eclipse
+                    <li>vim
+                    <li>gcc
+                    <li>git
+                    <li>subversion
+                    <li>httpd
+                    <li>nginx
+                    <li>vsftpd
+                </ul>
+
+            </div>
+        </section>
     </body>
 </html>
