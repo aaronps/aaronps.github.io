@@ -1,0 +1,198 @@
+/* 
+    Created on : Jan 30, 2017, 10:59:15 AM
+    Author     : krom
+*/
+
+
+body
+{
+    margin: 0;
+    font-family: sans-serif;
+    color: #323232;
+}
+
+#basic-info
+{
+    /*background-color: #eee;*/
+}
+
+#head-pic
+{
+    display: table-cell;
+}
+
+img.rounded-pic
+{
+    margin: 0 16px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 2px;
+}
+
+#icon-links { text-align: center; margin-top: 12px;}
+#icon-links a { padding: 0 8px; text-decoration: none; }
+
+#basic-info-data
+{
+    display: table-cell;
+    vertical-align: top;
+    margin: 0 16px 0 0;
+    padding: 0;
+}
+
+#basic-info-data > li
+{
+    list-style: none;
+    padding-bottom: 4px;
+}
+
+#basic-info-data > li > b
+{
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#basic-info-data > li > span
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#spoken-languages, #email-list
+{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+#spoken-languages li, #email-list li { list-style: none; }
+
+@media (max-width: 500px)
+{
+    #basic-info-data > li > b
+    {
+        display: block;
+        width: auto;
+        padding-left: 0.25em;
+        text-align: left;
+        background-color: #323232;
+        color: #fafafa;
+        border-radius: 3px;
+        font-weight: normal;
+    }
+    
+    #basic-info-data > li > span
+    {
+        display: block;
+        text-align: center;
+    }
+    
+    .hide-on-small
+    {
+        display: none;
+    }
+    
+    #spoken-languages li
+    {
+        display: inline-block;
+        padding: 0 4px;
+    }
+
+}
+
+h1,h2,h3,h4 { margin: 0; }
+
+h2.section-title
+{
+    clear: both;
+}
+
+h3.company-name
+{
+    padding-top: 12px;
+    border-bottom: 1px solid #999;
+}
+
+@media (min-width: 700px)
+{
+    .block
+    {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        width: 30%;
+    }
+}
+
+.block h4
+{
+    text-align: center;
+    font-size: larger;
+    margin-bottom: 4px;
+    padding-top: 12px;
+}
+
+.block ul { margin: 0; }
+
+.block p { margin: 0; }
+
+ul.functions li { padding: 2px 0; }
+
+ul.positions
+{
+    /*display: block;*/
+    padding: 0;
+    margin: 0;
+}
+
+ul.positions li
+{
+    list-style: none;
+    text-align: center;
+}
+
+ul.positions li span
+{
+    display: inline-block;
+    border: 2px solid #4f80de;
+    border-radius: 1em; 
+    padding: 2px 4px;
+}
+
+ul.positions li:after
+{
+    content: "↑";
+    display: block;
+}
+
+ul.positions li:last-child:after
+{
+    content: "";
+}
+
+.technology-block ul
+{
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+.technology-block ul li
+{
+    display: inline-block;
+    border: 2px solid;
+    border-radius: 1em;
+    padding: 2px 0.5em;
+    margin: 2px;
+    vertical-align: middle;
+}
+
+ul.operating-systems li     { border-color: #6f8b1b; }
+ul.programming-languages li { border-color: #b70b0f; }
+ul.database-tech li li      { border-color: #112233; }
+ul.communication-tech li    { border-color: #5e4ef2; }
+ul.web-tech li              { border-color: #4db4ef; }
+ul.libs  li                 { border-color: #a6719f; }
+ul.tools li                 { border-color: #112233; }

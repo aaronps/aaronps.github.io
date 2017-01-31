@@ -11,161 +11,47 @@
         <link rel="manifest" href="/manifest.json">
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="theme-color" content="#ffffff">
-        <style>
-            body
-            {
-                margin: 0;
-                font-family: sans-serif;
-                color: #323232;
-            }
-            
-            img.mepic
-            {
-                float: left;
-                margin: 0 16px;
-                border-radius: 6px;
-                box-shadow: 2px 2px 2px;
-            }
-
-            ul.basic-info > li { list-style: none; }
-            ul.basic-info > li span { font-weight: bolder; }
-
-            ul.basic-info > li.icon-links a { padding: 0 8px; text-decoration: none; }
-
-            ul.spoken-languages { display: inline-block; padding: 0; margin: 0; vertical-align: middle; }
-            ul.spoken-languages li { list-style: none; }
-            @media (min-width: 500px)
-            {
-                ul.spoken-languages li { display: inline; }
-                ul.spoken-languages li:after { content: ", "; }
-                ul.spoken-languages li:last-child:after { content: ""; }
-            }
-
-            div.clear { clear: both; }
-
-            h1,h2,h3,h4 { margin: 0; }
-            
-            h2.section-title
-            {
-                clear: both;
-            }
-            
-            h3.company-name
-            {
-                padding-top: 12px;
-                border-bottom: 1px solid #999;
-            }
-            
-            @media (min-width: 700px)
-            {
-                .block
-                {
-                    position: relative;
-                    display: inline-block;
-                    vertical-align: top;
-                    width: 30%;
-                }
-            }
-
-            .block h4
-            {
-                text-align: center;
-                font-size: larger;
-                margin-bottom: 4px;
-                padding-top: 12px;
-            }
-
-            .block ul { margin: 0; }
-            
-            .block p { margin: 0; }
-
-            ul.functions li { padding: 2px 0; }
-
-            ul.positions
-            {
-                /*display: block;*/
-                padding: 0;
-                margin: 0;
-            }
-
-            ul.positions li
-            {
-                list-style: none;
-                text-align: center;
-            }
-
-            ul.positions li span
-            {
-                display: inline-block;
-                border: 2px solid #4f80de;
-                border-radius: 1em; 
-                padding: 2px 4px;
-            }
-
-            ul.positions li:after
-            {
-                content: "↑";
-                display: block;
-            }
-
-            ul.positions li:last-child:after
-            {
-                content: "";
-            }
-
-            .technology-block ul
-            {
-                display: inline;
-                padding: 0;
-                margin: 0;
-            }
-
-            .technology-block ul li
-            {
-                display: inline-block;
-                border: 2px solid;
-                border-radius: 1em;
-                padding: 2px 0.5em;
-                margin: 2px;
-                vertical-align: middle;
-            }
-
-            ul.operating-systems li     { border-color: #6f8b1b; }
-            ul.programming-languages li { border-color: #b70b0f; }
-            ul.database-tech li li      { border-color: #112233; }
-            ul.communication-tech li    { border-color: #5e4ef2; }
-            ul.web-tech li              { border-color: #4db4ef; }
-            ul.libs  li                 { border-color: #a6719f; }
-            ul.tools li                 { border-color: #112233; }
-
-        </style>
+        <link rel="stylesheet" href="cv.css">
     </head>
     <body>
         <div>This is work in progress, please come back later.</div>
         <section class="content">
-            <img alt="me" src="../images/me3.jpg" class="mepic">
-            <ul class="basic-info">
-                <li><span>Name:</span> Aaron Perez Sanchez</li>
-                <li><span>Bird Date:</span> 1979-03-17</li>
-                <li><span>Marital Status:</span> Married</li>
-                <li><span>Languages:</span> <ul class="spoken-languages"><li>Spanish<li>English<li>Chinese</ul></li>
-                <li><span>Email:</span> <a href="mailto:aaronperezsanchez@hotmail.com">aaronperezsanchez@hotmail.com</a></li>
-                <li><span>Email:</span> <a href="mailto:aaronps@gmail.com">aaronps@gmail.com</a></li>
-                <li><span>Phone:</span> +86 18618347115</li>
-                <li><span>Homepage:</span> <a href="http://aaronps.com">http://aaronps.com</a></li>
-                <li class="icon-links">
-                    <a href="https://github.com/aaronps">
-                        <img alt="github link image" src="../images/GitHub-Mark-32px.png">
-                    </a><a href="https://www.linkedin.com/in/AaronPerezSanchez-23173b18">
-                        <img alt="linked in link" src="../images/In-2C-34px-R.png">
-                    </a><a href="https://www.npmjs.com/~aaronps">
-                        <img alt="npmjs icon" src="../images/npm-32px.png">
-                    </a>
-                </li>
-                <li>Try -> Fail -> Learn -> Succeed!!!</li>
-            </ul>
 
-            <!--<div class="clear"></div>-->
+            <div id="basic-info">
+                <div id="head-pic">
+                    <img alt="me" src="../images/me3.jpg" class="rounded-pic">
+                    <div id="icon-links">
+                        <a href="https://github.com/aaronps">
+                            <img alt="github link image" src="../images/GitHub-Mark-32px.png">
+                        </a><a href="https://www.linkedin.com/in/AaronPerezSanchez-23173b18">
+                            <img alt="linked in link" src="../images/In-2C-34px-R.png">
+                        </a><a href="https://www.npmjs.com/~aaronps">
+                            <img alt="npmjs icon" src="../images/npm-32px.png">
+                        </a>
+                    </div>
+                </div>
+                <ul id="basic-info-data">
+                    <li><b>Name</b><span>Aaron Perez Sanchez</span>
+                    <li><b>Birth Date</b><span>1979-03-17</span>
+                    <li><b>Marital Status</b><span>Married</span>
+                    <li><b>Languages</b><span>
+                        <ul id="spoken-languages">
+                            <li>Spanish
+                            <li>English
+                            <li>Chinese
+                        </ul></span>
+                    <li><b>Email</b><span>
+                        <ul id="email-list">
+                            <li><a href="mailto:aaronperezsanchez@hotmail.com">aaronperezsanchez@hotmail.com</a>
+                            <li><a href="mailto:aaronps@gmail.com">aaronps@gmail.com</a>
+                        </ul></span>
+                    <li><b>Phone</b><span>+86 18618347115</span>
+                    <li><b>Homepage</b><span><a href="http://aaronps.com/cv">aaronps.com</a></span>
+                    <li class="hide-on-small"><b>Github</b><span><a href="https://github.com/aaronps">aaronps</a></span>
+                    <li class="hide-on-small"><b>LinkedIn</b><span><a href="https://www.linkedin.com/in/AaronPerezSanchez-23173b18">AaronPerezSanchez</a></span>
+                    <li class="hide-on-small"><b>npmjs</b><span><a href="https://www.npmjs.com/~aaronps">~aaronps</a></span>
+                </ul>
+            </div>
 
             <h2 class="section-title">Work Experience</h2>
             <div class="work-experience">
