@@ -194,7 +194,7 @@ ul.positions li:last-child:after
 #technology-block ul li
 {
     display: inline-block;
-    border-width: 2px;
+    border-width: 1px;
     border-style: solid;
     border-radius: 1em;
     padding: 2px 0.5em;
