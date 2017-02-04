@@ -128,6 +128,26 @@ h3.company-name
     margin-top: 1em;
 }
 
+.company-position
+{
+/*    background-color: #323232;
+    color: #fafafa;*/
+    padding: 0 5px;
+}
+
+.company-position .position-title
+{
+    font-weight: bolder;
+}
+
+.company-position span.position
+{
+    background-color: #323232;
+    color: #fafafa;
+    margin-left: 8px;
+    padding: 0 4px;
+}
+
 @media (min-width: 700px)
 {
     .block
@@ -135,7 +155,7 @@ h3.company-name
         position: relative;
         display: inline-block;
         vertical-align: top;
-        width: 32%;
+        width: 48%;
     }
 }
 
@@ -151,7 +171,11 @@ h3.company-name
 
 .block p { margin: 0; }
 
-ul.functions li { padding: 2px 0; }
+ul.functions li,
+ul.projects li
+{
+    padding: 2px 0;
+}
 
 ul.positions
 {
