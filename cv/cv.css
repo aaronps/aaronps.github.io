@@ -114,12 +114,27 @@ h1,h2,h3,h4 { margin: 0; }
 h2.section-title
 {
     margin-top: 0.5em;
+    /*text-indent: 0.5em;*/
+    padding: 0 0.5em;
     clear: both;
 }
+
+div.section-block
+{
+    padding: 0 0.5em;
+}
+
+#summary p
+{
+    text-indent: 2em;
+    padding: 0 0.5em;
+}
+
 
 h3.company-name
 {
     margin-top: 12px;
+    text-indent: 1em;
     border-bottom: 1px solid #999;
 }
 
@@ -130,9 +145,7 @@ h3.company-name
 
 .company-position
 {
-/*    background-color: #323232;
-    color: #fafafa;*/
-    padding: 0 5px;
+    padding: 0 1.5em;
 }
 
 .company-position .position-title
@@ -146,6 +159,11 @@ h3.company-name
     color: #fafafa;
     margin-left: 8px;
     padding: 0 4px;
+}
+
+.block
+{
+    padding: 0 1em;
 }
 
 @media (min-width: 700px)
@@ -208,11 +226,15 @@ ul.positions li:last-child:after
     content: "";
 }
 
+#technology-block
+{
+    text-align: center;
+}
+
 #technology-block ul
 {
     display: inline;
     padding: 0;
-    margin: 0;
 }
 
 #technology-block ul li
