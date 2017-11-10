@@ -1,0 +1,693 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ffmpeg · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="panorama.html" />
+    
+    
+    <link rel="prev" href="video.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    Languages
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../languages/erlang.html">
+            
+                <a href="../languages/erlang.html">
+            
+                    
+                    Erlang
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../languages/erlang/rebar3.html">
+            
+                <a href="../languages/erlang/rebar3.html">
+            
+                    
+                    Rebar3
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../languages/java.html">
+            
+                <a href="../languages/java.html">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../languages/javascript.html">
+            
+                <a href="../languages/javascript.html">
+            
+                    
+                    Javascript
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../languages/haxe.html">
+            
+                <a href="../languages/haxe.html">
+            
+                    
+                    Haxe
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Tools
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../tools/git.html">
+            
+                <a href="../tools/git.html">
+            
+                    
+                    git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../tools/npm.html">
+            
+                <a href="../tools/npm.html">
+            
+                    
+                    npm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../tools/gradle.html">
+            
+                <a href="../tools/gradle.html">
+            
+                    
+                    gradle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../tools/intellij.html">
+            
+                <a href="../tools/intellij.html">
+            
+                    
+                    intellij
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../tools/eclipse.html">
+            
+                <a href="../tools/eclipse.html">
+            
+                    
+                    eclipse
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../tools/vscode.html">
+            
+                <a href="../tools/vscode.html">
+            
+                    
+                    vscode
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="video.html">
+            
+                <a href="video.html">
+            
+                    
+                    Video
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.1" data-path="ffmpeg.html">
+            
+                <a href="ffmpeg.html">
+            
+                    
+                    ffmpeg
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="panorama.html">
+            
+                <a href="panorama.html">
+            
+                    
+                    Panorama
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../web/web.html">
+            
+                <a href="../web/web.html">
+            
+                    
+                    Web
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../web/vuejs.html">
+            
+                <a href="../web/vuejs.html">
+            
+                    
+                    vuejs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../web/webpack.html">
+            
+                <a href="../web/webpack.html">
+            
+                    
+                    webpack
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../cloud/cloud.html">
+            
+                <a href="../cloud/cloud.html">
+            
+                    
+                    Cloud and distributed
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../cloud/kafka.html">
+            
+                <a href="../cloud/kafka.html">
+            
+                    
+                    kafka
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../cloud/zookeeper.html">
+            
+                <a href="../cloud/zookeeper.html">
+            
+                    
+                    zookeeper
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Operating Systems
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" >
+            
+                <span>
+            
+                    
+                    Linux
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="../operatingsystems/centos.html">
+            
+                <a href="../operatingsystems/centos.html">
+            
+                    
+                    Centos
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >ffmpeg</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="ffmpeg">ffmpeg</h1>
+<h2 id="linux">Linux</h2>
+<ul>
+<li><code>yum install yasm</code></li>
+<li>go <code>nasm.us</code> copy the yum repos info you local installation</li>
+<li><code>yum install nasm</code></li>
+<li>build libx264<pre><code class="lang-shell"># git clone http://git.videolan.org/git/x264.git
+</code></pre>
+</li>
+<li>(x264) <code>./configure --prefix=$HOME/libs --enable-shared --enable-static</code></li>
+<li>(x264) <code>make &amp;&amp; make install</code></li>
+<li>(ffmpeg) <code>PKG_CONFIG_PATH=&quot;$HOME/libs/lib/pkgconfig&quot; ./configure --prefix=$HOME/libs --enable-shared --disable-doc --enable-gpl --enable-libx264</code></li>
+<li>(ffmpeg) <code>make &amp;&amp; make install</code></li>
+</ul>
+<h2 id="basic-program">Basic program</h2>
+<p>link</p>
+<ul>
+<li>avformat</li>
+<li>avcodec</li>
+<li>avutil</li>
+<li>swscale</li>
+</ul>
+<p>dll</p>
+<ul>
+<li>avcodec-57.dll</li>
+<li>avformat-57.dll</li>
+<li>avutil-55.dll</li>
+<li>swresample-2.dll</li>
+<li>swscale-4.dll</li>
+</ul>
+<p><em>CHECK THE FIFO MUXER, it auto retries</em></p>
+<h2 id="command-line">Command line</h2>
+<p>To list direct show devices:</p>
+<pre><code>ffplay -f dshow -list_devices true -i dummy
+</code></pre><p>To play one of the devices:</p>
+<pre><code>ffplay -f dshow -i video=&quot;Microsoft Camera Front&quot;
+</code></pre><p>To see some options:</p>
+<pre><code>ffplay -list_options true -f dshow -i video=&quot;Microsoft Camera Front&quot;
+</code></pre><p>To see it with more changes:</p>
+<pre><code>ffplay -f dshow -framerate 25 -video_size 1280x720 -i video=&quot;Microsoft Camera Front&quot;
+</code></pre><p>Streaming 1</p>
+<pre><code>ffmpeg -f dshow -framerate 15 -video_size 1280x720 -i video=&quot;Microsoft Camera Front&quot; -vcodec libx264 -an -vf &quot;format=yuv420p&quot; -profile main -tune zerolatency -f flv rtmp://127.0.0.1/live/cam
+
+ffmpeg -f dshow -framerate 15 -video_size 640x360 -i video=&quot;Microsoft Camera Front&quot; -c:v libx264 -an -vf &quot;format=yuv420p&quot; -profile main -tune zerolatency -me_range 16 -me_method dia -coder ac -threads 4 -rtmp_live live -f flv rtmp://127.0.0.1/live/cam
+</code></pre><p>Stream test pattern:</p>
+<pre><code>ffmpeg -re -f lavfi -i &quot;testsrc2=size=640x360:rate=25&quot; -c:v libx264 -an  -vf &quot;format=yuv420p&quot; -profile main -tune zerolatency -r 25 -f flv rtmp://127.0.0.1/live/test
+</code></pre><p>Reduce start time:</p>
+<pre><code>-analyzeduration 1M
+or 
+-probesize 100000
+
+-fflags +nobuffer
+</code></pre><p>To play the result of some operation directly</p>
+<pre><code>ffmpeg -i &#x2026; -vcodec rawvideo -pix_fmt yuv420p -f sdl &quot;Maybe window name&quot;
+</code></pre><p>To convert for fast play:</p>
+<pre><code>ffmpeg -i $file -c:v libx264 -g 12 -crf 18 -an -tune zerolatency -f flv file.flv
+</code></pre><p>To capture a window on windows:</p>
+<pre><code>ffmpeg -f gdigrab -framerate 30 -I title=&quot;Window Name&quot; &lt;output data&gt;
+</code></pre><p>Note that for example, chrome uses <code>&lt;html title&gt; - Google Chrome</code></p>
+<pre><code>ffmpeg -f gdigrab -framerate 30 -I title=&quot;&quot; -c:v libx264 -an -vf &quot;format=yuv420p&quot; -tune zerolatency output.mp4
+</code></pre><p>To limit recording or video operation by time: <code>-t &lt;number of seconds&gt;</code></p>
+<h2 id="to-stich-videos-with-filters-very-slow">To stich videos with filters (very slow)</h2>
+<pre><code class="lang-cmd">@<span class="hljs-built_in">echo</span> off
+
+<span class="hljs-built_in">set</span> RTMPBASE=rtmp://<span class="hljs-number">192</span>.<span class="hljs-number">168</span>.<span class="hljs-number">2</span>.<span class="hljs-number">173</span>:<span class="hljs-number">1554</span>/live
+
+<span class="hljs-built_in">set</span> F1=<span class="hljs-built_in">color</span>=c=black:size=<span class="hljs-number">1920</span>x720 [base]
+<span class="hljs-built_in">set</span> F2=[<span class="hljs-number">5</span>:v] setpts=PTS-STARTPTS, scale=width=<span class="hljs-number">640</span>:height=-<span class="hljs-number">1</span> [cam0]
+<span class="hljs-built_in">set</span> F3=[<span class="hljs-number">0</span>:v] setpts=PTS-STARTPTS, scale=width=<span class="hljs-number">640</span>:height=-<span class="hljs-number">1</span> [cam1]
+<span class="hljs-built_in">set</span> F4=[<span class="hljs-number">1</span>:v] setpts=PTS-STARTPTS, scale=width=<span class="hljs-number">640</span>:height=-<span class="hljs-number">1</span> [cam2]
+<span class="hljs-built_in">set</span> F5=[<span class="hljs-number">2</span>:v] setpts=PTS-STARTPTS, scale=width=<span class="hljs-number">640</span>:height=-<span class="hljs-number">1</span> [cam3]
+<span class="hljs-built_in">set</span> F6=[<span class="hljs-number">3</span>:v] setpts=PTS-STARTPTS, scale=width=<span class="hljs-number">640</span>:height=-<span class="hljs-number">1</span> [cam4]
+<span class="hljs-built_in">set</span> F7=[<span class="hljs-number">4</span>:v] setpts=PTS-STARTPTS, scale=width=<span class="hljs-number">640</span>:height=-<span class="hljs-number">1</span> [cam5]
+<span class="hljs-built_in">set</span> F8=[base][cam0] overlay=shortest=<span class="hljs-number">1</span>:x=<span class="hljs-number">0</span>:y=<span class="hljs-number">0</span> [tmp1]
+<span class="hljs-built_in">set</span> F9=[tmp1][cam1] overlay=shortest=<span class="hljs-number">1</span>:x=<span class="hljs-number">640</span>:y=<span class="hljs-number">0</span> [tmp2]
+<span class="hljs-built_in">set</span> F10=[tmp2][cam2] overlay=shortest=<span class="hljs-number">1</span>:x=<span class="hljs-number">1280</span>:y=<span class="hljs-number">0</span> [tmp3]
+<span class="hljs-built_in">set</span> F11=[tmp3][cam3] overlay=shortest=<span class="hljs-number">1</span>:x=<span class="hljs-number">0</span>:y=<span class="hljs-number">360</span> [tmp4]
+<span class="hljs-built_in">set</span> F12=[tmp4][cam4] overlay=shortest=<span class="hljs-number">1</span>:x=<span class="hljs-number">640</span>:y=<span class="hljs-number">360</span> [tmp5]
+<span class="hljs-built_in">set</span> F13=[tmp5][cam5] overlay=shortest=<span class="hljs-number">1</span>:x=<span class="hljs-number">1280</span>:y=<span class="hljs-number">360</span>
+
+ffmpeg -probesize <span class="hljs-number">100000</span> ^
+    -i <span class="hljs-variable">%RTMPBASE%</span>/cam_1_0 ^
+    -i <span class="hljs-variable">%RTMPBASE%</span>/cam_1_1 ^
+    -i <span class="hljs-variable">%RTMPBASE%</span>/cam_1_2 ^
+    -i <span class="hljs-variable">%RTMPBASE%</span>/cam_1_3 ^
+    -i <span class="hljs-variable">%RTMPBASE%</span>/cam_1_4 ^
+    -i <span class="hljs-variable">%RTMPBASE%</span>/cam_1_5 ^
+    -filter_complex &quot;<span class="hljs-variable">%F1%</span>; <span class="hljs-variable">%F2%</span>; <span class="hljs-variable">%F3%</span>; <span class="hljs-variable">%F4%</span>; <span class="hljs-variable">%F5%</span>; <span class="hljs-variable">%F6%</span>; <span class="hljs-variable">%F7%</span>; <span class="hljs-variable">%F8%</span>; <span class="hljs-variable">%F9%</span>; <span class="hljs-variable">%F10%</span>; <span class="hljs-variable">%F11%</span>; <span class="hljs-variable">%F12%</span>; <span class="hljs-variable">%F13%</span>&quot;^
+    -an ^
+    -vcodec rawvideo -pix_fmt yuv420p -f sdl &quot;SDL_OUTPUT&quot;
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="video.html" class="navigation navigation-prev " aria-label="Previous page: Video">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="panorama.html" class="navigation navigation-next " aria-label="Next page: Panorama">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ffmpeg","level":"1.4.1","depth":2,"next":{"title":"Panorama","level":"1.4.2","depth":2,"path":"video/panorama.md","ref":"video/panorama.md","articles":[]},"previous":{"title":"Video","level":"1.4","depth":1,"path":"video/video.md","ref":"video/video.md","articles":[{"title":"ffmpeg","level":"1.4.1","depth":2,"path":"video/ffmpeg.md","ref":"video/ffmpeg.md","articles":[]},{"title":"Panorama","level":"1.4.2","depth":2,"path":"video/panorama.md","ref":"video/panorama.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"video/ffmpeg.md","mtime":"2017-11-09T13:22:50.570Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-10T05:11:17.874Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

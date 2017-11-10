@@ -1,0 +1,35 @@
+# git
+
+To set the browser to firefox on windows, you need to set the path too
+
+	# git config --global browser.firefox.path "c:\Program Files\Mozilla Firefox\firefox.exe"
+	# git config --global web.browser firefox
+	# git config --global help.htmlPath "file:///C:/Program Files/Git/mingw64/share/doc/git-doc"
+	
+To set a proxy
+
+	# git config --global http.proxy socks5://ip:port
+	# git config --global https.proxy socks5://ip:port
+	# git config --global http.proxy ip:port
+	# git config --global http.proxy http://ip:port
+
+For github
+
+	# git config --global user.name github_username
+	# git config --global user.email github_registered_email
+
+others
+
+	# git config --global core.autocrlf false
+
+To ignore
+
+	create `.gitignore` file and use file names, paths, wildcards, etc.
+
+## Github within China without proxy
+
+Edit `hosts` file
+
+	151.101.72.133 assets-cdn.github.com
+	151.101.72.249 github.global.ssl.fastly.net
+	192.30.255.113 github.com (also 112)
