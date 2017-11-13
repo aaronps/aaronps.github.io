@@ -19,3 +19,7 @@ Microsoft strict mode: https://docs.microsoft.com/en-us/scripting/javascript/adv
         <param name="movie" value="flash-file-url.swf">
     </object>
 ``` 
+
+## Notes
+
+* Do NOT use `canvas.createRadialGradient` on IE, its buggy.
