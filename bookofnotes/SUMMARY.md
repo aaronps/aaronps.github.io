@@ -4,6 +4,7 @@
 * [Introduction](README.md)
 
 * Languages
+    * [c++](languages/c++.md)
     * [Erlang](languages/erlang.md)
         * [Rebar3](languages/erlang/rebar3.md)
     * [Java](languages/java.md)
