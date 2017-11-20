@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Panorama · GitBook</title>
+        <title>mingw-w64 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="sdl2.html" />
+    <link rel="next" href="../video/video.html" />
     
     
-    <link rel="prev" href="ffmpeg.html" />
+    <link rel="prev" href="cmake.html" />
     
 
     </head>
@@ -219,9 +219,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="../tools/git.html">
+        <li class="chapter " data-level="1.3.1" data-path="git.html">
             
-                <a href="../tools/git.html">
+                <a href="git.html">
             
                     
                     git
@@ -232,9 +232,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../tools/npm.html">
+        <li class="chapter " data-level="1.3.2" data-path="npm.html">
             
-                <a href="../tools/npm.html">
+                <a href="npm.html">
             
                     
                     npm
@@ -245,9 +245,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="../tools/gradle.html">
+        <li class="chapter " data-level="1.3.3" data-path="gradle.html">
             
-                <a href="../tools/gradle.html">
+                <a href="gradle.html">
             
                     
                     gradle
@@ -258,9 +258,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="../tools/intellij.html">
+        <li class="chapter " data-level="1.3.4" data-path="intellij.html">
             
-                <a href="../tools/intellij.html">
+                <a href="intellij.html">
             
                     
                     intellij
@@ -271,9 +271,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="../tools/eclipse.html">
+        <li class="chapter " data-level="1.3.5" data-path="eclipse.html">
             
-                <a href="../tools/eclipse.html">
+                <a href="eclipse.html">
             
                     
                     eclipse
@@ -284,9 +284,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.6" data-path="../tools/vscode.html">
+        <li class="chapter " data-level="1.3.6" data-path="vscode.html">
             
-                <a href="../tools/vscode.html">
+                <a href="vscode.html">
             
                     
                     vscode
@@ -297,9 +297,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.7" data-path="../tools/cmake.html">
+        <li class="chapter " data-level="1.3.7" data-path="cmake.html">
             
-                <a href="../tools/cmake.html">
+                <a href="cmake.html">
             
                     
                     cmake
@@ -310,9 +310,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.8" data-path="../tools/mingw-w64.html">
+        <li class="chapter active" data-level="1.3.8" data-path="mingw-w64.html">
             
-                <a href="../tools/mingw-w64.html">
+                <a href="mingw-w64.html">
             
                     
                     mingw-w64
@@ -328,9 +328,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="video.html">
+        <li class="chapter " data-level="1.4" data-path="../video/video.html">
             
-                <a href="video.html">
+                <a href="../video/video.html">
             
                     
                     Video
@@ -342,9 +342,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="ffmpeg.html">
+        <li class="chapter " data-level="1.4.1" data-path="../video/ffmpeg.html">
             
-                <a href="ffmpeg.html">
+                <a href="../video/ffmpeg.html">
             
                     
                     ffmpeg
@@ -355,9 +355,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.2" data-path="panorama.html">
+        <li class="chapter " data-level="1.4.2" data-path="../video/panorama.html">
             
-                <a href="panorama.html">
+                <a href="../video/panorama.html">
             
                     
                     Panorama
@@ -368,9 +368,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="sdl2.html">
+        <li class="chapter " data-level="1.4.3" data-path="../video/sdl2.html">
             
-                <a href="sdl2.html">
+                <a href="../video/sdl2.html">
             
                     
                     SDL2
@@ -557,7 +557,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Panorama</a>
+        <a href=".." >mingw-w64</a>
     </h1>
 </div>
 
@@ -572,10 +572,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="panorama">Panorama</h1>
-<p>stick frames on 3d model (ring)</p>
+                                <h1 id="mingw-w64-on-windows">mingw-w64 on windows</h1>
+<p>I download the files directly from <a href="https://sourceforge.net/projects/mingw-w64/files/" target="_blank">https://sourceforge.net/projects/mingw-w64/files/</a>
+then uncompress then and handle paths by myself, so I can have multiple versions of
+the compilers.</p>
+<p>I select:</p>
 <ul>
-<li>Maybe, depending on camera, the joined borders should be bent down.</li>
+<li><code>posix</code> for using c++11 threads</li>
+<li>on x86_64: <code>seh</code> because it may be faster</li>
+<li>on i686: <code>sjlj</code> because may be more compatible</li>
+</ul>
+<p>After getting the files, uncompress on any folder, add to <code>PATH</code> when needed.</p>
+<h1 id="runtime-dlls">Runtime dll&apos;s</h1>
+<p>Normal builds will require some dll to be copied to work, these dll&apos;s can be found
+on the <code>mingw-w64-path/bin</code>. One way to find which of them is needed is to try to
+run the program from explorer and error messages will popup telling you about the
+missing files (or maybe just run <code>depends</code>).</p>
+<h2 id="x8664">x86_64</h2>
+<ul>
+<li>libgcc_s_seh-1.dll</li>
+<li>libstdc++-6.dll</li>
+<li>libwinpthread-1.dll</li>
+</ul>
+<h2 id="i686">i686</h2>
+<ul>
+<li>libgcc_s_sjlj-1.dll</li>
+<li>libstdc++-6.dll</li>
+<li>libwinpthread-1.dll</li>
+</ul>
+<h3 id="static-linking-runtime-dlls">Static linking runtime dll&apos;s</h3>
+<ul>
+<li><p>libgcc_s*-1.dll</p>
+<p>  add link option <code>-static-libgcc</code></p>
+</li>
+<li><p>libstdc++-6.dll</p>
+<p>  add link option <code>-static-libstdc++</code></p>
+</li>
+<li><p>libwinpthread-1.dll</p>
+<p>  If you are using pthreads somewhere, add link option:</p>
+<pre><code>  -l:libwinpthread.a
+</code></pre><p>  <strong>BUT</strong> if not it will fail and you need a longer line</p>
+<pre><code>  -Wl,--whole-archive -l:libwinpthread.a -Wl,--no-whole-archive
+</code></pre><p>  <strong>NOTE</strong> be aware that the <code>--whole-archive</code> one seems to be setting the final <code>exe</code> properties
+  from the <code>winpthread-1.dll</code></p>
+</li>
 </ul>
 
                                 
@@ -604,12 +644,12 @@
 
             
                 
-                <a href="ffmpeg.html" class="navigation navigation-prev " aria-label="Previous page: ffmpeg">
+                <a href="cmake.html" class="navigation navigation-prev " aria-label="Previous page: cmake">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="sdl2.html" class="navigation navigation-next " aria-label="Next page: SDL2">
+                <a href="../video/video.html" class="navigation navigation-next " aria-label="Next page: Video">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -620,7 +660,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Panorama","level":"1.4.2","depth":2,"next":{"title":"SDL2","level":"1.4.3","depth":2,"path":"video/sdl2.md","ref":"video/sdl2.md","articles":[]},"previous":{"title":"ffmpeg","level":"1.4.1","depth":2,"path":"video/ffmpeg.md","ref":"video/ffmpeg.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"video/panorama.md","mtime":"2017-11-09T02:03:31.303Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-20T15:18:36.335Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"mingw-w64","level":"1.3.8","depth":2,"next":{"title":"Video","level":"1.4","depth":1,"path":"video/video.md","ref":"video/video.md","articles":[{"title":"ffmpeg","level":"1.4.1","depth":2,"path":"video/ffmpeg.md","ref":"video/ffmpeg.md","articles":[]},{"title":"Panorama","level":"1.4.2","depth":2,"path":"video/panorama.md","ref":"video/panorama.md","articles":[]},{"title":"SDL2","level":"1.4.3","depth":2,"path":"video/sdl2.md","ref":"video/sdl2.md","articles":[]}]},"previous":{"title":"cmake","level":"1.3.7","depth":2,"path":"tools/cmake.md","ref":"tools/cmake.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/mingw-w64.md","mtime":"2017-11-20T15:13:43.567Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-20T15:18:36.335Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

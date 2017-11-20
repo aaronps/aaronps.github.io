@@ -1,11 +1,27 @@
 # eclipse
 
-To reorganize the SVN repositories
+
+## SVN
+
+### install plugin
+
+1. Help -> Eclipse Marketplace
+2. Install subversive
+3. Restart eclipse
+4. When ask for SVN thing cancel it, it will fail anyway...
+5. Help -> Install new software
+6. Select the one with "community.polarion.com" and "subversive" 
+7. Select "SVN Connectors" -> "SVNKit"
+
+It may be possible that the repository with with the connectors is not on the list.
+If that is the case, try to install the normal way (Window -> Preferences -> Team -> SVN -> SVN Connector) and it will fail, may need restart of eclipse then the repository should appear.
+
+### Reorganize the SVN repositories
 
 1. Right click -> Team -> Disconnect | Keep data
 2. Right click -> Team -> Share -> SVN -> Select repository, keep, done.
 
-To rename known repositories
+### Rename known repositories
 
 1. Open perspective: "SVN Open perspective: "SVN Repository Exploring"
 2. Right click repository -> Location properties

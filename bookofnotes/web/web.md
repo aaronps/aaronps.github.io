@@ -7,7 +7,12 @@
 * To clear iframe: best way set src to an html file empty.
 This way avoids problems of browsers not really clearing the iframe.
 * Maybe it could be possible to just remove the iframe element from the document.
-		
+* transparency on **iframe** (this may be old):
+
+    <iframe src="file.html" ... allowTransparency="true"></iframe>
+    
+    file.html: body { background-color: transparent }
+
 Microsoft strict mode: https://docs.microsoft.com/en-us/scripting/javascript/advanced/strict-mode-javascript
 
 ### embed flash object

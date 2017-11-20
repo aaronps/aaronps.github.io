@@ -23,6 +23,13 @@ Download the tgz, uncompress
 		* If want to be able to delete topics set: delete.topic.enable=true
 	* bin\windows\kafka-server-start.bat config\server.properties
 
+## Setup 1.0.0
+
+Download 1.0.0.tgz, uncompress somewhere, also uncompress included docs for reference (site-docs)
+
+
+
+
 ## Commands
 
 Handle topics (--zookeeper always needed):
