@@ -2,6 +2,8 @@
 
 ## Linux
 
+May need to build:
+
 * `yum install yasm`
 * go `nasm.us` copy the yum repos info you local installation
 * `yum install nasm`
@@ -13,6 +15,11 @@
 * (x264) `make && make install`
 * (ffmpeg) `PKG_CONFIG_PATH="$HOME/libs/lib/pkgconfig" ./configure --prefix=$HOME/libs --enable-shared --disable-doc --enable-gpl --enable-libx264`
 * (ffmpeg) `make && make install`
+
+## Windows
+
+Download files from https://ffmpeg.zeranoe.com/builds for your architecture **Dev** and **Shared**.
+It is a good idea to also get the source code.
 
 ## Basic program
 

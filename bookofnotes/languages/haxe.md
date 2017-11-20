@@ -3,7 +3,7 @@
 ## Installation
 
 1. Download jre >= 1.6 32bit
-2. Install Haxedevelop (it is a 32bit app)
+2. Install [Haxedevelop](http://haxedevelop.org/) (it is a 32bit app)
 3. Download and install haxe from haxe.org
 4. From a mirror/apache/flex/4.16.0/binaries download the apache flex zip and uncompress it
 5. From Haxedevelop "Tools -> Install Software" install "Flash Player (SA)"
@@ -26,6 +26,18 @@ If wants to run on flash and use the debugger (not needing the browser), edit pr
 ```
 
 Path to the debug player can be get from haxedevelop
+
+## New install 2017-11-15
+
+1. Install jre >= 1.6 32bit
+1. Install haxe from haxe.org (i did 64bit)
+1. Install HaxeDevelopt 5.3
+1. cmd -> haxelib install openfl
+1. cmd -> haxelib run openfl setup
+1. cmd -> haxelib install away3d
+1. cmd -> haxelib install away3d-samples
+
+
 
 ## Away3d
 
