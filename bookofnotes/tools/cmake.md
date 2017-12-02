@@ -30,6 +30,11 @@ Multiple methods
 * `cmake --build 'folder' -- VERBOSE=1`
 * `CMakeLists.txt`: `set( CMAKE_VERBOSE_MAKEFILE on )`
 
+## Build in release mode
+
+    cmake -D CMAKE_BUILD_TYPE=Release sorce_folder
+
+
 ## Visual studio
 
 Regarding subsystem (console, windows) take a look at https://cmake.org/Wiki/VSConfigSpecificSettings
@@ -125,11 +130,45 @@ When generating the makefiles, it runs better from command line, need to add the
 
 4. Run `mingw32-make`
 
+### external library on windows for msvc and mingw
+
+Having prepared the two previous `sdl2-config.cmake` with a common parent folder, add another `sdl2-config.cmake` there, for example:
+
+* SDL2-2.0.7
+    * SDL2-2.0.7-VC
+    * SDL2-2.0.7-mingw
+    * sdl2-config.cmake
+
+The new `sdl2-config.cmake` just forwards to the correct one depending on the compiler used.
+
+```cmake
+if ( MINGW )
+	include( ${CMAKE_CURRENT_LIST_DIR}/SDL2-2.0.7-mingw/sdl2-config.cmake)
+elseif ( MSVC )
+	include( ${CMAKE_CURRENT_LIST_DIR}/SDL2-2.0.7-VC/sdl2-config.cmake)
+endif ()
+```
+
 ### c++11
 
-  target_compile_features(targetname PRIVATE cxx_std_11)
+One way
 
-  _PRIVATE_ | _PUBLIC_ | _INTERFACE_
+```cmake
+target_compile_features(targetname PRIVATE cxx_std_11)
+
+# _PRIVATE_ | _PUBLIC_ | _INTERFACE_
+```
+
+Another way for older versions of cmake
+
+    set_target_properties(target_name PROPERTIES CXX_STANDARD 11)
+
+Another way for all
+
+```cmake
+set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD_REQUIRED ON)
+```
 
 ### force 32bit on mingw-w64
 
@@ -155,6 +194,30 @@ Now you can build any version from the base folder
     cmake --build build32
     cmake --build build64
 
+## install target
 
+```cmake
+install(TARGET targetname ARCHIVE DESTINATION some/path)
+install(DIRECTORY dir_name/ DESTINATION some/path)
+```
 
+**IMPORTANT** note the '/' at the end of `DIRECTORY dir_name/`, if you don't add it,
+the contents will be copied to `some/path/dir_name` which you may or may not want.
+
+On linux, if wants to install somewhere else than default (/usr/local),
+regenerate with different prefix:
+
+    cmake -D CMAKE_INSTALL_PREFIX=/ <source_dir>
+
+Then when install add DESTDIR
+
+    make install DESTDIR=some/other/folder
+
+## Netbeans
+
+When creating a project with existing sources with cmake, select custom,
+then you can use a different directory for the build. If you don't do like this,
+the cmake files will polute you base folder.
+
+## RPATH
 

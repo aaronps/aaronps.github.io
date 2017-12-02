@@ -26,11 +26,14 @@
 * [Web](web/web.md)
     * [vuejs](web/vuejs.md)
     * [webpack](web/webpack.md)
+* Net
+    * [SSL](net/ssl_certificates.md)
 * [Cloud and distributed](cloud/cloud.md)
     * [kafka](cloud/kafka.md)
     * [zookeeper](cloud/zookeeper.md)
 * Operating Systems
-    * Linux
+    * [Linux](operatingsystems/linux.md)
+        * [systemd](operatingsystems/systemd.md)
         * [Centos](operatingsystems/centos.md)
 
 

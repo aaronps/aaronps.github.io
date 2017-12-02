@@ -16,3 +16,10 @@ For using JSPs also:
 
 * `# npm install -D raw-loader`
 * ??? and the HtmlWebpackPlugin use 'raw-loader!file.jsp'
+
+## notes
+
+* `<element v-bind:something="someVueObject">`
+    * shorthand `:something=`
+* `<element v-on:click="fun">`
+    * shorthand `@click=`
