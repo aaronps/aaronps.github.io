@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>webpack · GitBook</title>
+        <title>SSL · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="../cloud/cloud.html" />
     
-    <link rel="prev" href="vuejs.html" />
     
 
     </head>
@@ -384,9 +384,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="web.html">
+        <li class="chapter " data-level="1.5" data-path="../web/web.html">
             
-                <a href="web.html">
+                <a href="../web/web.html">
             
                     
                     Web
@@ -398,9 +398,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="vuejs.html">
+        <li class="chapter " data-level="1.5.1" data-path="../web/vuejs.html">
             
-                <a href="vuejs.html">
+                <a href="../web/vuejs.html">
             
                     
                     vuejs
@@ -411,9 +411,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.2" data-path="webpack.html">
+        <li class="chapter " data-level="1.5.2" data-path="../web/webpack.html">
             
-                <a href="webpack.html">
+                <a href="../web/webpack.html">
             
                     
                     webpack
@@ -443,9 +443,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../net/ssl_certificates.html">
+        <li class="chapter active" data-level="1.6.1" data-path="ssl_certificates.html">
             
-                <a href="../net/ssl_certificates.html">
+                <a href="ssl_certificates.html">
             
                     
                     SSL
@@ -600,7 +600,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >webpack</a>
+        <a href=".." >SSL</a>
     </h1>
 </div>
 
@@ -615,12 +615,35 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="webpack">webpack</h1>
-<p>From <a href="https://webpack.js.org/guides/getting-started/" target="_blank">https://webpack.js.org/guides/getting-started/</a></p>
-<pre><code class="lang-shell">mkdir webpack-demo &amp;&amp; cd webpack-demo
-npm init -y
-npm install --save-dev webpack
-</code></pre>
+                                <h1 id="ssl-certificates">SSL certificates</h1>
+<h2 id="letsencrypt">letsencrypt</h2>
+<ol>
+<li>install <code>certbot</code> (in centos: epel)</li>
+<li>if have webserver, find its root then <code>certbot certonly --webroot -w /path/to/webroot -d domain.name domain2.name</code></li>
+<li>if no webserver: <code>certbot certonly --standalone -d domain.name -d domainx.name</code></li>
+<li>after finish, it will tell you where are the files</li>
+</ol>
+<h3 id="renew-letsencryp">renew letsencryp</h3>
+<p>Because certs are 90 days, you have to renew</p>
+<p><code>certbot renew</code></p>
+<h2 id="self-signed-certificate-authority">self signed certificate authority</h2>
+<ol>
+<li>without passwortd: <code>openssl genrsa -out rootca.key 2048</code></li>
+<li>with password: <code>openssl genrsa -des3 -out rootca.key 2048</code></li>
+<li>self sign ca: <code>openssl req -x509 -new -nodes -key rootca.key -sha256 -days 1024 -out rootca.pem</code><ul>
+<li>this will ask some questions</li>
+</ul>
+</li>
+</ol>
+<h2 id="self-signed-normal-certificate">self signed normal certificate</h2>
+<ol>
+<li><code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout somename.key -out somename.crt</code></li>
+</ol>
+<p>another way</p>
+<ol>
+<li><code>openssl genrsa -out filename.key 2048</code></li>
+<li><code>openssl req -new -x509 -key filename.key -out filename.cert -days 365 -subj /CN=alia.aaronps.com</code></li>
+</ol>
 
                                 
                                 </section>
@@ -648,10 +671,10 @@ npm install --save-dev webpack
 
             
                 
-                <a href="vuejs.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: vuejs">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
+                <a href="../cloud/cloud.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Cloud and distributed">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -660,7 +683,7 @@ npm install --save-dev webpack
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"webpack","level":"1.5.2","depth":2,"next":{"title":"Net","level":"1.6","depth":1,"ref":"","articles":[{"title":"SSL","level":"1.6.1","depth":2,"path":"net/ssl_certificates.md","ref":"net/ssl_certificates.md","articles":[]}]},"previous":{"title":"vuejs","level":"1.5.1","depth":2,"path":"web/vuejs.md","ref":"web/vuejs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"web/webpack.md","mtime":"2017-12-02T00:38:56.243Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-02T06:13:52.600Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SSL","level":"1.6.1","depth":2,"next":{"title":"Cloud and distributed","level":"1.7","depth":1,"path":"cloud/cloud.md","ref":"cloud/cloud.md","articles":[{"title":"kafka","level":"1.7.1","depth":2,"path":"cloud/kafka.md","ref":"cloud/kafka.md","articles":[]},{"title":"zookeeper","level":"1.7.2","depth":2,"path":"cloud/zookeeper.md","ref":"cloud/zookeeper.md","articles":[]}]},"previous":{"title":"Net","level":"1.6","depth":1,"ref":"","articles":[{"title":"SSL","level":"1.6.1","depth":2,"path":"net/ssl_certificates.md","ref":"net/ssl_certificates.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"net/ssl_certificates.md","mtime":"2017-11-25T16:36:14.016Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-02T06:13:52.600Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -53,3 +53,7 @@ missing files (or maybe just run `depends`).
     
     **NOTE** be aware that the `--whole-archive` one seems to be setting the final `exe` properties
     from the `winpthread-1.dll`
+
+## Notes
+
+When using the **posix** version, if the `bin` folder is _not on path_, the compiler may fail because it won't find `winpthread-1.dll`.

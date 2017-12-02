@@ -431,7 +431,39 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="../cloud/cloud.html">
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Net
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../net/ssl_certificates.html">
+            
+                <a href="../net/ssl_certificates.html">
+            
+                    
+                    SSL
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../cloud/cloud.html">
             
                 <a href="../cloud/cloud.html">
             
@@ -445,7 +477,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../cloud/kafka.html">
+        <li class="chapter " data-level="1.7.1" data-path="../cloud/kafka.html">
             
                 <a href="../cloud/kafka.html">
             
@@ -458,7 +490,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../cloud/zookeeper.html">
+        <li class="chapter " data-level="1.7.2" data-path="../cloud/zookeeper.html">
             
                 <a href="../cloud/zookeeper.html">
             
@@ -476,7 +508,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" >
+        <li class="chapter " data-level="1.8" >
             
                 <span>
             
@@ -490,21 +522,34 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" >
+        <li class="chapter " data-level="1.8.1" data-path="../operatingsystems/linux.html">
             
-                <span>
+                <a href="../operatingsystems/linux.html">
             
                     
                     Linux
             
-                </span>
+                </a>
             
 
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1.1" data-path="../operatingsystems/centos.html">
+        <li class="chapter " data-level="1.8.1.1" data-path="../operatingsystems/systemd.html">
+            
+                <a href="../operatingsystems/systemd.html">
+            
+                    
+                    systemd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.2" data-path="../operatingsystems/centos.html">
             
                 <a href="../operatingsystems/centos.html">
             
@@ -581,13 +626,27 @@
 <li>To clear iframe: best way set src to an html file empty.
 This way avoids problems of browsers not really clearing the iframe.</li>
 <li>Maybe it could be possible to just remove the iframe element from the document.</li>
-<li><p>transparency on <strong>iframe</strong> (this may be old):</p>
-  <iframe src="file.html" ...="" allowtransparency="true"></iframe>
+<li>transparency on <strong>iframe</strong> (this may be old):</li>
+</ul>
+<pre><code>    &lt;iframe src=&quot;file.html&quot; ... allowTransparency=&quot;true&quot;&gt;&lt;/iframe&gt;
 
-<p>  file.html: body { background-color: transparent }</p>
+    file.html: body { background-color: transparent }
+</code></pre><ul>
+<li><p>Avoid white background on dark pages using <code>iframe</code> or similar to load content: <code>visibily: hidden</code> when added, change to <code>visible</code> on <code>load</code> event of the iframe.</p>
+</li>
+<li><p>Microsoft strict mode: <a href="https://docs.microsoft.com/en-us/scripting/javascript/advanced/strict-mode-javascript" target="_blank">https://docs.microsoft.com/en-us/scripting/javascript/advanced/strict-mode-javascript</a></p>
+</li>
+<li><p>no selection</p>
 </li>
 </ul>
-<p>Microsoft strict mode: <a href="https://docs.microsoft.com/en-us/scripting/javascript/advanced/strict-mode-javascript" target="_blank">https://docs.microsoft.com/en-us/scripting/javascript/advanced/strict-mode-javascript</a></p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.no-select</span>
+{
+    <span class="hljs-attribute">-webkit-user-select</span>: none;
+    <span class="hljs-attribute">-moz-user-select</span>: none;
+    <span class="hljs-attribute">-ms-user-select</span>: none;
+    <span class="hljs-attribute">user-select</span>: none;
+}
+</code></pre>
 <h3 id="embed-flash-object">embed flash object</h3>
 <ul>
 <li>Both object.data and param.movie are needed because different browsers may take the values from different locations, on my tests, firefox needs the <code>param</code>, ie and chrome can work with <code>data</code> attribute only.</li>
@@ -598,7 +657,10 @@ This way avoids problems of browsers not really clearing the iframe.</li>
 </code></pre>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>Do NOT use <code>canvas.createRadialGradient</code> on IE, its buggy.</li>
+<li><p>Do NOT use <code>canvas.createRadialGradient</code> on IE, its buggy.</p>
+</li>
+<li><p>Need to study: seems <strong>Chrome</strong> delays flash activation somewhow, cannot call its methods until a little later. Note that flash is on an <code>iframe</code> which is loaded with <code>visibility: hidden</code> which may be making the problem appear</p>
+</li>
 </ul>
 
                                 
@@ -643,7 +705,7 @@ This way avoids problems of browsers not really clearing the iframe.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Web","level":"1.5","depth":1,"next":{"title":"vuejs","level":"1.5.1","depth":2,"path":"web/vuejs.md","ref":"web/vuejs.md","articles":[]},"previous":{"title":"SDL2","level":"1.4.3","depth":2,"path":"video/sdl2.md","ref":"video/sdl2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"web/web.md","mtime":"2017-11-14T11:22:17.921Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-20T15:18:36.335Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Web","level":"1.5","depth":1,"next":{"title":"vuejs","level":"1.5.1","depth":2,"path":"web/vuejs.md","ref":"web/vuejs.md","articles":[]},"previous":{"title":"SDL2","level":"1.4.3","depth":2,"path":"video/sdl2.md","ref":"video/sdl2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"web/web.md","mtime":"2017-12-02T05:58:25.551Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-02T06:13:52.600Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

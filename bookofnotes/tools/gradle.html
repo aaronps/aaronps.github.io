@@ -431,7 +431,39 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="../cloud/cloud.html">
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Net
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../net/ssl_certificates.html">
+            
+                <a href="../net/ssl_certificates.html">
+            
+                    
+                    SSL
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../cloud/cloud.html">
             
                 <a href="../cloud/cloud.html">
             
@@ -445,7 +477,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../cloud/kafka.html">
+        <li class="chapter " data-level="1.7.1" data-path="../cloud/kafka.html">
             
                 <a href="../cloud/kafka.html">
             
@@ -458,7 +490,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../cloud/zookeeper.html">
+        <li class="chapter " data-level="1.7.2" data-path="../cloud/zookeeper.html">
             
                 <a href="../cloud/zookeeper.html">
             
@@ -476,7 +508,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" >
+        <li class="chapter " data-level="1.8" >
             
                 <span>
             
@@ -490,21 +522,34 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" >
+        <li class="chapter " data-level="1.8.1" data-path="../operatingsystems/linux.html">
             
-                <span>
+                <a href="../operatingsystems/linux.html">
             
                     
                     Linux
             
-                </span>
+                </a>
             
 
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1.1" data-path="../operatingsystems/centos.html">
+        <li class="chapter " data-level="1.8.1.1" data-path="../operatingsystems/systemd.html">
+            
+                <a href="../operatingsystems/systemd.html">
+            
+                    
+                    systemd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.2" data-path="../operatingsystems/centos.html">
             
                 <a href="../operatingsystems/centos.html">
             
@@ -575,38 +620,39 @@
                                 <h1 id="gradle">gradle</h1>
 <h2 id="install-and-configure">Install and configure</h2>
 <ol>
-<li>Download gradle-${version}-bin.zip, for example from mirrors.flysnow.org</li>
+<li>Download gradle-${version}-bin.zip.</li>
 <li>Uncompress somewhere, add its &quot;bin&quot; folder to path</li>
-<li><p>Create <code>~/.gradle/init.gradle</code> with following contents for China</p>
+<li>Create <code>~/.gradle/init.gradle</code> with following contents for China</li>
+</ol>
 <pre><code class="lang-groovy">allprojects {
- task wrapper(<span class="hljs-string">type:</span> Wrapper) {
-     distributionUrl = <span class="hljs-string">&quot;http://mirrors.flysnow.org/gradle/gradle-${gradleVersion}-bin.zip&quot;</span>
- }
 
- task showRepositories {
-     doLast {
-         println repositories.collect { <span class="hljs-string">&quot;${it.name} = ${it.url}&quot;</span>  }
-     }
- }
+    <span class="hljs-comment">// flysnow.org is not good, recomend to not use wrapper and download the binary manually.</span>
+    <span class="hljs-comment">// task wrapper(type: Wrapper) {</span>
+    <span class="hljs-comment">//    distributionUrl = &quot;http://mirrors.flysnow.org/gradle/gradle-${gradleVersion}-bin.zip&quot;</span>
+    <span class="hljs-comment">// }</span>
 
- repositories {
-     all { ArtifactRepository repo -&gt;
+    task showRepositories {
+        doLast {
+            println repositories.collect { <span class="hljs-string">&quot;${it.name} = ${it.url}&quot;</span>  }
+        }
+    }
 
-         <span class="hljs-keyword">if</span> ( (repo.name == <span class="hljs-string">&quot;BintrayJCenter&quot;</span>) &amp;&amp; (repo.url.toString() == <span class="hljs-string">&quot;https://jcenter.bintray.com/&quot;</span>) ) {
-             repo.url = <span class="hljs-string">&quot;http://maven.aliyun.com/nexus/content/repositories/jcenter/&quot;</span>
-             println <span class="hljs-string">&quot;Using Aliyun jcenter mirror: ${repo.url}&quot;</span>
-         }
+    repositories {
+        all { ArtifactRepository repo -&gt;
 
-         <span class="hljs-keyword">if</span> ( (repo.name == <span class="hljs-string">&quot;MavenRepo&quot;</span>) &amp;&amp; (repo.url.toString() == <span class="hljs-string">&quot;https://repo1.maven.org/maven2/&quot;</span>) ) {
-             repo.url = <span class="hljs-string">&quot;http://maven.aliyun.com/nexus/content/repositories/central/&quot;</span>
-             println <span class="hljs-string">&quot;Using Aliyun maven mirror: ${repo.url}&quot;</span>
-         }
-     }
- }  
+            <span class="hljs-keyword">if</span> ( (repo.name == <span class="hljs-string">&quot;BintrayJCenter&quot;</span>) &amp;&amp; (repo.url.toString() == <span class="hljs-string">&quot;https://jcenter.bintray.com/&quot;</span>) ) {
+                repo.url = <span class="hljs-string">&quot;http://maven.aliyun.com/nexus/content/repositories/jcenter/&quot;</span>
+                println <span class="hljs-string">&quot;Using Aliyun jcenter mirror: ${repo.url}&quot;</span>
+            }
+
+            <span class="hljs-keyword">if</span> ( (repo.name == <span class="hljs-string">&quot;MavenRepo&quot;</span>) &amp;&amp; (repo.url.toString() == <span class="hljs-string">&quot;https://repo1.maven.org/maven2/&quot;</span>) ) {
+                repo.url = <span class="hljs-string">&quot;http://maven.aliyun.com/nexus/content/repositories/central/&quot;</span>
+                println <span class="hljs-string">&quot;Using Aliyun maven mirror: ${repo.url}&quot;</span>
+            }
+        }
+    }  
 }
 </code></pre>
-</li>
-</ol>
 <h3 id="create-project">Create project</h3>
 <pre><code>gradle init --type &lt;type&gt;
 </code></pre><p>Where type might be</p>
@@ -620,10 +666,13 @@
 <li>scala-library</li>
 </ul>
 <h3 id="initialize-wrapper">Initialize wrapper</h3>
+<p>As 2017-12-02 it seems mirrors.flysnow.org might be down, maybe avoid the wrapper altogether.</p>
 <pre><code>gradle wrapper --gradle-distribution-url http://mirrors.flysnow.org/gradle/gradle-4.1-bin.zip
-</code></pre><p>add a repository for example</p>
+- or -
+gradle wrapper
+</code></pre><h3 id="add-a-repository">add a repository</h3>
 <pre><code>repositories { jcenter() }
-</code></pre><p>in dependencies add</p>
+</code></pre><h3 id="add-dependencies">add dependencies</h3>
 <ul>
 <li><p>For &apos;java-library&apos;:</p>
 <p>  dependencies { testImplementation &apos;junit:junit:4.12&apos; }</p>
@@ -632,7 +681,7 @@
 <p>  dependencies { testCompile&apos;junit:junit:4.12&apos; }</p>
 </li>
 </ul>
-<p>basic test file</p>
+<h3 id="basic-test-file">basic test file</h3>
 <pre><code>import static org.junit.Assert.*;
 import org.junit.Test;
 public class SomeTest {
@@ -678,7 +727,8 @@ public class SomeTest {
         url &quot;http://maven.aliyun.com/nexus/content/repositories/central/&quot; 
     }
 }
-</code></pre><h3 id="wrapper-mirror-for-chins">wrapper mirror for Chins</h3>
+</code></pre><h3 id="wrapper-mirror-for-china">wrapper mirror for China</h3>
+<p><em>note: mirrors.flysnow.org might not work</em></p>
 <p>edit <code>gradle/wrapper/gradle-wrapper.properties</code></p>
 <pre><code>distributionUrl=http://mirrors.flysnow.org/gradle/gradle-3.5-bin.zip
 </code></pre><p>(need to check) If the import of project or download shows errors, go to $HOME/.gradle and try to remove wrapper</p>
@@ -757,7 +807,7 @@ tasks.withType(Test) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gradle","level":"1.3.3","depth":2,"next":{"title":"intellij","level":"1.3.4","depth":2,"path":"tools/intellij.md","ref":"tools/intellij.md","articles":[]},"previous":{"title":"npm","level":"1.3.2","depth":2,"path":"tools/npm.md","ref":"tools/npm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/gradle.md","mtime":"2017-11-12T23:22:56.276Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-20T15:18:36.335Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gradle","level":"1.3.3","depth":2,"next":{"title":"intellij","level":"1.3.4","depth":2,"path":"tools/intellij.md","ref":"tools/intellij.md","articles":[]},"previous":{"title":"npm","level":"1.3.2","depth":2,"path":"tools/npm.md","ref":"tools/npm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/gradle.md","mtime":"2017-12-02T05:55:31.655Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-02T06:13:52.600Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

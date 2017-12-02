@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>webpack · GitBook</title>
+        <title>Linux · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="systemd.html" />
     
-    <link rel="prev" href="vuejs.html" />
     
 
     </head>
@@ -384,9 +384,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="web.html">
+        <li class="chapter " data-level="1.5" data-path="../web/web.html">
             
-                <a href="web.html">
+                <a href="../web/web.html">
             
                     
                     Web
@@ -398,9 +398,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="vuejs.html">
+        <li class="chapter " data-level="1.5.1" data-path="../web/vuejs.html">
             
-                <a href="vuejs.html">
+                <a href="../web/vuejs.html">
             
                     
                     vuejs
@@ -411,9 +411,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.2" data-path="webpack.html">
+        <li class="chapter " data-level="1.5.2" data-path="../web/webpack.html">
             
-                <a href="webpack.html">
+                <a href="../web/webpack.html">
             
                     
                     webpack
@@ -520,9 +520,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="../operatingsystems/linux.html">
+        <li class="chapter active" data-level="1.8.1" data-path="linux.html">
             
-                <a href="../operatingsystems/linux.html">
+                <a href="linux.html">
             
                     
                     Linux
@@ -534,9 +534,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1.1" data-path="../operatingsystems/systemd.html">
+        <li class="chapter " data-level="1.8.1.1" data-path="systemd.html">
             
-                <a href="../operatingsystems/systemd.html">
+                <a href="systemd.html">
             
                     
                     systemd
@@ -547,9 +547,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.1.2" data-path="../operatingsystems/centos.html">
+        <li class="chapter " data-level="1.8.1.2" data-path="centos.html">
             
-                <a href="../operatingsystems/centos.html">
+                <a href="centos.html">
             
                     
                     Centos
@@ -600,7 +600,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >webpack</a>
+        <a href=".." >Linux</a>
     </h1>
 </div>
 
@@ -615,13 +615,13 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="webpack">webpack</h1>
-<p>From <a href="https://webpack.js.org/guides/getting-started/" target="_blank">https://webpack.js.org/guides/getting-started/</a></p>
-<pre><code class="lang-shell">mkdir webpack-demo &amp;&amp; cd webpack-demo
-npm init -y
-npm install --save-dev webpack
+                                <h1 id="linux">Linux</h1>
+<p>quick and dirty sshfs, install <code>sshfs</code></p>
+<pre><code>mount -t fuse.sshfs user@ip:/path /mount/point
+</code></pre><h2 id="development">Development</h2>
+<p>See needed libraries and rpath data</p>
+<pre><code>readelf -d &lt;filename&gt;
 </code></pre>
-
                                 
                                 </section>
                             
@@ -648,10 +648,10 @@ npm install --save-dev webpack
 
             
                 
-                <a href="vuejs.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: vuejs">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
+                <a href="systemd.html" class="navigation navigation-next navigation-unique" aria-label="Next page: systemd">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -660,7 +660,7 @@ npm install --save-dev webpack
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"webpack","level":"1.5.2","depth":2,"next":{"title":"Net","level":"1.6","depth":1,"ref":"","articles":[{"title":"SSL","level":"1.6.1","depth":2,"path":"net/ssl_certificates.md","ref":"net/ssl_certificates.md","articles":[]}]},"previous":{"title":"vuejs","level":"1.5.1","depth":2,"path":"web/vuejs.md","ref":"web/vuejs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"web/webpack.md","mtime":"2017-12-02T00:38:56.243Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-02T06:13:52.600Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.8.1","depth":2,"next":{"title":"systemd","level":"1.8.1.1","depth":3,"path":"operatingsystems/systemd.md","ref":"operatingsystems/systemd.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.8","depth":1,"ref":"","articles":[{"title":"Linux","level":"1.8.1","depth":2,"path":"operatingsystems/linux.md","ref":"operatingsystems/linux.md","articles":[{"title":"systemd","level":"1.8.1.1","depth":3,"path":"operatingsystems/systemd.md","ref":"operatingsystems/systemd.md","articles":[]},{"title":"Centos","level":"1.8.1.2","depth":3,"path":"operatingsystems/centos.md","ref":"operatingsystems/centos.md","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"operatingsystems/linux.md","mtime":"2017-11-22T07:09:39.317Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-02T06:13:52.600Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2,14 +2,17 @@
 
 ## Install and configure
 
-1. Download gradle-${version}-bin.zip, for example from mirrors.flysnow.org
+1. Download gradle-${version}-bin.zip.
 2. Uncompress somewhere, add its "bin" folder to path
 3. Create `~/.gradle/init.gradle` with following contents for China
+
 ```groovy
 allprojects {
-    task wrapper(type: Wrapper) {
-        distributionUrl = "http://mirrors.flysnow.org/gradle/gradle-${gradleVersion}-bin.zip"
-    }
+
+	// flysnow.org is not good, recomend to not use wrapper and download the binary manually.
+    // task wrapper(type: Wrapper) {
+    //    distributionUrl = "http://mirrors.flysnow.org/gradle/gradle-${gradleVersion}-bin.zip"
+    // }
     
     task showRepositories {
         doLast {
@@ -49,14 +52,17 @@ Where type might be
 
 ### Initialize wrapper
 
+As 2017-12-02 it seems mirrors.flysnow.org might be down, maybe avoid the wrapper altogether.
+
     gradle wrapper --gradle-distribution-url http://mirrors.flysnow.org/gradle/gradle-4.1-bin.zip
+	- or -
+	gradle wrapper
 
-
-add a repository for example
+### add a repository
 
 	repositories { jcenter() }
 
-in dependencies add
+### add dependencies
 
 * For 'java-library':
 
@@ -66,7 +72,7 @@ in dependencies add
 
 	dependencies { testCompile'junit:junit:4.12' }
 
-basic test file
+### basic test file
 
 	import static org.junit.Assert.*;
 	import org.junit.Test;
@@ -131,7 +137,9 @@ To tell it to download the sources, apply plugin eclipse, then generate the ecli
         }
     }
 
-### wrapper mirror for Chins
+### wrapper mirror for China
+
+_note: mirrors.flysnow.org might not work_
 
 edit `gradle/wrapper/gradle-wrapper.properties`
 
