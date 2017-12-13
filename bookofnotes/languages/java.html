@@ -567,6 +567,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.8.2" data-path="../operatingsystems/windows.html">
+            
+                <a href="../operatingsystems/windows.html">
+            
+                    
+                    Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -626,8 +639,21 @@
 <p><code>@WebServlet(&quot;/something/and/something/*&quot;)</code>
 --&gt; needs to have the /* at end if you want to get the path info</p>
 <p><code>request.getPathInfo()</code> -&gt; null or &quot;/&quot; for base, then the rest for the thing</p>
-<p>toPrint
-<code>HttpServletResponse.getWriter().print()</code></p>
+<p>toPrint <code>HttpServletResponse.getWriter().print()</code></p>
+<h2 id="tomcat">Tomcat</h2>
+<ul>
+<li><p>setting <code>antiResourceLocking=&quot;true&quot;</code> on the context may inhibit reloading of JSP</p>
+</li>
+<li><p>Remove empty lines <code>&lt;%@ ... trimDirectiveWhitespaces=&quot;true&quot; %&gt;</code></p>
+</li>
+<li><p><code>CATALINA_HOME</code> refers to the path to tomcat, the folder uncompressed from the zip files.</p>
+</li>
+<li><code>CATALINA_BASE</code> refers to the folder of the <strong>active configuration</strong>.</li>
+</ul>
+<h2 id="tomee">TomEE</h2>
+<ul>
+<li>If wants to exclude a jar from scanning (because it gives problem when it is not javaee thing) add a <code>/WEB-INF/exclusions.list</code> each line is the jar prefix to skip.</li>
+</ul>
 <h2 id="spring">Spring</h2>
 <h3 id="configuration">configuration</h3>
 <p><code>application.properties</code></p>
@@ -722,7 +748,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.2.3","depth":2,"next":{"title":"Javascript","level":"1.2.4","depth":2,"path":"languages/javascript.md","ref":"languages/javascript.md","articles":[]},"previous":{"title":"Rebar3","level":"1.2.2.1","depth":3,"path":"languages/erlang/rebar3.md","ref":"languages/erlang/rebar3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"languages/java.md","mtime":"2017-11-08T23:13:07.021Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-02T06:13:52.600Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.2.3","depth":2,"next":{"title":"Javascript","level":"1.2.4","depth":2,"path":"languages/javascript.md","ref":"languages/javascript.md","articles":[]},"previous":{"title":"Rebar3","level":"1.2.2.1","depth":3,"path":"languages/erlang/rebar3.md","ref":"languages/erlang/rebar3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"languages/java.md","mtime":"2017-12-13T09:26:00.570Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-13T09:28:55.844Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

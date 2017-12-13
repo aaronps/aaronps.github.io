@@ -565,6 +565,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.8.2" data-path="../operatingsystems/windows.html">
+            
+                <a href="../operatingsystems/windows.html">
+            
+                    
+                    Windows
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -621,6 +634,30 @@
 npm init -y
 npm install --save-dev webpack
 </code></pre>
+<p>stop antivirus (360) before installing things with node</p>
+<p><code>npm install -D webpack webpack-dev-server babel-core babel-loader babel-preset-env</code>
+<code>npm install -D vue-loader vue-template-compiler css-loader cross-env</code>
+<code>npm install axios es6-promise vue vue-echarts</code></p>
+<p>in scripts:</p>
+<ul>
+<li>dev: &quot;cross-env NODE_ENV=development webpack-dev-server --hot&quot;</li>
+<li><p>build: &quot;cross-env NODE_ENV=production webpackl --progress --hide-modules&quot;</p>
+</li>
+<li><p>This is not helping with the work computer problem</p>
+</li>
+</ul>
+<pre><code>npm config set registry http://registry.npmjs.org
+npm config set strict-ssl false
+</code></pre><h3 id="if-webpack-build-gives-uglifyjs-error-">If webpack build gives uglifyjs error (&gt;)</h3>
+<ul>
+<li>Check that you have <code>.babelrc</code></li>
+</ul>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;presets&quot;</span>: [
+        [<span class="hljs-string">&quot;env&quot;</span>, {<span class="hljs-string">&quot;modules&quot;</span>: <span class="hljs-literal">false</span>}]
+    ]
+}
+</code></pre>
 
                                 
                                 </section>
@@ -660,7 +697,7 @@ npm install --save-dev webpack
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"webpack","level":"1.5.2","depth":2,"next":{"title":"Net","level":"1.6","depth":1,"ref":"","articles":[{"title":"SSL","level":"1.6.1","depth":2,"path":"net/ssl_certificates.md","ref":"net/ssl_certificates.md","articles":[]}]},"previous":{"title":"vuejs","level":"1.5.1","depth":2,"path":"web/vuejs.md","ref":"web/vuejs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"web/webpack.md","mtime":"2017-12-02T00:38:56.243Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-02T06:13:52.600Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"webpack","level":"1.5.2","depth":2,"next":{"title":"Net","level":"1.6","depth":1,"ref":"","articles":[{"title":"SSL","level":"1.6.1","depth":2,"path":"net/ssl_certificates.md","ref":"net/ssl_certificates.md","articles":[]}]},"previous":{"title":"vuejs","level":"1.5.1","depth":2,"path":"web/vuejs.md","ref":"web/vuejs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"web/webpack.md","mtime":"2017-12-13T09:27:13.881Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-12-13T09:28:55.844Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
