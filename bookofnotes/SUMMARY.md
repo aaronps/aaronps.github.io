@@ -35,5 +35,5 @@
     * [Linux](operatingsystems/linux.md)
         * [systemd](operatingsystems/systemd.md)
         * [Centos](operatingsystems/centos.md)
-
+    * [Windows](operatingsystems/windows.md)
 

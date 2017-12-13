@@ -46,3 +46,7 @@ For updating things
 Check npm for errors
 
 	npm cache verify
+
+Preffer local data over internet check
+
+	npm install --prefer-offline

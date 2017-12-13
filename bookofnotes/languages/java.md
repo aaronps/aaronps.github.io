@@ -10,8 +10,21 @@
 
 `request.getPathInfo()` -> null or "/" for base, then the rest for the thing
 
-toPrint
-`HttpServletResponse.getWriter().print()`
+toPrint `HttpServletResponse.getWriter().print()`
+
+## Tomcat
+
+* setting `antiResourceLocking="true"` on the context may inhibit reloading of JSP
+
+* Remove empty lines `<%@ ... trimDirectiveWhitespaces="true" %>`
+
+* `CATALINA_HOME` refers to the path to tomcat, the folder uncompressed from the zip files.
+* `CATALINA_BASE` refers to the folder of the __active configuration__.
+
+## TomEE
+
+* If wants to exclude a jar from scanning (because it gives problem when it is not javaee thing) add a `/WEB-INF/exclusions.list` each line is the jar prefix to skip.
+
 
 ## Spring
 
