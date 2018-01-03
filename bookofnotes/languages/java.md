@@ -2,6 +2,7 @@
 
 * Http servlet request get header is case insensitive
 * Tomcat sessions are saved in work folder
+* `SocketTimeoutException` is a subclass of `InterruptedIOException`, take into account you might not have interrupted it yourself.
 
 ## Servlets
 

@@ -19,6 +19,7 @@
     * [vscode](tools/vscode.md)
     * [cmake](tools/cmake.md)
     * [mingw-w64](tools/mingw-w64.md)
+    * [browsers](tools/browsers.adoc)
 * [Video](video/video.md)
     * [ffmpeg](video/ffmpeg.md)
     * [Panorama](video/panorama.md)
@@ -34,6 +35,6 @@
 * Operating Systems
     * [Linux](operatingsystems/linux.md)
         * [systemd](operatingsystems/systemd.md)
-        * [Centos](operatingsystems/centos.md)
+        * [Centos](operatingsystems/centos.adoc)
     * [Windows](operatingsystems/windows.md)
 

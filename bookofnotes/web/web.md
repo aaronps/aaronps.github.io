@@ -46,3 +46,5 @@ This way avoids problems of browsers not really clearing the iframe.
 * Do NOT use `canvas.createRadialGradient` on IE, its buggy.
 
 * Need to study: seems **Chrome** delays flash activation somewhow, cannot call its methods until a little later. Note that flash is on an `iframe` which is loaded with `visibility: hidden` which may be making the problem appear
+
+* `display:table > ... > object` IN CHROME: object will have a minimum of 150px. For my use case fix with: `object { position: absolute; }`

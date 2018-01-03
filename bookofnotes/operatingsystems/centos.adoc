@@ -1,0 +1,5 @@
+= Centos
+
+== Centos 7
+
+WARNING: If after long time of not using centos, `yum update` fails, use `yum clean all` 
