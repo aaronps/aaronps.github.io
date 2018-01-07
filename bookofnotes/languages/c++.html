@@ -646,8 +646,12 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="c">c++</h1>
-<h2 id="timing-c11">Timing (c++11)</h2>
-<pre><code class="lang-c++">    <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;chrono&gt;</span></span>
+<div class="sect1">
+<h2 id="_timing_c_11">Timing (c++11)</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c++" data-lang="c++">    <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;chrono&gt;</span></span>
     <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;thread&gt;</span></span>
 
     <span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> start_time = <span class="hljs-built_in">std</span>::chrono::system_clock::now();
@@ -659,15 +663,36 @@
     <span class="hljs-comment">// next line gets the milliseconds for epoch ~~ in theory from 1970-01-01 00:00:00</span>
     <span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> milliseconds_from_epoc = <span class="hljs-built_in">std</span>::chrono::duration_cast&lt;<span class="hljs-built_in">std</span>::chrono::milliseconds&gt;(<span class="hljs-built_in">std</span>::chrono::system_clock::now().time_since_epoch()).count();
 
-    <span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> usable_value = ms_from_start.count();    
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> usable_value = ms_from_start.count();
 
     <span class="hljs-built_in">std</span>::this_thread::sleep_for(<span class="hljs-built_in">std</span>::chrono::seconds(<span class="hljs-number">1</span>));
 
-    <span class="hljs-built_in">std</span>::this_thread::sleep_for(wait_time);
-</code></pre>
-<h2 id="old">Old</h2>
-<p><code>popen</code> doesn&apos;t use <code>PATH</code>.</p>
-
+    <span class="hljs-built_in">std</span>::this_thread::sleep_for(wait_time);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_iostream">iostream</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Read line on loop</dt>
+<dd>
+<p><code>while ( std::getline(std::cin, line).good() )</code></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_old">Old</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>popen</code> doesn&#x2019;t use <code>PATH</code>.</p>
+</div>
+</div>
+</div>
                                 
                                 </section>
                             
@@ -706,7 +731,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"c++","level":"1.2.1","depth":2,"next":{"title":"Erlang","level":"1.2.2","depth":2,"path":"languages/erlang.md","ref":"languages/erlang.md","articles":[{"title":"Rebar3","level":"1.2.2.1","depth":3,"path":"languages/erlang/rebar3.md","ref":"languages/erlang/rebar3.md","articles":[]}]},"previous":{"title":"Languages","level":"1.2","depth":1,"ref":"","articles":[{"title":"c++","level":"1.2.1","depth":2,"path":"languages/c++.md","ref":"languages/c++.md","articles":[]},{"title":"Erlang","level":"1.2.2","depth":2,"path":"languages/erlang.md","ref":"languages/erlang.md","articles":[{"title":"Rebar3","level":"1.2.2.1","depth":3,"path":"languages/erlang/rebar3.md","ref":"languages/erlang/rebar3.md","articles":[]}]},{"title":"Java","level":"1.2.3","depth":2,"path":"languages/java.md","ref":"languages/java.md","articles":[]},{"title":"Javascript","level":"1.2.4","depth":2,"path":"languages/javascript.md","ref":"languages/javascript.md","articles":[]},{"title":"Haxe","level":"1.2.5","depth":2,"path":"languages/haxe.md","ref":"languages/haxe.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"languages/c++.md","mtime":"2017-11-22T03:29:46.381Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-03T04:43:06.848Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"c++","level":"1.2.1","depth":2,"next":{"title":"Erlang","level":"1.2.2","depth":2,"path":"languages/erlang.md","ref":"languages/erlang.md","articles":[{"title":"Rebar3","level":"1.2.2.1","depth":3,"path":"languages/erlang/rebar3.md","ref":"languages/erlang/rebar3.md","articles":[]}]},"previous":{"title":"Languages","level":"1.2","depth":1,"ref":"","articles":[{"title":"c++","level":"1.2.1","depth":2,"path":"languages/c++.adoc","ref":"languages/c++.adoc","articles":[]},{"title":"Erlang","level":"1.2.2","depth":2,"path":"languages/erlang.md","ref":"languages/erlang.md","articles":[{"title":"Rebar3","level":"1.2.2.1","depth":3,"path":"languages/erlang/rebar3.md","ref":"languages/erlang/rebar3.md","articles":[]}]},{"title":"Java","level":"1.2.3","depth":2,"path":"languages/java.md","ref":"languages/java.md","articles":[]},{"title":"Javascript","level":"1.2.4","depth":2,"path":"languages/javascript.md","ref":"languages/javascript.md","articles":[]},{"title":"Haxe","level":"1.2.5","depth":2,"path":"languages/haxe.md","ref":"languages/haxe.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"languages/c++.adoc","mtime":"2018-01-05T02:47:48.334Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-01-07T08:56:04.787Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
