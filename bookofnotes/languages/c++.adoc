@@ -1,8 +1,9 @@
-# c++
+= c++
 
-## Timing (c++11)
+== Timing (c++11)
 
-```c++
+[source,c++]
+----
     #include <chrono>
     #include <thread>
 
@@ -20,9 +21,14 @@
     std::this_thread::sleep_for(std::chrono::seconds(1));
     
     std::this_thread::sleep_for(wait_time);
-```
+----
 
-## Old
+== iostream
+
+Read line on loop::
+    `while ( std::getline(std::cin, line).good() )`
+
+== Old
 
 `popen` doesn't use `PATH`.
 

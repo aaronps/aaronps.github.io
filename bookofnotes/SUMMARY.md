@@ -4,7 +4,7 @@
 * [Introduction](README.md)
 
 * Languages
-    * [c++](languages/c++.md)
+    * [c++](languages/c++.adoc)
     * [Erlang](languages/erlang.md)
         * [Rebar3](languages/erlang/rebar3.md)
     * [Java](languages/java.md)
@@ -17,7 +17,7 @@
     * [intellij](tools/intellij.md)
     * [eclipse](tools/eclipse.md)
     * [vscode](tools/vscode.md)
-    * [cmake](tools/cmake.md)
+    * [cmake](tools/cmake.adoc)
     * [mingw-w64](tools/mingw-w64.md)
     * [browsers](tools/browsers.adoc)
 * [Video](video/video.md)
@@ -36,5 +36,5 @@
     * [Linux](operatingsystems/linux.md)
         * [systemd](operatingsystems/systemd.md)
         * [Centos](operatingsystems/centos.adoc)
-    * [Windows](operatingsystems/windows.md)
+    * [Windows](operatingsystems/windows.adoc)
 
