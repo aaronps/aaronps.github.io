@@ -7,7 +7,7 @@
     * [c++](languages/c++.adoc)
     * [Erlang](languages/erlang.md)
         * [Rebar3](languages/erlang/rebar3.md)
-    * [Java](languages/java.md)
+    * [Java](languages/java.adoc)
     * [Javascript](languages/javascript.md)
     * [Haxe](languages/haxe.md)
 * Tools
@@ -30,11 +30,9 @@
 * Net
     * [SSL](net/ssl_certificates.md)
 * [Cloud and distributed](cloud/cloud.md)
-    * [kafka](cloud/kafka.md)
+    * [kafka](cloud/kafka.adoc)
     * [zookeeper](cloud/zookeeper.md)
 * Operating Systems
-    * [Linux](operatingsystems/linux.md)
-        * [systemd](operatingsystems/systemd.md)
-        * [Centos](operatingsystems/centos.adoc)
+    * [Linux](operatingsystems/linux.adoc)
     * [Windows](operatingsystems/windows.adoc)
 
