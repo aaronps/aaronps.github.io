@@ -550,38 +550,6 @@
             
 
             
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.8.1.1" data-path="../operatingsystems/systemd.html">
-            
-                <a href="../operatingsystems/systemd.html">
-            
-                    
-                    systemd
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.1.2" data-path="../operatingsystems/centos.html">
-            
-                <a href="../operatingsystems/centos.html">
-            
-                    
-                    Centos
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
         </li>
     
         <li class="chapter " data-level="1.8.2" data-path="../operatingsystems/windows.html">
@@ -779,7 +747,10 @@ project(&apos;:ref-project-name&apos;).projectDir = file(&apos;path/to/project&a
 tasks.withType(Test) {
     systemProperty &apos;java.util.logging.SimpleFormatter.format&apos;, &apos;%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS %4$s | %2$s: %5$s%6$s%n&apos;
 }
-</code></pre><h2 id="errors">Errors</h2>
+</code></pre><h3 id="war">war</h3>
+<p>There isi providedCompile and providedRuntime for dependencies, these will be added to the war if
+using bootRepackage.</p>
+<h2 id="errors">Errors</h2>
 <h3 id="default-configuration-not-found">&apos;default&apos; configuration not found</h3>
 <p>This is mostly probable because we are &apos;including&apos; another project and gradle cannot find its build.gradle</p>
 <h2 id="old">Old</h2>
@@ -837,7 +808,7 @@ tasks.withType(Test) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gradle","level":"1.3.3","depth":2,"next":{"title":"intellij","level":"1.3.4","depth":2,"path":"tools/intellij.md","ref":"tools/intellij.md","articles":[]},"previous":{"title":"npm","level":"1.3.2","depth":2,"path":"tools/npm.md","ref":"tools/npm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/gradle.md","mtime":"2017-12-02T05:55:31.655Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-07T08:56:04.787Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gradle","level":"1.3.3","depth":2,"next":{"title":"intellij","level":"1.3.4","depth":2,"path":"tools/intellij.md","ref":"tools/intellij.md","articles":[]},"previous":{"title":"npm","level":"1.3.2","depth":2,"path":"tools/npm.md","ref":"tools/npm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/gradle.md","mtime":"2018-01-16T02:36:37.880Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-16T15:49:49.723Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -61,7 +61,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="systemd.html" />
+    <link rel="next" href="windows.html" />
     
     
 
@@ -548,38 +548,6 @@
             
 
             
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.8.1.1" data-path="systemd.html">
-            
-                <a href="systemd.html">
-            
-                    
-                    systemd
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.1.2" data-path="centos.html">
-            
-                <a href="centos.html">
-            
-                    
-                    Centos
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
         </li>
     
         <li class="chapter " data-level="1.8.2" data-path="windows.html">
@@ -646,23 +614,121 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="linux">Linux</h1>
-<p>quick and dirty sshfs, install <code>sshfs</code></p>
-<pre><code>mount -t fuse.sshfs user@ip:/path /mount/point
-</code></pre><ul>
-<li>ntp: <code>systemd ? timedatectl : ntpd</code></li>
+<div id="preamble">
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">quick and dirty sshfs</dt>
+<dd>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>install <code>sshfs</code></p>
+</li>
+<li>
+<p><code>mount -t fuse.sshfs user@ip:/path /mount/point</code></p>
+</li>
+</ol>
+</div>
+</dd>
+<dt class="hdlist1">NTP sync</dt>
+<dd>
+<p><code>systemd ? timedatectl : ntpd</code></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_centos">Centos</h2>
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="fa icon-warning" title="Warning">&#xF071;</div>
+</td>
+<td class="content">
+If after long time of not using centos, <code>yum update</code> fails, use <code>yum clean all</code>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_systemd">systemd</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>if the <strong>service</strong> has autorecovery code, for example, you connecto to a JMS
+server and you reconnect when connection drops. <strong>USE <code>Wants</code> INSTEAD OF
+<code>Requires</code></strong></p>
+</li>
+<li>
+<p>If you want to start services in some order, use <code>After=</code> or <code>Before=</code></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Disable stdout &#x2192; journal</dt>
+<dd>
+<p><code>StandardOutput=null</code></p>
+</dd>
+</dl>
+</div>
+</li>
 </ul>
-<h2 id="development">Development</h2>
-<p>See needed libraries and rpath data</p>
-<pre><code>readelf -d &lt;filename&gt;
-</code></pre><ul>
-<li><p>if change <code>ld.so.conf</code> need to run <code>ldconfig</code></p>
-</li>
-<li><p>to escape <code>$ORIGIN</code> in one <code>Makefile</code> calling another <code>Makefile</code> use <code>-Wl,-rpath,&apos;\$$\$$$$ORIGIN/../lib&apos;</code></p>
-</li>
-<li><p>if using <code>rpath</code> and want to be able to copy indirect <code>.so</code> libraries to the relative <code>rpath</code> you also need to link them in: <code>g++ other/files -L ... -lotherlibs -L indirect/libraries/path -lindirectlib</code></p>
-</li>
-</ul>
-
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_development">Development</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">See needed libraries and rpath data</dt>
+<dd>
+<p>readelf -d &lt;filename&gt;</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="fa icon-warning" title="Warning">&#xF071;</div>
+</td>
+<td class="content">
+if <code>ld.so.conf</code> is modified, you need to run <code>ldconfig</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_rpath">RPATH</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">escape <code>$ORIGIN</code> in one <code>Makefile</code> calling another <code>Makefile</code></dt>
+<dd>
+<p><code>-Wl,-rpath,&apos;\$$\$$$$ORIGIN/../lib&apos;</code></p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="fa icon-note" title="Note">&#xF05A;</div>
+</td>
+<td class="content">
+if using <code>rpath</code> and want to be able to copy indirect <code>.so</code> libraries to the relative <code>rpath</code> you also need to link them in: <code>g++ other/files -L &#x2026;&#x200B; -lotherlibs -L indirect/libraries/path -lindirectlib</code>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
                                 
                                 </section>
                             
@@ -690,7 +756,7 @@
             
                 
                 
-                <a href="systemd.html" class="navigation navigation-next navigation-unique" aria-label="Next page: systemd">
+                <a href="windows.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Windows">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -701,7 +767,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.8.1","depth":2,"next":{"title":"systemd","level":"1.8.1.1","depth":3,"path":"operatingsystems/systemd.md","ref":"operatingsystems/systemd.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.8","depth":1,"ref":"","articles":[{"title":"Linux","level":"1.8.1","depth":2,"path":"operatingsystems/linux.md","ref":"operatingsystems/linux.md","articles":[{"title":"systemd","level":"1.8.1.1","depth":3,"path":"operatingsystems/systemd.md","ref":"operatingsystems/systemd.md","articles":[]},{"title":"Centos","level":"1.8.1.2","depth":3,"path":"operatingsystems/centos.adoc","ref":"operatingsystems/centos.adoc","articles":[]}]},{"title":"Windows","level":"1.8.2","depth":2,"path":"operatingsystems/windows.adoc","ref":"operatingsystems/windows.adoc","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"operatingsystems/linux.md","mtime":"2018-01-03T06:00:54.127Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-07T08:56:04.787Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.8.1","depth":2,"next":{"title":"Windows","level":"1.8.2","depth":2,"path":"operatingsystems/windows.adoc","ref":"operatingsystems/windows.adoc","articles":[]},"previous":{"title":"Operating Systems","level":"1.8","depth":1,"ref":"","articles":[{"title":"Linux","level":"1.8.1","depth":2,"path":"operatingsystems/linux.adoc","ref":"operatingsystems/linux.adoc","articles":[]},{"title":"Windows","level":"1.8.2","depth":2,"path":"operatingsystems/windows.adoc","ref":"operatingsystems/windows.adoc","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"operatingsystems/linux.adoc","mtime":"2018-01-15T02:00:40.792Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-01-16T15:49:49.723Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -550,38 +550,6 @@
             
 
             
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.8.1.1" data-path="../operatingsystems/systemd.html">
-            
-                <a href="../operatingsystems/systemd.html">
-            
-                    
-                    systemd
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.1.2" data-path="../operatingsystems/centos.html">
-            
-                <a href="../operatingsystems/centos.html">
-            
-                    
-                    Centos
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
         </li>
     
         <li class="chapter " data-level="1.8.2" data-path="../operatingsystems/windows.html">
@@ -648,69 +616,295 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="kafka">kafka</h1>
-<p><a href="https://kafka.apache.org/" target="_blank">https://kafka.apache.org/</a></p>
-<h2 id="setup">Setup</h2>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://kafka.apache.org/" class="bare" target="_blank">https://kafka.apache.org/</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setup">Setup</h2>
+<div class="sectionbody">
+<div class="paragraph">
 <p>Download the tgz, uncompress</p>
-<ol>
-<li><p>start zookeper:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>start zookeper:</p>
+<div class="ulist">
 <ul>
-<li>config is in <code>config/zookeper.properties</code><ul>
-<li>may need to change dataDir for windows</li>
-<li>port is defined here too</li>
-</ul>
-</li>
-<li><code>bin\windows\zookeper-server-start config\zookeper.properties</code></li>
-<li>note: stopping zookeper also stops all the clients connected to it (at least the kafka console-consumer/producer I was running)</li>
-<li>note: zookeeper-shell to do some operations on the server</li>
-</ul>
-</li>
-<li><p>start kafka:</p>
+<li>
+<p>config is in <code>config/zookeper.properties</code></p>
+<div class="ulist">
 <ul>
-<li>config is in config/server.properties:<ul>
-<li>may need to set broker.id for each broker</li>
-<li>may need to change log.dirs for windows</li>
-<li>zookeper.connect to set the port configured on zookeper</li>
-<li>If want to change the port (default is 9092) change &quot;listeners&quot;</li>
-<li>If want to be able to delete topics set: delete.topic.enable=true</li>
-</ul>
+<li>
+<p>may need to change dataDir for windows</p>
 </li>
-<li>bin\windows\kafka-server-start.bat config\server.properties</li>
+<li>
+<p>port is defined here too</p>
+</li>
 </ul>
+</div>
+</li>
+<li>
+<p><code>bin/zookeper-server-start.sh config/zookeper.properties</code></p>
+</li>
+<li>
+<p>note: stopping zookeper also stops all the clients connected to it (at
+least the kafka console-consumer/producer I was running)</p>
+</li>
+<li>
+<p>note: zookeeper-shell to do some operations on the server</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>start kafka:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>config is in config/server.properties:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>may need to set broker.id for each broker</p>
+</li>
+<li>
+<p>may need to change log.dirs for windows</p>
+</li>
+<li>
+<p>zookeper.connect to set the port configured on zookeper</p>
+</li>
+<li>
+<p>If want to change the port (default is 9092) change &quot;listeners&quot;</p>
+</li>
+<li>
+<p>If want to be able to delete topics set: delete.topic.enable=true</p>
+</li>
+<li>
+<p>listeners example for ip address: <code>PLAINTEXT://ipaddress:9092</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>bin/kafka-server-start.sh config/server.properties</code></p>
+</li>
+</ul>
+</div>
 </li>
 </ol>
-<h2 id="setup-100">Setup 1.0.0</h2>
-<p>Download 1.0.0.tgz, uncompress somewhere, also uncompress included docs for reference (site-docs)</p>
-<h2 id="commands">Commands</h2>
-<p>Handle topics (--zookeeper always needed):</p>
-<pre><code>    bin\windows\kafka-topics --zookeeper localhost:2181 &lt;cmd&gt;
-        --list -&gt; list thje topics
-        --create --topic &lt;topic_name&gt; --replication-factor 1 --partitions 1
-        --delete --topic &lt;topic_name&gt; (note it requires config)
-        --describe --topic &lt;topic_name&gt;
-</code></pre><p>Send messages:</p>
-<pre><code>    bin\windows\kafka-console-producer --broker-list localhost:9092 --topic &lt;name&gt;
-    (this will read from stdin and publish on topic)
-</code></pre><p>Receive messages</p>
-<pre><code>    bin\windows\kafka-console-consumer --bootstrap-server localhost:9092 --topic &lt;name&gt;
-    * --from-beginning if want to receive starting from the earliest present in the log
-    * --property print.key=true if want to see the keys
-    * --property key.separator=&quot;&lt;separator&gt;&quot; to set the separator, default \t
-</code></pre><h3 id="recover-after-kafka-server-stop">Recover after kafka-server-stop</h3>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="fa icon-important" title="Important">&#xF06A;</div>
+</td>
+<td class="content">
+If you don&#x2019;t change <strong>listeners</strong>, kafka will use your hostname by
+default, and this is what will be registered on zookeeper, and because of this
+the clients will need some way to resolve the name, usually the <code>hosts</code> file.
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Zookeeper default ports</dt>
+<dd>
+<p>Open on firewall: 2181, 2888, 3888</p>
+</dd>
+<dt class="hdlist1">Kaka default port</dt>
+<dd>
+<p>9092</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_commands">Commands</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="fa icon-note" title="Note">&#xF05A;</div>
+</td>
+<td class="content">
+In Linux use <code>bin/script-name.sh</code> in Windows <code>bin\windows\script-name</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Topics</dt>
+<dd>
+<p><em>--zookeeper is always needed</em></p>
+<div class="literalblock">
+<div class="content">
+<pre>bin/kafka-topics.sh --zookeeper localhost:2181 &lt;command&gt;</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">commands</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>--list</p>
+</li>
+<li>
+<p>--create --topic &lt;topic_name&gt; --replication-factor 1 --partitions 1</p>
+</li>
+<li>
+<p>--delete --topic &lt;topic_name&gt; <em>(note it requires config change to work)</em></p>
+</li>
+<li>
+<p>--describe --topic &lt;topic_name&gt;</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1">Send messages from console</dt>
+<dd>
+<p><em>this will read from stdin and publish on topic</em></p>
+<div class="literalblock">
+<div class="content">
+<pre>bin/kafka-console-producer.sh --broker-list localhost:9092 --topic &lt;name&gt;</pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Receive messages on console</dt>
+<dd>
+<p><code>bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic &lt;name&gt;</code></p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">other parameters</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>--from-beginning if want to receive starting from the earliest present in the log</p>
+</li>
+<li>
+<p>--property print.key=true if want to see the keys</p>
+</li>
+<li>
+<p>--property key.separator=&quot;&lt;separator&gt;&quot; to set the separator, default \t</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="fa icon-warning" title="Warning">&#xF071;</div>
+</td>
+<td class="content">
+Receiving messages encoded in UTF-8 might show incorrect values (at least on Windows)
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_recover_after_kafka_server_stop_on_windows">Recover after kafka-server-stop on Windows</h3>
+<div class="paragraph">
 <p>After stopping with this command, when trying to start again it complains some file.timeindex (from a topic) is used by another program:</p>
-<pre><code>* stopping zookeeper and starting again doesn&apos;t help
-* seems related to https://issues.apache.org/jira/browse/KAFKA-6044
-* To fix just delete the kafka-logs data folder&#x2026;
-</code></pre><h3 id="start-multiple-nodes-in-a-cluster">Start multiple nodes in a cluster</h3>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>stopping zookeeper and starting again doesn&#x2019;t help</p>
+</li>
+<li>
+<p>seems related to <a href="https://issues.apache.org/jira/browse/KAFKA-6044" class="bare" target="_blank">https://issues.apache.org/jira/browse/KAFKA-6044</a></p>
+</li>
+<li>
+<p>To fix just delete the kafka-logs data folder&#x2026;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_start_multiple_nodes_in_a_cluster">Start multiple nodes in a cluster</h3>
+<div class="paragraph">
 <p>Use different configuration files (config/server.properties) with different id and different listener port:</p>
-<pre><code>    broker.id = 1
-    listeners=PLAINTEXT://:9093
-    log.dir=/another/dir/for/this/one
-</code></pre><p>Now when creating a topic we could add a replication factor bigger than one</p>
-<h2 id="connectors-are-kings">Connectors Are Kings</h2>
-<p>Maybe</p>
-<h2 id="usage-notes">Usage notes</h2>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>	broker.id = 1
+	listeners=PLAINTEXT://:9093
+	log.dir=/another/dir/for/this/one</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now when creating a topic we could add a replication factor bigger than one</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usage_notes">Usage notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
 <p>Consumer should poll() at least once every session.timeout.ms or it will get CommitFailedException, this is also usefull if the binary fails to work or hangs somewhere.</p>
-
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_systemd_example_service_files">systemd example service files</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">kafka.service</div>
+<div class="content">
+<pre class="highlight"><code class="language-ini" data-lang="ini"><span class="hljs-section">[Unit]</span>
+<span class="hljs-attr">Description</span>=Kafka service
+<span class="hljs-attr">After</span>=network.target
+<span class="hljs-attr">Wants</span>=kafka-zookeeper.service
+<span class="hljs-section">
+[Service]</span>
+<span class="hljs-attr">ExecStart</span>=/path/to/kafka/bin/kafka-server-start.sh /path/to/kafka/config/server.properties
+<span class="hljs-attr">SuccessExitStatus</span>=<span class="hljs-number">143</span>
+<span class="hljs-attr">StandardOutput</span>=null
+<span class="hljs-section">
+[Install]</span>
+<span class="hljs-attr">WantedBy</span>=multi-user.target</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">kafka-zookeeper.service</div>
+<div class="content">
+<pre class="highlight"><code class="language-ini" data-lang="ini"><span class="hljs-section">[Unit]</span>
+<span class="hljs-attr">Description</span>=Kafka Zookeeper service
+<span class="hljs-attr">After</span>=network.target
+<span class="hljs-section">
+[Service]</span>
+<span class="hljs-attr">ExecStart</span>=/path/to/kafka/bin/zookeeper-server-start.sh /path/to/kafka/config/zookeeper.properties
+<span class="hljs-attr">SuccessExitStatus</span>=<span class="hljs-number">143</span>
+<span class="hljs-attr">StandardOutput</span>=null
+<span class="hljs-section">
+[Install]</span>
+<span class="hljs-attr">WantedBy</span>=multi-user.target</code></pre>
+</div>
+</div>
+</div>
+</div>
                                 
                                 </section>
                             
@@ -753,7 +947,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"kafka","level":"1.7.1","depth":2,"next":{"title":"zookeeper","level":"1.7.2","depth":2,"path":"cloud/zookeeper.md","ref":"cloud/zookeeper.md","articles":[]},"previous":{"title":"Cloud and distributed","level":"1.7","depth":1,"path":"cloud/cloud.md","ref":"cloud/cloud.md","articles":[{"title":"kafka","level":"1.7.1","depth":2,"path":"cloud/kafka.md","ref":"cloud/kafka.md","articles":[]},{"title":"zookeeper","level":"1.7.2","depth":2,"path":"cloud/zookeeper.md","ref":"cloud/zookeeper.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud/kafka.md","mtime":"2017-11-15T03:56:50.022Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-07T08:56:04.787Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"kafka","level":"1.7.1","depth":2,"next":{"title":"zookeeper","level":"1.7.2","depth":2,"path":"cloud/zookeeper.md","ref":"cloud/zookeeper.md","articles":[]},"previous":{"title":"Cloud and distributed","level":"1.7","depth":1,"path":"cloud/cloud.md","ref":"cloud/cloud.md","articles":[{"title":"kafka","level":"1.7.1","depth":2,"path":"cloud/kafka.adoc","ref":"cloud/kafka.adoc","articles":[]},{"title":"zookeeper","level":"1.7.2","depth":2,"path":"cloud/zookeeper.md","ref":"cloud/zookeeper.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud/kafka.adoc","mtime":"2018-01-15T03:58:10.629Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-01-16T15:49:49.723Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

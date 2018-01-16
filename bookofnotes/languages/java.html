@@ -550,38 +550,6 @@
             
 
             
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.8.1.1" data-path="../operatingsystems/systemd.html">
-            
-                <a href="../operatingsystems/systemd.html">
-            
-                    
-                    systemd
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.1.2" data-path="../operatingsystems/centos.html">
-            
-                <a href="../operatingsystems/centos.html">
-            
-                    
-                    Centos
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
         </li>
     
         <li class="chapter " data-level="1.8.2" data-path="../operatingsystems/windows.html">
@@ -648,82 +616,307 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="java">Java</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="ulist">
 <ul>
-<li>Http servlet request get header is case insensitive</li>
-<li>Tomcat sessions are saved in work folder</li>
-<li><code>SocketTimeoutException</code> is a subclass of <code>InterruptedIOException</code>, take into account you might not have interrupted it yourself.</li>
+<li>
+<p>Http servlet request get header is case insensitive</p>
+</li>
+<li>
+<p>Tomcat sessions are saved in work folder</p>
+</li>
+<li>
+<p><code>SocketTimeoutException</code> is a subclass of <code>InterruptedIOException</code>, take into
+account you might not have interrupted it yourself.</p>
+</li>
 </ul>
-<h2 id="servlets">Servlets</h2>
-<p><code>@WebServlet(&quot;/something/and/something/*&quot;)</code>
---&gt; needs to have the /* at end if you want to get the path info</p>
-<p><code>request.getPathInfo()</code> -&gt; null or &quot;/&quot; for base, then the rest for the thing</p>
-<p>toPrint <code>HttpServletResponse.getWriter().print()</code></p>
-<h2 id="tomcat">Tomcat</h2>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_servlets">Servlets</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">@WebServlet(&quot;/something/and/something/*&quot;)</dt>
+<dd>
+<p>needs to have the /* atend if you want to get the path info.</p>
+</dd>
+<dt class="hdlist1">request.getPathInfo()</dt>
+<dd>
+<p>null or &quot;/&quot; for base, then the rest for the thing</p>
+</dd>
+<dt class="hdlist1">toPrint</dt>
+<dd>
+<p><code>HttpServletResponse.getWriter().print()</code></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tomcat">Tomcat</h2>
+<div class="sectionbody">
+<div class="ulist">
 <ul>
-<li><p>setting <code>antiResourceLocking=&quot;true&quot;</code> on the context may inhibit reloading of JSP</p>
+<li>
+<p>setting <code>antiResourceLocking=&quot;true&quot;</code> on the context may inhibit reloading of JSP</p>
 </li>
-<li><p>Remove empty lines <code>&lt;%@ ... trimDirectiveWhitespaces=&quot;true&quot; %&gt;</code></p>
+<li>
+<p>Remove empty lines <code>&lt;%@ &#x2026;&#x200B; trimDirectiveWhitespaces=&quot;true&quot; %&gt;</code></p>
 </li>
-<li><p><code>CATALINA_HOME</code> refers to the path to tomcat, the folder uncompressed from the zip files.</p>
+<li>
+<p><code>CATALINA_HOME</code> refers to the path to tomcat, the folder uncompressed from the zip files.</p>
 </li>
-<li><code>CATALINA_BASE</code> refers to the folder of the <strong>active configuration</strong>.</li>
+<li>
+<p><code>CATALINA_BASE</code> refers to the folder of the <em>active configuration</em>.</p>
+</li>
 </ul>
-<h2 id="tomee">TomEE</h2>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tomee">TomEE</h2>
+<div class="sectionbody">
+<div class="ulist">
 <ul>
-<li>If wants to exclude a jar from scanning (because it gives problem when it is not javaee thing) add a <code>/WEB-INF/exclusions.list</code> each line is the jar prefix to skip.</li>
+<li>
+<p>If wants to exclude a jar from scanning (because it gives problem when it is not javaee thing) add a <code>/WEB-INF/exclusions.list</code> each line is the jar prefix to skip.</p>
+</li>
 </ul>
-<h2 id="spring">Spring</h2>
-<h3 id="configuration">configuration</h3>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_spring">Spring</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_configuration">configuration</h3>
+<div class="paragraph">
 <p><code>application.properties</code></p>
+</div>
+<div class="ulist">
 <ul>
-<li><a href="http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html" target="_blank">http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html</a></li>
-<li>It can be application.yml too</li>
-<li>It can be next to the jar file</li>
-<li>It can be on src/resources/ but will be added to the generated jar file, use to set defaults, better use resources/config, which is valid too</li>
-<li>It can be put on the root folder of the project ( maybe where gradle is run ) so it will be picked by bootRun but not included on the final jar.</li>
-<li>to start with a different config file use parameter: --spring.config.name=someothername, it will add the .properties or .yml by itself, there is also spring.config.location to set the search path</li>
-</ul>
-<h3 id="notes">Notes</h3>
-<ul>
-<li>Log files will autorotate when 10Mb and keep </li>
-<li>To disable console output: logging.pattern.console= (nothing here)</li>
-<li>to disable spring banner:<ul>
-<li>application.properties: spring.main,banner-mode=off</li>
-<li>application.yml: spring.main.banner-mode: &apos;off&apos;</li>
-</ul>
+<li>
+<p><a href="http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html" class="bare" target="_blank">http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html</a></p>
+</li>
+<li>
+<p>It can be application.yml too</p>
+</li>
+<li>
+<p>It can be next to the jar file</p>
+</li>
+<li>
+<p>It can be on src/resources/ but will be added to the generated jar file, use to set defaults, better use resources/config, which is valid too</p>
+</li>
+<li>
+<p>It can be put on the root folder of the project ( maybe where gradle is run ) so it will be picked by bootRun but not included on the final jar.</p>
+</li>
+<li>
+<p>to start with a different config file use parameter: --spring.config.name=someothername, it will add the .properties or .yml by itself, there is also spring.config.location to set the search path</p>
 </li>
 </ul>
-<h3 id="bootrun">bootRun</h3>
-<ol>
-<li>Use apply plugin &apos;java&apos; instead of war to generate executables</li>
-<li>Use src/main/resources/{static,resources} for static files</li>
-<li>To be able to reload resources on dev, config on build.gradle:    <pre><code class="lang-groovy">bootRun {
- addResources = <span class="hljs-literal">true</span>
-}
-</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_notes">Notes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Log files will autorotate when 10Mb and keep</p>
 </li>
-<li>run: <code>gradle bootRun</code></li>
+<li>
+<p>To disable console output: logging.pattern.console= (nothing here)</p>
+</li>
+<li>
+<p>to disable spring banner:</p>
+</li>
+<li>
+<p>application.properties: spring.main,banner-mode=off</p>
+</li>
+<li>
+<p>application.yml: spring.main.banner-mode: &apos;off&apos;</p>
+</li>
+<li>
+<p>If you use jackson, remove it from dependencies as it is added by springboot.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Run with different configuration file name</dt>
+<dd>
+<p>add parameter <code>--spring.config.name=newname</code></p>
+</dd>
+</dl>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">YourApplication.java</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java"><span class="hljs-meta">@SpringBootApplication</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YourApplication</span> </span>{
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+		SpringApplication.run(YourApplication.class, Stream.concat(Stream.of(args), Stream.of(<span class="hljs-string">&quot;--spring.config.name=yournewname&quot;</span>)).toArray(String[]::<span class="hljs-keyword">new</span>));
+	}
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bootrun">bootRun</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use apply plugin &apos;java&apos; instead of war to generate executables</p>
+</li>
+<li>
+<p>Use src/main/resources/{static,resources} for static files</p>
+</li>
+<li>
+<p>To be able to reload resources on dev, config on build.gradle:</p>
+</li>
 </ol>
-<h3 id="old-spring">Old Spring</h3>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">bootRun {
+    addResources = <span class="hljs-literal">true</span>
+}</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>run: <code>gradle bootRun</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_run_as_a_service">Run as a service</h3>
+<div class="paragraph">
+<p>In <code>build.gradle</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">springBoot {
+	executable = <span class="hljs-literal">true</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now it can run as normal executable, System V init script and systemd (with extra file):</p>
+</div>
+<div class="listingblock">
+<div class="title">service-name.service</div>
+<div class="content">
+<pre class="highlight"><code class="language-ini" data-lang="ini"><span class="hljs-section">[Unit]</span>
+<span class="hljs-attr">Description</span>=Your service description
+<span class="hljs-attr">After</span>=syslog.target
+<span class="hljs-section">
+[Service]</span>
+<span class="hljs-attr">User</span>=running-user
+<span class="hljs-attr">ExecStart</span>=path/to/your/file
+<span class="hljs-attr">SuccessExitStatus</span>=<span class="hljs-number">143</span>
+<span class="hljs-attr">StandardOutput</span>=null
+<span class="hljs-section">
+[Install]</span>
+<span class="hljs-attr">WantedBy</span>=multi-user.target</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_web">web</h3>
+<div class="paragraph">
+<p><em>initial notes</em></p>
+</div>
+<div class="paragraph">
+<p>From documentation: static files read from: <code>/static</code> or <code>/public</code> or <code>/resources</code> or <code>/META-INF/resources</code> in class path</p>
+</div>
+<div class="paragraph">
+<p>So: if package as jar, can put them on <code>src/main/resources/desired_name_from_before</code>, but after testing,
+<code>src/main/webapp</code> takes precedence if it exists, this seems irrelevant of using jar or war packaging.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">regarding gradle</dt>
+<dd>
+<p>If using java plugin, the project doesn&#x2019;t have a webpages area (at least on netbeans)</p>
+</dd>
+</dl>
+</div>
+<div class="sect3">
+<h4 id="_using_jsp">Using JSP</h4>
+<div class="paragraph">
+<p><em>springboot recommends to avoid jsp</em></p>
+</div>
+<div class="paragraph">
+<p>To avoid problems and due to some limitations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use tomcat (the default)</p>
+</li>
+<li>
+<p>use <strong>war</strong> packaging</p>
+</li>
+<li>
+<p>in gradle: <code>dependencies { providedRuntime &apos;org.apache.tomcat.embed:tomcat-embed-jasper&apos; }</code></p>
+</li>
+<li>
+<p>Configure the viewResolver prefix and suffix</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If also desires to use <strong>jstl</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>in gradle: <code>dependencies { compile &apos;javax.servlet:jstl:1.2&apos; }</code></p>
+</li>
+<li>
+<p>Configure viewResolver to use <code>org.springframework.web.servlet.view.JstlView.class</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_old_spring">Old Spring</h3>
+<div class="paragraph">
 <p>To be able to use the autoconfiguration it might be needed to add a line to beans.xml:</p>
-<pre><code class="lang-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">&quot;org.example.package&quot;</span>/&gt;</span>
-</code></pre>
-<p>Rest example</p>
-<pre><code class="lang-java"><span class="hljs-meta">@RestController</span>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">&quot;org.example.package&quot;</span>/&gt;</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">RestExample</div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java"><span class="hljs-meta">@RestController</span>
 <span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">&quot;/path&quot;</span>)
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Name</span> </span>{
-    <span class="hljs-meta">@GetMapping</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> X <span class="hljs-title">getX</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> X();
-    }
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RestExample</span> </span>{
 
-    <span class="hljs-meta">@PutMapping</span>(consumes = <span class="hljs-string">&quot;application/json&quot;</span>)
-    <span class="hljs-function"><span class="hljs-keyword">public</span> X <span class="hljs-title">putX</span><span class="hljs-params">(@RequestBody X newX)</span> </span>{
-        <span class="hljs-keyword">return</span> newX;
-    }
-}
-</code></pre>
+	<span class="hljs-meta">@GetMapping</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> X <span class="hljs-title">getX</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> X();
+	}
 
+	<span class="hljs-meta">@PutMapping</span>(consumes = <span class="hljs-string">&quot;application/json&quot;</span>)
+	<span class="hljs-function"><span class="hljs-keyword">public</span> X <span class="hljs-title">putX</span><span class="hljs-params">(@RequestBody X newX)</span> </span>{
+		<span class="hljs-keyword">return</span> newX;
+	}
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
                                 
                                 </section>
                             
@@ -766,7 +959,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.2.3","depth":2,"next":{"title":"Javascript","level":"1.2.4","depth":2,"path":"languages/javascript.md","ref":"languages/javascript.md","articles":[]},"previous":{"title":"Rebar3","level":"1.2.2.1","depth":3,"path":"languages/erlang/rebar3.md","ref":"languages/erlang/rebar3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"languages/java.md","mtime":"2017-12-22T02:56:25.401Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-07T08:56:04.787Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Java","level":"1.2.3","depth":2,"next":{"title":"Javascript","level":"1.2.4","depth":2,"path":"languages/javascript.md","ref":"languages/javascript.md","articles":[]},"previous":{"title":"Rebar3","level":"1.2.2.1","depth":3,"path":"languages/erlang/rebar3.md","ref":"languages/erlang/rebar3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"languages/java.adoc","mtime":"2018-01-16T03:19:10.614Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-01-16T15:49:49.723Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
