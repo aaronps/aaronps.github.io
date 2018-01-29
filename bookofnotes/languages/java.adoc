@@ -5,6 +5,11 @@
 * `SocketTimeoutException` is a subclass of `InterruptedIOException`, take into
 account you might not have interrupted it yourself.
 
+base64:: Use `java.util.Base64` (java8).
+	
+NOTE: If using FastJSON, it will auto encode/decode base64 if `getBytes()` or
+`put(byte[])` are used, may depend on settings.
+
 == Servlets
 
 +++@WebServlet("/something/and/something/*")+++::
@@ -54,7 +59,7 @@ toPrint:: `HttpServletResponse.getWriter().print()`
 Run with different configuration file name::
 	
 	add parameter `--spring.config.name=newname`
-	
+
 .YourApplication.java
 [source,java]
 ----

@@ -1,5 +1,10 @@
 = Windows
 
+== Notes
+
+Disconnect network drive::
+    net use drive: /delete
+
 == symlinks
 
 * file link: `mklink filename path/to/link/target`

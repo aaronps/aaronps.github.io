@@ -32,3 +32,18 @@ Read line on loop::
 
 `popen` doesn't use `PATH`.
 
+== Exceptions
+
+[source,c++]
+----
+#include <stdexcept>
+
+struct MyException : public std::runtime_error
+{
+    using std::runtime_error::runtime_error;
+};
+
+try   { throw MyException("bye"); }
+catch ( MyException &ex ) {}
+catch ( std::runtime_error &ex } {}
+----
