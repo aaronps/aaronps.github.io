@@ -8,6 +8,8 @@ quick and dirty sshfs::
 NTP sync::
     `systemd ? timedatectl : ntpd`
 
+Get system version::
+    `lsb_release -a`
 
 == Centos
 

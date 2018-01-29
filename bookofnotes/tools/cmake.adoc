@@ -164,6 +164,14 @@ elseif ( MSVC )
 endif ()
 ----
 
+=== find_package on windows
+
+Add key to registry (SDL2 as package example)
+`HKEY_LOCAL_MACHINE\SOFTWARE\Kitware\CMake\Packages\SDL2` set default value to
+path with the cmake file.
+
+Can be HKEY_LOCAL_MACHINE or HKEY_CURRENT_USER.
+
 === c++11
 
 One way

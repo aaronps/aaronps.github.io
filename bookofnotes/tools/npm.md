@@ -50,3 +50,11 @@ Check npm for errors
 Preffer local data over internet check
 
 	npm install --prefer-offline
+
+
+To review
+
+	npm pack -> generate a package file
+	npm install (folder | package.tgz)
+	npm link ( '' | package name )
+	 
