@@ -50,6 +50,16 @@ Where type might be
 * pom
 * scala-library
 
+### Init without wrapper
+
+By default, `gradle init` depends on wrapper, if you dont' want it, either delete
+wrapper files after create, modify init task to not depend on wrapper or create 
+a new tasks of type InitBuild, for example on the global configuration file:
+
+	task initSimple(type: InitBuild) {}
+
+This task will work exactly as init but without the wrapper.
+
 ### Initialize wrapper
 
 As 2017-12-02 it seems mirrors.flysnow.org might be down, maybe avoid the wrapper altogether.
@@ -137,6 +147,32 @@ To tell it to download the sources, apply plugin eclipse, then generate the ecli
         }
     }
 
+### using local repository (ivy)
+
+_note: it can be on global `init.gradle`_
+
+	repositories {
+		ivy {
+			name "somereponame"
+			url "file:///path/to/repo"
+		}
+	}
+
+### push to repo
+
+	version = "0.1.2"
+	group = "com.aaronps"
+	
+	artifacts {
+		archives jar
+	}
+
+	uploadArchives {
+		repositories {
+			add project.repositories.somereponame
+		}
+	}
+
 ### wrapper mirror for China
 
 _note: mirrors.flysnow.org might not work_
@@ -173,7 +209,7 @@ edit `gradle/wrapper/gradle-wrapper.properties`
 
 ### war
 
-There isi providedCompile and providedRuntime for dependencies, these will be added to the war if
+There is providedCompile and providedRuntime for dependencies, these will be added to the war if
 using bootRepackage.
 
 ## Errors
