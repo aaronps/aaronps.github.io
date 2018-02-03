@@ -90,9 +90,13 @@ To capture a window on windows:
 
     ffmpeg -f gdigrab -framerate 30 -I title="Window Name" <output data>
 
+	ffmpeg -f gdigrab -framerate 25 -offset_x XXX -offset_y YYY -video_size WidthxHeight -i desktop <output data>
+
 Note that for example, chrome uses `<html title> - Google Chrome`
 
     ffmpeg -f gdigrab -framerate 30 -I title="" -c:v libx264 -an -vf "format=yuv420p" -tune zerolatency output.mp4
+
+Note that zerolantency is not needed if only recording normal video not intended for streaming
 
 To limit recording or video operation by time: `-t <number of seconds>`
 

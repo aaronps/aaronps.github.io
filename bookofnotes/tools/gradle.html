@@ -663,6 +663,12 @@
 <li>pom</li>
 <li>scala-library</li>
 </ul>
+<h3 id="init-without-wrapper">Init without wrapper</h3>
+<p>By default, <code>gradle init</code> depends on wrapper, if you dont&apos; want it, either delete
+wrapper files after create, modify init task to not depend on wrapper or create 
+a new tasks of type InitBuild, for example on the global configuration file:</p>
+<pre><code>task initSimple(type: InitBuild) {}
+</code></pre><p>This task will work exactly as init but without the wrapper.</p>
 <h3 id="initialize-wrapper">Initialize wrapper</h3>
 <p>As 2017-12-02 it seems mirrors.flysnow.org might be down, maybe avoid the wrapper altogether.</p>
 <pre><code>gradle wrapper --gradle-distribution-url http://mirrors.flysnow.org/gradle/gradle-4.1-bin.zip
@@ -725,6 +731,27 @@ public class SomeTest {
         url &quot;http://maven.aliyun.com/nexus/content/repositories/central/&quot; 
     }
 }
+</code></pre><h3 id="using-local-repository-ivy">using local repository (ivy)</h3>
+<p><em>note: it can be on global <code>init.gradle</code></em></p>
+<pre><code>repositories {
+    ivy {
+        name &quot;somereponame&quot;
+        url &quot;file:///path/to/repo&quot;
+    }
+}
+</code></pre><h3 id="push-to-repo">push to repo</h3>
+<pre><code>version = &quot;0.1.2&quot;
+group = &quot;com.aaronps&quot;
+
+artifacts {
+    archives jar
+}
+
+uploadArchives {
+    repositories {
+        add project.repositories.somereponame
+    }
+}
 </code></pre><h3 id="wrapper-mirror-for-china">wrapper mirror for China</h3>
 <p><em>note: mirrors.flysnow.org might not work</em></p>
 <p>edit <code>gradle/wrapper/gradle-wrapper.properties</code></p>
@@ -748,7 +775,7 @@ tasks.withType(Test) {
     systemProperty &apos;java.util.logging.SimpleFormatter.format&apos;, &apos;%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS %4$s | %2$s: %5$s%6$s%n&apos;
 }
 </code></pre><h3 id="war">war</h3>
-<p>There isi providedCompile and providedRuntime for dependencies, these will be added to the war if
+<p>There is providedCompile and providedRuntime for dependencies, these will be added to the war if
 using bootRepackage.</p>
 <h2 id="errors">Errors</h2>
 <h3 id="default-configuration-not-found">&apos;default&apos; configuration not found</h3>
@@ -808,7 +835,7 @@ using bootRepackage.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gradle","level":"1.3.3","depth":2,"next":{"title":"intellij","level":"1.3.4","depth":2,"path":"tools/intellij.md","ref":"tools/intellij.md","articles":[]},"previous":{"title":"npm","level":"1.3.2","depth":2,"path":"tools/npm.md","ref":"tools/npm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/gradle.md","mtime":"2018-01-16T02:36:37.880Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-29T14:22:32.784Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gradle","level":"1.3.3","depth":2,"next":{"title":"intellij","level":"1.3.4","depth":2,"path":"tools/intellij.md","ref":"tools/intellij.md","articles":[]},"previous":{"title":"npm","level":"1.3.2","depth":2,"path":"tools/npm.md","ref":"tools/npm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/gradle.md","mtime":"2018-02-02T08:33:05.178Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-03T02:44:44.988Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
