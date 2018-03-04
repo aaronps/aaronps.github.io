@@ -4,10 +4,10 @@
 * [Introduction](README.md)
 
 * Languages
-    * [c++](languages/c++.adoc)
+    * [c++](languages/c++.md)
     * [Erlang](languages/erlang.md)
         * [Rebar3](languages/erlang/rebar3.md)
-    * [Java](languages/java.adoc)
+    * [Java](languages/java.md)
     * [Javascript](languages/javascript.md)
     * [Haxe](languages/haxe.md)
 * Tools
