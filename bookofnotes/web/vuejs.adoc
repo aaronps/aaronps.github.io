@@ -1,0 +1,29 @@
+= vuejs
+
+== Basic Steps
+
+. require nodejs (and npm) (>=8.0.0 seems working)
+. ensure taobao's npm registry or using proxy
+. ensure git use proxy or hosts configured properly
+. npm install --global vue-cli
+. git clone https://github.com/vuejs-templates/webpack webpack-template
+. vue init ./webpack-template new-project-name
+. cd new-project-name
+. npm install
+. npm run dev
+
+For using JSPs also:
+
+* `# npm install -D raw-loader`
+* ??? and the HtmlWebpackPlugin use 'raw-loader!file.jsp'
+
+== notes
+
+* `<element v-bind:something="someVueObject">`
+** shorthand `:something=`
+* `<element v-on:click="fun">`
+** shorthand `@click=`
+
+== element-ui
+
+`<el-menu :router="true" :default-active="$route.path"/>`

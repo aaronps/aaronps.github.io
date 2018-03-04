@@ -1,42 +1,107 @@
-= Java
+# Java
 
-* Http servlet request get header is case insensitive
-* Tomcat sessions are saved in work folder
 * `SocketTimeoutException` is a subclass of `InterruptedIOException`, take into
 account you might not have interrupted it yourself.
 
-base64:: Use `java.util.Base64` (java8).
-	
-NOTE: If using FastJSON, it will auto encode/decode base64 if `getBytes()` or
-`put(byte[])` are used, may depend on settings.
+```java
 
-== Servlets
+// Base64
+import java.util.Base64;
+Base64.getEncoder().encode();
+Base64.getDecoder().decode();
 
-+++@WebServlet("/something/and/something/*")+++::
-	needs to have the /* atend if you want to get the path info.
+// Note regarding Base64 and FastJSON library:
+//	FastJSON will automatically encode and decode base64 when using 'getBytes'
+//	and put(byte[]). This may depend on settings.
 
-request.getPathInfo():: null or "/" for base, then the rest for the thing
+// join 2 arrays, java8 style
+final String[] joinedArray = Stream.concat( Stream.of(array1),
+											Stream.of(array2))
+								   .toArray(String[]::new);
 
-toPrint:: `HttpServletResponse.getWriter().print()`
+```
 
-== Tomcat
+## Servlets
+
+```java
+// Add "/*" if you want to use req.getPathInfo() which will return:
+//   null   -> if not using "/*" or if request is to "/something"
+//   "/"    -> if using "/*" and request is to "/something/"
+//   "/XXX" -> if using "/*" and request is to "/something/XXX" 
+// Note: cannot use "/something*"
+@WebServlet("/something/*")
+public class MyServlet extends HttpServlet {
+
+	@Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+		throws ServletException, IOException {
+		
+		// to set servlet response content type
+		resp.setContentType("text/plain");
+
+		// write something on the response with "out"
+		final PrintWriter out = resp.getWriter();
+        
+        out.printf("PathInfo: %s\n", req.getPathInfo());
+		
+		// HttpServletRequest.getHeader() is case insensitive
+		out.printf( "Insensitive header example: [%s] and [%s]\n",
+					req.getHeader("Host"),
+					req.getHeader("host"));
+		
+		// use setStatus to manually change the response code
+        resp.setStatus(200);
+    }
+
+}
+```
+
+## JSP & el
+
+```jsp
+<%-- jsp comments (doesn't appear on rendered page) --%>
+<%-- trimDirectiveWhitespaces: remove extra whitespace from output --%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%
+    // you might not like it, but you can do this
+    final String aName = "SomeName";
+    request.setAttribute("someAttribute", "Yes, some attribute");
+%>
+<!doctype html>
+<html>
+    <head>
+        <title>JSP</title>
+    </head>
+    <body>
+        <pre>
+Old ways: Hello "<%= aName %>"
+
+EL ways:
+Is it some attribute? &rarr; "${someAttribute}"
+Context Path: "${pageContext.request.contextPath}"
+X: ${empty param.x ? "you didn't set 'x' parameter" : param.x }
+        </pre>
+    </body>
+</html>
+```
+
+## Tomcat
 
 * setting `antiResourceLocking="true"` on the context may inhibit reloading of JSP
-
-* Remove empty lines `<%@ ... trimDirectiveWhitespaces="true" %>`
-
 * `CATALINA_HOME` refers to the path to tomcat, the folder uncompressed from the zip files.
+* `CATALINA_BASE` refers to the folder of the *active configuration*.
+* Tomcat sessions are saved in work folder
 
-* `CATALINA_BASE` refers to the folder of the __active configuration__.
+## TomEE
 
-== TomEE
+* 	Some non JavaEE jars might be scanned for EJB and other things which may
+	fail to load or report errors on TomEE. To avoid this, you need to exclude
+	thos files from scanning, add `/WEB-INF/exclusions.list`, each line is a jar
+	name prefix to skip.
 
-* If wants to exclude a jar from scanning (because it gives problem when it is not javaee thing) add a `/WEB-INF/exclusions.list` each line is the jar prefix to skip.
+## Spring
 
-
-== Spring
-
-=== configuration
+### configuration
 
 `application.properties`
 
@@ -47,31 +112,34 @@ toPrint:: `HttpServletResponse.getWriter().print()`
 * It can be put on the root folder of the project ( maybe where gradle is run ) so it will be picked by bootRun but not included on the final jar.
 * to start with a different config file use parameter: --spring.config.name=someothername, it will add the .properties or .yml by itself, there is also spring.config.location to set the search path
 	
-=== Notes
+### Notes
 
 * Log files will autorotate when 10Mb and keep 
 * To disable console output: logging.pattern.console= (nothing here)
 * to disable spring banner:
-	* application.properties: spring.main,banner-mode=off
+	* application.properties: spring.main.banner-mode=off
 	* application.yml: spring.main.banner-mode: 'off'
 * If you use jackson, remove it from dependencies as it is added by springboot.
 
-Run with different configuration file name::
-	
+Run with different configuration file name:
+
 	add parameter `--spring.config.name=newname`
 
-.YourApplication.java
-[source,java]
-----
+
+```java
 @SpringBootApplication
 public class YourApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(YourApplication.class, Stream.concat(Stream.of(args), Stream.of("--spring.config.name=yournewname")).toArray(String[]::new));
-	}
-}
-----
 
-=== bootRun
+	public static void main(String[] args) {
+		new SpringApplicationBuilder(YourApplication.class)
+            .properties("spring.config.name=yourconfigname")
+            .run(args);
+	}
+
+}
+```
+
+### bootRun
 
 1. Use apply plugin 'java' instead of war to generate executables
 2. Use src/main/resources/{static,resources} for static files
@@ -83,7 +151,7 @@ bootRun {
 ```
 4. run: `gradle bootRun`
 
-=== Run as a service
+### Run as a service
 
 In `build.gradle`:
 
@@ -95,9 +163,7 @@ springBoot {
 
 Now it can run as normal executable, System V init script and systemd (with extra file):
 
-.service-name.service
-[source,ini]
-----
+```ini
 [Unit]
 Description=Your service description
 After=syslog.target
@@ -110,9 +176,9 @@ StandardOutput=null
 
 [Install]
 WantedBy=multi-user.target
-----
+```
 
-=== web
+### web
 
 _initial notes_
 
@@ -126,7 +192,7 @@ regarding gradle::
 If using java plugin, the project doesn't have a webpages area (at least on netbeans)
 
 
-==== Using JSP
+#### Using JSP
 
 _springboot recommends to avoid jsp_
 
@@ -143,7 +209,7 @@ If also desires to use **jstl**:
 	* in gradle: `dependencies { compile 'javax.servlet:jstl:1.2' }`
 	* Configure viewResolver to use `org.springframework.web.servlet.view.JstlView.class`
 
-=== Old Spring
+### Old Spring
 
 To be able to use the autoconfiguration it might be needed to add a line to beans.xml:
 ```xml
@@ -151,8 +217,8 @@ To be able to use the autoconfiguration it might be needed to add a line to bean
 ```
 
 .RestExample
-[source,java]
-----
+```java
+
 @RestController
 @RequestMapping("/path")
 public class RestExample {
@@ -167,8 +233,4 @@ public class RestExample {
 		return newX;
 	}
 }
-----
-
-
-
-
+```

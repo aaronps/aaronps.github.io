@@ -96,6 +96,37 @@ As 2017-12-02 it seems mirrors.flysnow.org might be down, maybe avoid the wrappe
 
 note, @Test has a timeout=milliseconds
 
+### simple custom tasks
+
+```groovy
+task release {
+	group war.group
+	description 'Some special build task'
+
+	dependsOn buildFrontend
+	dependsOn war
+}
+```
+
+### war ignore files in other folders than webapp
+
+```groovy
+war {
+	// ...
+
+	rootSpec.exclude '**/*.some.thing'
+}
+```
+
+### war versioned name
+
+```groovy
+war {
+	// ...
+	archiveName "${baseName}##${version}.${extension}"
+}
+```
+
 ## SVN, GIT, Import to IDE
 
 Only need to commit:

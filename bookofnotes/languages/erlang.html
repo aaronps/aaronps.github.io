@@ -417,9 +417,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../web/vuejs.html">
+        <li class="chapter " data-level="1.5.1" data-path="../web/vuejs.md">
             
-                <a href="../web/vuejs.html">
+                <span>
             
                     
                     vuejs
@@ -617,20 +617,34 @@
                                 
                                 <h1 id="erlang">Erlang</h1>
 <h2 id="console-commands">Console commands</h2>
-<ul>
-<li><code>help()</code> -&gt; shows help</li>
-<li><code>m(Module)</code> -&gt; shows module info</li>
-<li><code>code:delete(Module), code:purge(Module)</code> -&gt; deletes module</li>
-<li><code>{ok, Mod, Bin} = code:compile(FileName, [binary, MoreOptions])</code></li>
-<li><code>code:load_binary(ModuleName, UnusedFileName, BinaryCode).</code></li>
-<li><code>f()</code> -&gt; forget all</li>
-<li><code>f(X)</code> -&gt; forget X</li>
-</ul>
-<h2 id="notes">notes</h2>
-<p>Shorter .cmd file to run <code>escripts</code>:</p>
-<pre><code class="lang-cmd">    @escript %~dpn0.erl %*
-</code></pre>
-<p>Some bugs:</p>
+<p>Modules:</p>
+<pre><code>%% Some help
+help().
+
+%% show module info
+m(Module).
+
+%% compile
+{ok, Mod, BinaryCode} = code:compile(FileName, [binary, MoreOptions]).
+
+%% load binary module
+code:load_binary(ModuleName, UnusedFileName, BinaryCode).
+
+%% unload module 
+code:delete(Module), code:purge(Module).
+</code></pre><p>Forget console bindings:</p>
+<pre><code>%% forget all
+f().
+
+%% forget X
+f(X).
+</code></pre><h2 id="standard-libraries-and-functions">Standard libraries and functions</h2>
+<p>Get N element from tuple (starting from 1)</p>
+<pre><code>erlang:element(N,Tuple)
+</code></pre><h2 id="notes">notes</h2>
+<p>Shorter .cmd file to run <code>escripts</code></p>
+<pre><code>@escript %~dpn0.erl %*
+</code></pre><h2 id="known-bugs">Known bugs</h2>
 <ul>
 <li>&quot;escript&quot; with zip file cannot run, returns error about utf8, if change encoding to latin1, returns source code errors, so it is not trying to run, but to compile source code -&gt; fail</li>
 <li>Adding emulator args to the archive makes escript unrunnable, it complains: cannot translate from UTF-8.</li>
@@ -639,8 +653,6 @@
 <li>&quot;escript&quot; documentation is wrong, parameter &quot;-smp disable&quot; is not supported, use &quot;+S 1&quot; instead</li>
 <li>NOTIFY ESCRIPT CHANGE: if it doens&apos;t start with a unix shebang it cannot contain comments or parameters, implore to allow to work as before.</li>
 </ul>
-<h2 id="standard-libraries-and-functions">Standard libraries and functions</h2>
-<p><code>erlang:element(N,Tuple)</code> -&gt; returns the N (1..len) element of tuple</p>
 
                                 
                                 </section>
@@ -684,7 +696,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Erlang","level":"1.2.2","depth":2,"next":{"title":"Rebar3","level":"1.2.2.1","depth":3,"path":"languages/erlang/rebar3.md","ref":"languages/erlang/rebar3.md","articles":[]},"previous":{"title":"c++","level":"1.2.1","depth":2,"path":"languages/c++.adoc","ref":"languages/c++.adoc","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"languages/erlang.md","mtime":"2017-11-08T23:44:36.313Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-03T02:44:44.988Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Erlang","level":"1.2.2","depth":2,"next":{"title":"Rebar3","level":"1.2.2.1","depth":3,"path":"languages/erlang/rebar3.md","ref":"languages/erlang/rebar3.md","articles":[]},"previous":{"title":"c++","level":"1.2.1","depth":2,"path":"languages/c++.md","ref":"languages/c++.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"languages/erlang.md","mtime":"2018-03-04T11:08:35.978Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-04T15:28:16.066Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
