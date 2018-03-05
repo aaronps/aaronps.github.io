@@ -417,9 +417,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../web/vuejs.md">
+        <li class="chapter " data-level="1.5.1" data-path="../web/vuejs.html">
             
-                <span>
+                <a href="../web/vuejs.html">
             
                     
                     vuejs
@@ -616,15 +616,14 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="erlang">Erlang</h1>
-<h2 id="console-commands">Console commands</h2>
-<p>Modules:</p>
-<pre><code>%% Some help
+<p>console commands:</p>
+<pre><code class="lang-erlang">%% Some help
 help().
 
 %% show module info
 m(Module).
 
-%% compile
+%% compile without loading
 {ok, Mod, BinaryCode} = code:compile(FileName, [binary, MoreOptions]).
 
 %% load binary module
@@ -632,16 +631,18 @@ code:load_binary(ModuleName, UnusedFileName, BinaryCode).
 
 %% unload module 
 code:delete(Module), code:purge(Module).
-</code></pre><p>Forget console bindings:</p>
-<pre><code>%% forget all
+
+%% forget all bindings on the current console.
 f().
 
-%% forget X
+%% forget X on the current console
 f(X).
-</code></pre><h2 id="standard-libraries-and-functions">Standard libraries and functions</h2>
-<p>Get N element from tuple (starting from 1)</p>
-<pre><code>erlang:element(N,Tuple)
-</code></pre><h2 id="notes">notes</h2>
+</code></pre>
+<h2 id="standard-libraries-and-functions">Standard libraries and functions</h2>
+<pre><code class="lang-erlang"><span class="hljs-comment">%% Get N element from tuple (starting from 1)</span>
+erlang:element(N,Tuple).
+</code></pre>
+<h2 id="notes">notes</h2>
 <p>Shorter .cmd file to run <code>escripts</code></p>
 <pre><code>@escript %~dpn0.erl %*
 </code></pre><h2 id="known-bugs">Known bugs</h2>
@@ -696,7 +697,7 @@ f(X).
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Erlang","level":"1.2.2","depth":2,"next":{"title":"Rebar3","level":"1.2.2.1","depth":3,"path":"languages/erlang/rebar3.md","ref":"languages/erlang/rebar3.md","articles":[]},"previous":{"title":"c++","level":"1.2.1","depth":2,"path":"languages/c++.md","ref":"languages/c++.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"languages/erlang.md","mtime":"2018-03-04T11:08:35.978Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-04T15:28:16.066Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Erlang","level":"1.2.2","depth":2,"next":{"title":"Rebar3","level":"1.2.2.1","depth":3,"path":"languages/erlang/rebar3.md","ref":"languages/erlang/rebar3.md","articles":[]},"previous":{"title":"c++","level":"1.2.1","depth":2,"path":"languages/c++.md","ref":"languages/c++.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"languages/erlang.md","mtime":"2018-03-05T04:24:42.966Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-05T14:29:57.750Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

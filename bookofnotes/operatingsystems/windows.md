@@ -1,18 +1,23 @@
-= Windows
+# Windows
 
-== Notes
+## Notes
 
-Disconnect network drive::
-    net use drive: /delete
+```cmd
+rem Disconnect network drive
+net use drive: /delete
 
-== symlinks
+```
+
+## symlinks
 
 * file link: `mklink filename path/to/link/target`
 * softlink: `mklink /D dirname path/to/link/target`
 * hardlink: `mklink /H filename path/to/link/target`
 * junction: `mklink /J filename path/to/link/target`
 
-== cmd scripts
+## cmd scripts
 
-`echo` multiple lines and pipe output::
-    `C:\> (echo line one & echo line two) | otherprogram`
+```cmd 
+rem `echo` multiple lines and pipe output
+C:\> (echo line one & echo line two) | otherprogram
+```

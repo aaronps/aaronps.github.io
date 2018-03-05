@@ -417,9 +417,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../web/vuejs.md">
+        <li class="chapter " data-level="1.5.1" data-path="../web/vuejs.html">
             
-                <span>
+                <a href="../web/vuejs.html">
             
                     
                     vuejs
@@ -616,106 +616,41 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="cmake">cmake</h1>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
 <p>Config goes on file <code>CMakeLists.txt</code>.</p>
-</div>
-<div class="paragraph">
 <p>If generate for Visual Studio (17) is ok but when try to generate for mingw-w64
 It fails (tries to use mingw32-make from codeblocks, but after reconfigure
-still failinig).</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_basic_usage_like_makefile">Basic usage like Makefile</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="title">untested example</div>
-<div class="content">
-<pre class="highlight"><code class="language-cmake" data-lang="cmake"><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">2.8</span>)
+still failinig). </p>
+<h2 id="basic-usage-like-makefile">Basic usage like Makefile</h2>
+<p><em>untested example</em></p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">2.8</span>)
 <span class="hljs-keyword">project</span>(cmakesdltest)
 <span class="hljs-keyword">add_executable</span>(myExeName src/file1.cpp src/file2.cpp)
 
 target_include_directories(myExeName PRIVATE /some/<span class="hljs-keyword">include</span>/path)
 <span class="hljs-keyword">link_directories</span>(/some/lib/dir)
-<span class="hljs-keyword">target_link_libraries</span>(myExeName lib1name lib2name)</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_show_the_build_commands">Show the build commands</h2>
-<div class="sectionbody">
-<div class="paragraph">
+<span class="hljs-keyword">target_link_libraries</span>(myExeName lib1name lib2name)
+</code></pre>
+<h2 id="show-the-build-commands">Show the build commands</h2>
 <p>Multiple methods</p>
-</div>
-<div class="ulist">
 <ul>
-<li>
-<p><code>make VERBOSE=1</code></p>
-</li>
-<li>
-<p><code>cmake --build &apos;folder&apos;&#x2009;&#x2014;&#x2009;VERBOSE=1</code></p>
-</li>
-<li>
-<p><code>CMakeLists.txt</code>: <code>set( CMAKE_VERBOSE_MAKEFILE on )</code></p>
-</li>
+<li><code>make VERBOSE=1</code></li>
+<li><code>cmake --build &apos;folder&apos; -- VERBOSE=1</code></li>
+<li><code>CMakeLists.txt</code>: <code>set( CMAKE_VERBOSE_MAKEFILE on )</code></li>
 </ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_build_in_release_mode">Build in release mode</h2>
-<div class="sectionbody">
-<div class="literalblock">
-<div class="content">
-<pre>cmake -D CMAKE_BUILD_TYPE=Release source_folder</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_build_with_gprof">Build with gprof</h2>
-<div class="sectionbody">
-<div class="literalblock">
-<div class="content">
-<pre>cmake -DCMAKE_CXX_FLAGS=-pg -DCMAKE_EXE_LINKER_FLAGS=-pg -DCMAKE_SHARED_LINKER_FLAGS=-pg &lt;SOURCE_DIR&gt;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Build and run the program normally, after it finishes</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>gprof your_executable program &gt; report.txt</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_visual_studio">Visual studio</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Regarding subsystem (console, windows) take a look at <a href="https://cmake.org/Wiki/VSConfigSpecificSettings" class="bare" target="_blank">https://cmake.org/Wiki/VSConfigSpecificSettings</a></p>
-</div>
-<div class="paragraph">
+<h2 id="build-in-release-mode">Build in release mode</h2>
+<pre><code>cmake -D CMAKE_BUILD_TYPE=Release source_folder
+</code></pre><h2 id="build-with-gprof">Build with gprof</h2>
+<pre><code>cmake -DCMAKE_CXX_FLAGS=-pg -DCMAKE_EXE_LINKER_FLAGS=-pg -DCMAKE_SHARED_LINKER_FLAGS=-pg &lt;SOURCE_DIR&gt;
+</code></pre><p>Build and run the program normally, after it finishes</p>
+<pre><code>gprof your_executable program &gt; report.txt
+</code></pre><h2 id="visual-studio">Visual studio</h2>
+<p>Regarding subsystem (console, windows) take a look at <a href="https://cmake.org/Wiki/VSConfigSpecificSettings" target="_blank">https://cmake.org/Wiki/VSConfigSpecificSettings</a></p>
 <p>If using generated project files and need to <strong>install</strong> to copy <code>.dll</code> files,
 run <code>cmake-gui</code> again and select the output folder as <code>CMAKE_INSTALL_PREFIX</code>
-regenerate the project files then <strong>build</strong> <code>INSTALL</code> target on vs.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_external_library_example">external library example</h2>
-<div class="sectionbody">
-<div class="paragraph">
+regenerate the project files then <strong>build</strong> <code>INSTALL</code> target on vs. </p>
+<h2 id="external-library-example">external library example</h2>
 <p>SDL2, uncompress the VC file, create <code>sdl2-config.cmake</code> on that folder</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-cmake" data-lang="cmake"><span class="hljs-keyword">set</span>(SDL2_INCLUDE_DIRS <span class="hljs-string">&quot;${CMAKE_CURRENT_LIST_DIR}/include&quot;</span>)
+<pre><code class="lang-cmake"><span class="hljs-keyword">set</span>(SDL2_INCLUDE_DIRS <span class="hljs-string">&quot;${CMAKE_CURRENT_LIST_DIR}/include&quot;</span>)
 
 <span class="hljs-comment"># Support both 32 and 64 bit builds</span>
 <span class="hljs-keyword">if</span> (<span class="hljs-variable">${CMAKE_SIZEOF_VOID_P}</span> <span class="hljs-keyword">MATCHES</span> <span class="hljs-number">8</span>)
@@ -724,102 +659,39 @@ regenerate the project files then <strong>build</strong> <code>INSTALL</code> ta
   <span class="hljs-keyword">set</span>(SDL2_LIBRARIES <span class="hljs-string">&quot;${CMAKE_CURRENT_LIST_DIR}/lib/x86/SDL2.lib;${CMAKE_CURRENT_LIST_DIR}/lib/x86/SDL2main.lib&quot;</span>)
 <span class="hljs-keyword">endif</span> ()
 
-<span class="hljs-keyword">string</span>(STRIP <span class="hljs-string">&quot;${SDL2_LIBRARIES}&quot;</span> SDL2_LIBRARIES)</code></pre>
-</div>
-</div>
-<div class="paragraph">
+<span class="hljs-keyword">string</span>(STRIP <span class="hljs-string">&quot;${SDL2_LIBRARIES}&quot;</span> SDL2_LIBRARIES)
+</code></pre>
 <p>start cmake-gui, select the Source folder (where CMakeLists is), and the &quot;binaries&quot; (where the generated build files will be), then it will do some work and fail.</p>
-</div>
-<div class="paragraph">
 <p>Note there is one SDL2_DIR, set it to the correct location (the one with the sdl2-config.cmake).</p>
-</div>
-<div class="paragraph">
 <p>Configure other parameters if you want, the click generate.</p>
-</div>
-<div class="sect2">
-<h3 id="_generating_by_command_line">Generating by command line</h3>
-<div class="paragraph">
+<h3 id="generating-by-command-line">Generating by command line</h3>
 <p>for 32bit:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>mkdir vs2017
+<pre><code>mkdir vs2017
 cd vs2017
-cmake -G &quot;Visual Studio 15 2017&quot; -D SDL2_DIR=&quot;c:\path\to\SDL2-X.X.X-VC&quot; ..</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>for 64bit:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>mkdir vs2017-64
+cmake -G &quot;Visual Studio 15 2017&quot; -D SDL2_DIR=&quot;c:\path\to\SDL2-X.X.X-VC&quot; ..
+</code></pre><p>for 64bit:</p>
+<pre><code>mkdir vs2017-64
 cd vs2017-64
-cmake -G &quot;Visual Studio 15 2017 Win64&quot; -D SDL2_DIR=&quot;c:\path\to\SDL2-X.X.X-VC&quot; ..</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_if_on_the_other_hand_open_directly_on_visualstudio">If on the other hand open directly on VisualStudio</h3>
-<div class="paragraph">
-<p><em>After basic tests, I don&#x2019;t like how VS behaves this way, better avoid</em></p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="fa icon-warning" title="Warning">&#xF071;</div>
-</td>
-<td class="content">
-This seems doesn&#x2019;t work on vs2017 anymore, maybe my fault, check another way below.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
+cmake -G &quot;Visual Studio 15 2017 Win64&quot; -D SDL2_DIR=&quot;c:\path\to\SDL2-X.X.X-VC&quot; ..
+</code></pre><h3 id="if-on-the-other-hand-open-directly-on-visualstudio">If on the other hand open directly on VisualStudio</h3>
+<p><em>After basic tests, I don&apos;t like how VS behaves this way, better avoid</em></p>
+<p>WARNING: This seems doesn&apos;t work on vs2017 anymore, maybe my fault, check another way below.</p>
 <p>Edit settings and add something like this to each configuration:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json"><span class="hljs-string">&quot;variables&quot;</span>: [
+<pre><code class="lang-json"><span class="hljs-string">&quot;variables&quot;</span>: [
     {
         <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;SDL2_DIR&quot;</span>,
         <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-string">&quot;path\\to\\SDL2-X.X.X-VC&quot;</span>
     }
-]</code></pre>
-</div>
-</div>
-<div class="paragraph">
+]
+</code></pre>
 <p>Another way after open the project is to right click on <code>CMakeLists.txt</code> and select <strong>Change CMake Settings</strong>,
 then on the command args you can add what you need, like: <code>-DSDL2_DIR=path\\to\\SDL2</code>.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="fa icon-note" title="Note">&#xF05A;</div>
-</td>
-<td class="content">
-Maybe only need to select menu <strong>CMake</strong> and <strong>Change CMake Settings</strong>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Also, take into account that these builds go automatically to &quot;${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}&quot; (the default on the settings) which is somewhere on your home.</p>
-</div>
-<div class="paragraph">
-<p>If don&#x2019;t want some of the targets, select <strong>Project &#x2192; Edit Settings &#x2192; CppProperties.json</strong> and remove undesired ones, then close and open again folder.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_external_library_on_windows_with_mingw_w64">external library on windows with mingw-w64</h3>
-<div class="paragraph">
+<p>NOTE: Maybe only need to select menu <strong>CMake</strong> and <strong>Change CMake Settings</strong>.</p>
+<p>Also, take into account that these builds go automatically to &quot;${env.USERPROFILE}\CMakeBuilds\${workspaceHash}\build\${name}&quot; (the default on the settings) which is somewhere on your home.</p>
+<p>If don&apos;t want some of the targets, select <strong>Project -&gt; Edit Settings -&gt; CppProperties.json</strong> and remove undesired ones, then close and open again folder.</p>
+<h3 id="external-library-on-windows-with-mingw-w64">external library on windows with mingw-w64</h3>
 <p>Uncompress SDL2 for mingw and add this <code>sdl2-config.cmake</code> to its folder:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-cmake" data-lang="cmake"><span class="hljs-comment"># Support both 32 and 64 bit builds</span>
+<pre><code class="lang-cmake"><span class="hljs-comment"># Support both 32 and 64 bit builds</span>
 <span class="hljs-keyword">if</span> (<span class="hljs-variable">${CMAKE_SIZEOF_VOID_P}</span> <span class="hljs-keyword">MATCHES</span> <span class="hljs-number">8</span>)
   <span class="hljs-keyword">set</span>(SDL2_BASE <span class="hljs-string">&quot;${CMAKE_CURRENT_LIST_DIR}/x86_64-w64-mingw32&quot;</span>)
 <span class="hljs-keyword">else</span> ()
@@ -829,304 +701,111 @@ Maybe only need to select menu <strong>CMake</strong> and <strong>Change CMake S
 <span class="hljs-keyword">set</span>(SDL2_INCLUDE_DIRS <span class="hljs-string">&quot;${SDL2_BASE}/include/SDL2&quot;</span>)
 <span class="hljs-keyword">set</span>(SDL2_LIBRARIES <span class="hljs-string">&quot;-L${SDL2_BASE}/lib -lmingw32 -lSDL2main -lSDL2 -mwindows&quot;</span>)
 
-<span class="hljs-keyword">string</span>(STRIP <span class="hljs-string">&quot;${SDL2_LIBRARIES}&quot;</span> SDL2_LIBRARIES)</code></pre>
-</div>
-</div>
-<div class="paragraph">
+<span class="hljs-keyword">string</span>(STRIP <span class="hljs-string">&quot;${SDL2_LIBRARIES}&quot;</span> SDL2_LIBRARIES)
+</code></pre>
 <p>Then to use it</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-cmake" data-lang="cmake"><span class="hljs-keyword">find_package</span>(SDL2 REQUIRED)
+<pre><code class="lang-cmake"><span class="hljs-keyword">find_package</span>(SDL2 REQUIRED)
 target_include_directories(targetname PRIVATE <span class="hljs-variable">${SDL2_INCLUDE_DIRS}</span>)
-<span class="hljs-keyword">target_link_libraries</span>(targetname <span class="hljs-variable">${SDL2_LIBRARIES}</span>)</code></pre>
-</div>
-</div>
-<div class="paragraph">
+<span class="hljs-keyword">target_link_libraries</span>(targetname <span class="hljs-variable">${SDL2_LIBRARIES}</span>)
+</code></pre>
 <p>When generating the makefiles, it runs better from command line, need to add the SDL2_DIR variable so cmake can find it</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Make sure the <em>mingw-w64</em> you want is on the <code>PATH</code></p>
+<ol>
+<li>Make sure the <em>mingw-w64</em> you want is on the <code>PATH</code></li>
+<li>Create a directory to hold the resulting makefiles and binary, preffer a directory different from the base of your source code.</li>
+<li><p>Run command adding the corect <code>SDL2_DIR</code>:</p>
+<p> cmake -G &quot;MinGW Makefiles&quot; -D &quot;SDL2_DIR=C:\path\to\SDL2-2.X.X-mingw&quot; path\to\source</p>
 </li>
-<li>
-<p>Create a directory to hold the resulting makefiles and binary, preffer a directory different from the base of your source code.</p>
-</li>
-<li>
-<p>Run command adding the corect <code>SDL2_DIR</code>:</p>
-<div class="literalblock">
-<div class="content">
-<pre>cmake -G &quot;MinGW Makefiles&quot; -D &quot;SDL2_DIR=C:\path\to\SDL2-2.X.X-mingw&quot; path\to\source</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Run <code>mingw32-make</code></p>
+<li><p>Run <code>mingw32-make</code></p>
 </li>
 </ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_external_library_on_windows_for_msvc_and_mingw">external library on windows for msvc and mingw</h3>
-<div class="paragraph">
+<h3 id="external-library-on-windows-for-msvc-and-mingw">external library on windows for msvc and mingw</h3>
 <p>Having prepared the two previous <code>sdl2-config.cmake</code> with a common parent folder, add another <code>sdl2-config.cmake</code> there, for example:</p>
-</div>
-<div class="ulist">
 <ul>
-<li>
-<p>SDL2-2.0.7</p>
-<div class="ulist">
-<ul>
-<li>
-<p>SDL2-2.0.7-VC</p>
-</li>
-<li>
-<p>SDL2-2.0.7-mingw</p>
-</li>
-<li>
-<p>sdl2-config.cmake</p>
+<li>SDL2-2.0.7<ul>
+<li>SDL2-2.0.7-VC</li>
+<li>SDL2-2.0.7-mingw</li>
+<li>sdl2-config.cmake</li>
+</ul>
 </li>
 </ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
 <p>The new <code>sdl2-config.cmake</code> just forwards to the correct one depending on the compiler used.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-cmake" data-lang="cmake"><span class="hljs-keyword">if</span> ( MINGW )
-	<span class="hljs-keyword">include</span>( <span class="hljs-variable">${CMAKE_CURRENT_LIST_DIR}</span>/SDL2-<span class="hljs-number">2.0</span>.<span class="hljs-number">7</span>-mingw/sdl2-config.cmake)
+<pre><code class="lang-cmake"><span class="hljs-keyword">if</span> ( MINGW )
+    <span class="hljs-keyword">include</span>( <span class="hljs-variable">${CMAKE_CURRENT_LIST_DIR}</span>/SDL2-<span class="hljs-number">2.0</span>.<span class="hljs-number">7</span>-mingw/sdl2-config.cmake)
 <span class="hljs-keyword">elseif</span> ( MSVC )
-	<span class="hljs-keyword">include</span>( <span class="hljs-variable">${CMAKE_CURRENT_LIST_DIR}</span>/SDL2-<span class="hljs-number">2.0</span>.<span class="hljs-number">7</span>-VC/sdl2-config.cmake)
-<span class="hljs-keyword">endif</span> ()</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_find_package_on_windows">find_package on windows</h3>
-<div class="paragraph">
+    <span class="hljs-keyword">include</span>( <span class="hljs-variable">${CMAKE_CURRENT_LIST_DIR}</span>/SDL2-<span class="hljs-number">2.0</span>.<span class="hljs-number">7</span>-VC/sdl2-config.cmake)
+<span class="hljs-keyword">endif</span> ()
+</code></pre>
+<h3 id="findpackage-on-windows">find_package on windows</h3>
 <p>Add key to registry (SDL2 as package example)
 <code>HKEY_LOCAL_MACHINE\SOFTWARE\Kitware\CMake\Packages\SDL2</code> set default value to
 path with the cmake file.</p>
-</div>
-<div class="paragraph">
 <p>Can be HKEY_LOCAL_MACHINE or HKEY_CURRENT_USER.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_c_11">c++11</h3>
-<div class="paragraph">
+<h3 id="c11">c++11</h3>
 <p>One way</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-cmake" data-lang="cmake">target_compile_features(targetname PRIVATE cxx_std_11)
+<pre><code class="lang-cmake">target_compile_features(targetname PRIVATE cxx_std_11)
 
-<span class="hljs-comment"># _PRIVATE_ | _PUBLIC_ | _INTERFACE_</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
+<span class="hljs-comment"># _PRIVATE_ | _PUBLIC_ | _INTERFACE_</span>
+</code></pre>
 <p>Another way for older versions of cmake</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>set_target_properties(target_name PROPERTIES CXX_STANDARD 11)</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Another way for all</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-cmake" data-lang="cmake"><span class="hljs-keyword">set</span> (CMAKE_CXX_STANDARD <span class="hljs-number">11</span>)
-<span class="hljs-keyword">set</span> (CMAKE_CXX_STANDARD_REQUIRED <span class="hljs-keyword">ON</span>)</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_force_32bit_on_mingw_w64">force 32bit on mingw-w64</h3>
-<div class="paragraph">
-<p>Some versions doesn&#x2019;t support both 32 and 64 bit, for the ones that does, you need to create a <em>platform file</em>:
-<a href="https://stackoverflow.com/questions/5805874/the-proper-way-of-forcing-a-32-bit-compile-using-cmake" class="bare" target="_blank">https://stackoverflow.com/questions/5805874/the-proper-way-of-forcing-a-32-bit-compile-using-cmake</a></p>
-</div>
-<div class="paragraph">
+<pre><code>set_target_properties(target_name PROPERTIES CXX_STANDARD 11)
+</code></pre><p>Another way for all</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">set</span> (CMAKE_CXX_STANDARD <span class="hljs-number">11</span>)
+<span class="hljs-keyword">set</span> (CMAKE_CXX_STANDARD_REQUIRED <span class="hljs-keyword">ON</span>)
+</code></pre>
+<h3 id="force-32bit-on-mingw-w64">force 32bit on mingw-w64</h3>
+<p>Some versions doesn&apos;t support both 32 and 64 bit, for the ones that does, you need to create a <em>platform file</em>:
+<a href="https://stackoverflow.com/questions/5805874/the-proper-way-of-forcing-a-32-bit-compile-using-cmake" target="_blank">https://stackoverflow.com/questions/5805874/the-proper-way-of-forcing-a-32-bit-compile-using-cmake</a></p>
 <p>Other versions you need to have 2 compilers, one for 64 and one for 32. When creating the builds,
 add the compiler you want to use to <code>PATH</code> (for example 32 bit) and creste the build. Example:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>mkdir build32
+<pre><code>mkdir build32
 cd build32
 PATH path/to/i686-mingw-w64/bin;%PATH%
-cmake ..</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>(in another terminal)
+cmake ..
+
+(in another terminal)
 mkdir build64
 cd build64
 PATH path/to/x86_64-mingw-w64/bin;%PATH%
-cmake ..</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now you can build any version from the base folder</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>cmake --build build32
-cmake --build build64</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_install_target">install target</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-cmake" data-lang="cmake"><span class="hljs-keyword">install</span>(TARGET targetname ARCHIVE DESTINATION some/path)
-<span class="hljs-keyword">install</span>(DIRECTORY dir_name/ DESTINATION some/path)</code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="fa icon-important" title="Important">&#xF06A;</div>
-</td>
-<td class="content">
-note the &apos;/&apos; at the end of <code>DIRECTORY dir_name/</code>, if you don&#x2019;t add it,
-the contents will be copied to <code>some/path/dir_name</code> which you may or may not want.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
+cmake ..
+</code></pre><p>Now you can build any version from the base folder</p>
+<pre><code>cmake --build build32
+cmake --build build64
+</code></pre><h2 id="install-target">install target</h2>
+<pre><code class="lang-cmake"><span class="hljs-keyword">install</span>(TARGET targetname ARCHIVE DESTINATION some/path)
+<span class="hljs-keyword">install</span>(DIRECTORY dir_name/ DESTINATION some/path)
+</code></pre>
+<p>IMPORTANT: note the &apos;/&apos; at the end of <code>DIRECTORY dir_name/</code>, if you don&apos;t add it,
+the contents will be copied to <code>some/path/dir_name</code> which you may or may not want.</p>
 <p>On linux, if wants to install somewhere else than default (/usr/local),
 regenerate with different prefix:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>cmake -D CMAKE_INSTALL_PREFIX=/ &lt;source_dir&gt;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Then when install add DESTDIR</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>make install DESTDIR=some/other/folder</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_netbeans">Netbeans</h2>
-<div class="sectionbody">
-<div class="paragraph">
+<pre><code>cmake -D CMAKE_INSTALL_PREFIX=/ &lt;source_dir&gt;
+</code></pre><p>Then when install add DESTDIR</p>
+<pre><code>make install DESTDIR=some/other/folder
+</code></pre><h2 id="netbeans">Netbeans</h2>
 <p>When creating a project with existing sources with cmake, select custom,
-then you can use a different directory for the build. If you don&#x2019;t do like this,
+then you can use a different directory for the build. If you don&apos;t do like this,
 the cmake files will polute you base folder.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_rpath">RPATH</h2>
-<div class="sectionbody">
-<div class="paragraph">
+<h2 id="rpath">RPATH</h2>
 <p><strong>RPATH</strong> will be written by default including all libraries cmake thinks it
 needs, this is good for developing. When you <strong>install</strong> it can be replaced:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-cmake" data-lang="cmake"><span class="hljs-keyword">set_target_properties</span>(target_name PROPERTIES INSTALL_RPATH <span class="hljs-string">&quot;$ORIGIN/lib&quot;</span>)</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_mingw">mingw</h2>
-<div class="sectionbody">
-<div class="paragraph">
+<pre><code class="lang-cmake"><span class="hljs-keyword">set_target_properties</span>(target_name PROPERTIES INSTALL_RPATH <span class="hljs-string">&quot;$ORIGIN/lib&quot;</span>)
+</code></pre>
+<h2 id="mingw">mingw</h2>
 <p>If not on path, before running cmake add your desired mingw/bin to path</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_code_blocks">Code::Blocks</h2>
-<div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Generate project</dt>
-<dd>
-<p>cmake -G &quot;CodeBlocks - MinGW Makefiles&quot; path/to/source</p>
-</dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>Then within CodeBlocks there will be several targets.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="fa icon-important" title="Important">&#xF06A;</div>
-</td>
-<td class="content">
-For the special targets, use <strong>build</strong> button and not the <strong>run</strong> button.
-</td>
-</tr>
-</table>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">edit_cache</dt>
-<dd>
-<p>will launch <code>cmake-gui</code> to reconfigure</p>
-</dd>
-<dt class="hdlist1">install</dt>
-<dd>
-<p>will run <code>make install</code>, change destination by <code>edit_cache</code></p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_generated_targets">Generated Targets</h2>
-<div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">target_name</dt>
-<dd>
-<p>The normal build procedure</p>
-</dd>
-<dt class="hdlist1">target_name/fast</dt>
-<dd>
-<p>Build procedure without checking external dependencies</p>
-</dd>
-<dt class="hdlist1">install</dt>
-<dd>
-<p>The normal install</p>
-</dd>
-<dt class="hdlist1">install/strip</dt>
-<dd>
-<p>Installs and strip the binaries</p>
-</dd>
-<dt class="hdlist1">install/local</dt>
-<dd>
-<p><em>Need to check</em></p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
+<h2 id="codeblocks">Code::Blocks</h2>
+<p>Generate project</p>
+<pre><code>cmake -G &quot;CodeBlocks - MinGW Makefiles&quot; path/to/source
+</code></pre><p>Then within CodeBlocks there will be several targets.</p>
+<p>IMPORTANT: For the special targets, use <strong>build</strong> button and not the <strong>run</strong> button.</p>
+<p>edit_cache -&gt; will launch <code>cmake-gui</code> to reconfigure
+install -&gt; will run <code>make install</code>, change destination by <code>edit_cache</code></p>
+<h3 id="generated-targets">Generated Targets</h3>
+<p>target<em>name: The normal build procedure
+target_name/fast: Build procedure without checking external dependencies
+install: The normal install
+install/strip: Installs and strip the binaries
+install/local: _Need to check</em></p>
+
                                 
                                 </section>
                             
@@ -1169,7 +848,7 @@ For the special targets, use <strong>build</strong> button and not the <strong>r
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"cmake","level":"1.3.7","depth":2,"next":{"title":"mingw-w64","level":"1.3.8","depth":2,"path":"tools/mingw-w64.md","ref":"tools/mingw-w64.md","articles":[]},"previous":{"title":"vscode","level":"1.3.6","depth":2,"path":"tools/vscode.md","ref":"tools/vscode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/cmake.adoc","mtime":"2018-02-01T06:49:13.606Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-03-04T15:28:16.066Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"cmake","level":"1.3.7","depth":2,"next":{"title":"mingw-w64","level":"1.3.8","depth":2,"path":"tools/mingw-w64.md","ref":"tools/mingw-w64.md","articles":[]},"previous":{"title":"vscode","level":"1.3.6","depth":2,"path":"tools/vscode.md","ref":"tools/vscode.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/cmake.md","mtime":"2018-03-05T14:27:55.559Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-05T14:29:57.750Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

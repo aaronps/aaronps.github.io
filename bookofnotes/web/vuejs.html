@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Video · GitBook</title>
+        <title>vuejs · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ffmpeg.html" />
+    <link rel="next" href="webpack.html" />
     
     
-    <link rel="prev" href="../tools/browsers.html" />
+    <link rel="prev" href="web.html" />
     
 
     </head>
@@ -345,9 +345,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4" data-path="video.html">
+        <li class="chapter " data-level="1.4" data-path="../video/video.html">
             
-                <a href="video.html">
+                <a href="../video/video.html">
             
                     
                     Video
@@ -359,9 +359,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="ffmpeg.html">
+        <li class="chapter " data-level="1.4.1" data-path="../video/ffmpeg.html">
             
-                <a href="ffmpeg.html">
+                <a href="../video/ffmpeg.html">
             
                     
                     ffmpeg
@@ -372,9 +372,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="panorama.html">
+        <li class="chapter " data-level="1.4.2" data-path="../video/panorama.html">
             
-                <a href="panorama.html">
+                <a href="../video/panorama.html">
             
                     
                     Panorama
@@ -385,9 +385,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="sdl2.html">
+        <li class="chapter " data-level="1.4.3" data-path="../video/sdl2.html">
             
-                <a href="sdl2.html">
+                <a href="../video/sdl2.html">
             
                     
                     SDL2
@@ -403,9 +403,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="../web/web.html">
+        <li class="chapter " data-level="1.5" data-path="web.html">
             
-                <a href="../web/web.html">
+                <a href="web.html">
             
                     
                     Web
@@ -417,9 +417,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../web/vuejs.html">
+        <li class="chapter active" data-level="1.5.1" data-path="vuejs.html">
             
-                <a href="../web/vuejs.html">
+                <a href="vuejs.html">
             
                     
                     vuejs
@@ -430,9 +430,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="../web/webpack.html">
+        <li class="chapter " data-level="1.5.2" data-path="webpack.html">
             
-                <a href="../web/webpack.html">
+                <a href="webpack.html">
             
                     
                     webpack
@@ -600,7 +600,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Video</a>
+        <a href=".." >vuejs</a>
     </h1>
 </div>
 
@@ -615,10 +615,37 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="video-notes">Video Notes</h1>
-<ul>
-<li>2017-11-09 depending on the <em>scene</em> in front of camera it might be needed to increase the bitrate for getting nice video.</li>
-</ul>
+                                <h1 id="vuejs">vuejs</h1>
+<h2 id="basic-steps">Basic Steps</h2>
+<ol>
+<li>require nodejs (and npm) (&gt;=8.0.0 seems working)</li>
+<li>ensure taobao&apos;s npm registry or using proxy</li>
+<li>ensure git use proxy or hosts configured properly</li>
+<li>npm install --global vue-cli</li>
+<li>git clone <a href="https://github.com/vuejs-templates/webpack" target="_blank">https://github.com/vuejs-templates/webpack</a> webpack-template</li>
+<li>vue init ./webpack-template new-project-name</li>
+<li>cd new-project-name</li>
+<li>npm install</li>
+<li>npm run dev</li>
+</ol>
+<h2 id="notes">notes</h2>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">bindings</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">v-bind:something</span>=<span class="hljs-string">&quot;someVueObject&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">:something</span>=<span class="hljs-string">&quot;someVueObject&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">bindings</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">events</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">&quot;fun&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">element</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;fun&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">events</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+<h2 id="element-ui">element-ui</h2>
+<pre><code class="lang-html"><span class="hljs-comment">&lt;!-- Menu using Vue Router --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">el-menu</span> <span class="hljs-attr">:router</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">:default-active</span>=<span class="hljs-string">&quot;$route.path&quot;</span>/&gt;</span>`
+</code></pre>
 
                                 
                                 </section>
@@ -646,12 +673,12 @@
 
             
                 
-                <a href="../tools/browsers.html" class="navigation navigation-prev " aria-label="Previous page: browsers">
+                <a href="web.html" class="navigation navigation-prev " aria-label="Previous page: Web">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="ffmpeg.html" class="navigation navigation-next " aria-label="Next page: ffmpeg">
+                <a href="webpack.html" class="navigation navigation-next " aria-label="Next page: webpack">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -662,7 +689,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Video","level":"1.4","depth":1,"next":{"title":"ffmpeg","level":"1.4.1","depth":2,"path":"video/ffmpeg.md","ref":"video/ffmpeg.md","articles":[]},"previous":{"title":"browsers","level":"1.3.9","depth":2,"path":"tools/browsers.md","ref":"tools/browsers.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"video/video.md","mtime":"2017-11-09T07:09:43.380Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-05T14:29:57.750Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"vuejs","level":"1.5.1","depth":2,"next":{"title":"webpack","level":"1.5.2","depth":2,"path":"web/webpack.md","ref":"web/webpack.md","articles":[]},"previous":{"title":"Web","level":"1.5","depth":1,"path":"web/web.md","ref":"web/web.md","articles":[{"title":"vuejs","level":"1.5.1","depth":2,"path":"web/vuejs.md","ref":"web/vuejs.md","articles":[]},{"title":"webpack","level":"1.5.2","depth":2,"path":"web/webpack.md","ref":"web/webpack.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"web/vuejs.md","mtime":"2018-03-05T04:31:32.552Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-05T14:29:57.750Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

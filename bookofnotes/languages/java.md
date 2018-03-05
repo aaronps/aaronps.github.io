@@ -4,13 +4,12 @@
 account you might not have interrupted it yourself.
 
 ```java
-
-// Base64
+// Base64 (java8)
 import java.util.Base64;
 Base64.getEncoder().encode();
 Base64.getDecoder().decode();
 
-// Note regarding Base64 and FastJSON library:
+// Base64 and FastJSON library:
 //	FastJSON will automatically encode and decode base64 when using 'getBytes'
 //	and put(byte[]). This may depend on settings.
 
@@ -77,7 +76,7 @@ public class MyServlet extends HttpServlet {
 Old ways: Hello "<%= aName %>"
 
 EL ways:
-Is it some attribute? &rarr; "${someAttribute}"
+Print some attribute? &rarr; "${someAttribute}"
 Context Path: "${pageContext.request.contextPath}"
 X: ${empty param.x ? "you didn't set 'x' parameter" : param.x }
         </pre>
@@ -216,9 +215,7 @@ To be able to use the autoconfiguration it might be needed to add a line to bean
     <context:component-scan base-package="org.example.package"/>
 ```
 
-.RestExample
 ```java
-
 @RestController
 @RequestMapping("/path")
 public class RestExample {

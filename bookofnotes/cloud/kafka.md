@@ -1,28 +1,28 @@
-= kafka
+# kafka
 
 https://kafka.apache.org/
 
-== Setup
+## Setup
 
 Download the tgz, uncompress
 
-. start zookeper:
+1. start zookeper:
 	* config is in `config/zookeper.properties`
-	** may need to change dataDir for windows
-	** port is defined here too
+		* may need to change dataDir for windows
+		* port is defined here too
 	* `bin/zookeper-server-start.sh config/zookeper.properties`
 	* note: stopping zookeper also stops all the clients connected to it (at
 	  least the kafka console-consumer/producer I was running)
 	* note: zookeeper-shell to do some operations on the server
 	
-. start kafka:
+2. start kafka:
 	* config is in config/server.properties:
-	** may need to set broker.id for each broker
-	** may need to change log.dirs for windows
-	** zookeper.connect to set the port configured on zookeper
-	** If want to change the port (default is 9092) change "listeners"
-	** If want to be able to delete topics set: delete.topic.enable=true
-	** listeners example for ip address: `PLAINTEXT://ipaddress:9092`
+		* may need to set broker.id for each broker
+		* may need to change log.dirs for windows
+		* zookeper.connect to set the port configured on zookeper
+		* If want to change the port (default is 9092) change "listeners"
+		* If want to be able to delete topics set: delete.topic.enable=true
+		* listeners example for ip address: `PLAINTEXT://ipaddress:9092`
 	* `bin/kafka-server-start.sh config/server.properties`
 
 IMPORTANT: If you don't change **listeners**, kafka will use your hostname by
@@ -32,11 +32,11 @@ the clients will need some way to resolve the name, usually the `hosts` file.
 Zookeeper default ports:: Open on firewall: 2181, 2888, 3888
 Kaka default port:: 9092
 
-== Commands
+## Commands
 
 NOTE: In Linux use `bin/script-name.sh` in Windows `bin\windows\script-name`
 
-Topics:: _--zookeeper is always needed_
+Topics: _--zookeeper is always needed_
 
 	bin/kafka-topics.sh --zookeeper localhost:2181 <command>
 	
@@ -47,13 +47,17 @@ Topics:: _--zookeeper is always needed_
 		* --delete --topic <topic_name> _(note it requires config change to work)_
 		* --describe --topic <topic_name>
 
+	# increase partitions count for a topic (cannot decrease)
+	bin/kafka-topics.sh ... --alter --topic _name_ --partitions N
+
 Send messages from console:: _this will read from stdin and publish on topic_
 
 	bin/kafka-console-producer.sh --broker-list localhost:9092 --topic <name>
 
 Receive messages on console::
 
-	`bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name>`
+	# localhost:9092 has to be exactly what is in the configuration
+	bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name>
 
 	other parameters:::
 	
