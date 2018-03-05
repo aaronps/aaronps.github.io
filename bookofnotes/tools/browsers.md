@@ -1,0 +1,15 @@
+# Browsers
+
+## Google Chrome
+
+Start with proxy:
+
+> chrome --proxy-server=socks5://127.0.0.1:1080 --host-resolver-rules="MAP * ~NOTFOUND, EXCLUDE 127.0.0.1"
+
+See current proxy config status:
+
+> [chrome://net-internals/#proxy](chrome://net-internals/#proxy)
+
+
+[List of command line parameters](https://peter.sh/experiments/chromium-command-line-switches/)
+

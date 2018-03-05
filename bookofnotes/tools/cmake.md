@@ -1,4 +1,4 @@
-= cmake
+# cmake
 
 Config goes on file `CMakeLists.txt`.
 
@@ -6,11 +6,10 @@ If generate for Visual Studio (17) is ok but when try to generate for mingw-w64
 It fails (tries to use mingw32-make from codeblocks, but after reconfigure
 still failinig). 
 
-== Basic usage like Makefile
+## Basic usage like Makefile
 
-.untested example
-[source,cmake]
-----
+_untested example_
+```cmake
 cmake_minimum_required(VERSION 2.8)
 project(cmakesdltest)
 add_executable(myExeName src/file1.cpp src/file2.cpp)
@@ -18,9 +17,9 @@ add_executable(myExeName src/file1.cpp src/file2.cpp)
 target_include_directories(myExeName PRIVATE /some/include/path)
 link_directories(/some/lib/dir)
 target_link_libraries(myExeName lib1name lib2name)
-----
+```
 
-== Show the build commands
+## Show the build commands
 
 Multiple methods
 
@@ -28,19 +27,19 @@ Multiple methods
 * `cmake --build 'folder' -- VERBOSE=1`
 * `CMakeLists.txt`: `set( CMAKE_VERBOSE_MAKEFILE on )`
 
-== Build in release mode
+## Build in release mode
 
- cmake -D CMAKE_BUILD_TYPE=Release source_folder
+    cmake -D CMAKE_BUILD_TYPE=Release source_folder
 
-== Build with gprof
+## Build with gprof
 
- cmake -DCMAKE_CXX_FLAGS=-pg -DCMAKE_EXE_LINKER_FLAGS=-pg -DCMAKE_SHARED_LINKER_FLAGS=-pg <SOURCE_DIR>
+    cmake -DCMAKE_CXX_FLAGS=-pg -DCMAKE_EXE_LINKER_FLAGS=-pg -DCMAKE_SHARED_LINKER_FLAGS=-pg <SOURCE_DIR>
 
 Build and run the program normally, after it finishes
 
- gprof your_executable program > report.txt
+    gprof your_executable program > report.txt
 
-== Visual studio
+## Visual studio
 
 Regarding subsystem (console, windows) take a look at https://cmake.org/Wiki/VSConfigSpecificSettings
 
@@ -48,12 +47,11 @@ If using generated project files and need to **install** to copy `.dll` files,
 run `cmake-gui` again and select the output folder as `CMAKE_INSTALL_PREFIX`
 regenerate the project files then **build** `INSTALL` target on vs. 
 
-== external library example
+## external library example
 
 SDL2, uncompress the VC file, create `sdl2-config.cmake` on that folder
 
-[source,cmake]
-----
+```cmake
 set(SDL2_INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/include")
 
 # Support both 32 and 64 bit builds
@@ -64,7 +62,7 @@ else ()
 endif ()
 
 string(STRIP "${SDL2_LIBRARIES}" SDL2_LIBRARIES)
-----
+```
 
 start cmake-gui, select the Source folder (where CMakeLists is), and the "binaries" (where the generated build files will be), then it will do some work and fail.
 
@@ -72,7 +70,7 @@ Note there is one SDL2_DIR, set it to the correct location (the one with the sdl
 
 Configure other parameters if you want, the click generate.
 
-=== Generating by command line
+### Generating by command line
 
 for 32bit:
 
@@ -86,7 +84,7 @@ for 64bit:
     cd vs2017-64
     cmake -G "Visual Studio 15 2017 Win64" -D SDL2_DIR="c:\path\to\SDL2-X.X.X-VC" ..
 
-=== If on the other hand open directly on VisualStudio
+### If on the other hand open directly on VisualStudio
 
 _After basic tests, I don't like how VS behaves this way, better avoid_
 
@@ -94,15 +92,14 @@ WARNING: This seems doesn't work on vs2017 anymore, maybe my fault, check anothe
 
 Edit settings and add something like this to each configuration:
 
-[source,json]
-----
+```json
 "variables": [
     {
         "name": "SDL2_DIR",
         "value": "path\\to\\SDL2-X.X.X-VC"
     }
 ]
-----
+```
 
 Another way after open the project is to right click on `CMakeLists.txt` and select **Change CMake Settings**,
 then on the command args you can add what you need, like: `-DSDL2_DIR=path\\to\\SDL2`.
@@ -113,12 +110,11 @@ Also, take into account that these builds go automatically to "${env.USERPROFILE
 
 If don't want some of the targets, select **Project -> Edit Settings -> CppProperties.json** and remove undesired ones, then close and open again folder.
 
-=== external library on windows with mingw-w64
+### external library on windows with mingw-w64
 
 Uncompress SDL2 for mingw and add this `sdl2-config.cmake` to its folder:
 
-[source,cmake]
-----
+```cmake
 # Support both 32 and 64 bit builds
 if (${CMAKE_SIZEOF_VOID_P} MATCHES 8)
   set(SDL2_BASE "${CMAKE_CURRENT_LIST_DIR}/x86_64-w64-mingw32")
@@ -130,16 +126,15 @@ set(SDL2_INCLUDE_DIRS "${SDL2_BASE}/include/SDL2")
 set(SDL2_LIBRARIES "-L${SDL2_BASE}/lib -lmingw32 -lSDL2main -lSDL2 -mwindows")
 
 string(STRIP "${SDL2_LIBRARIES}" SDL2_LIBRARIES)
-----
+```
 
 Then to use it
 
-[source,cmake]
-----
+```cmake
 find_package(SDL2 REQUIRED)
 target_include_directories(targetname PRIVATE ${SDL2_INCLUDE_DIRS})
 target_link_libraries(targetname ${SDL2_LIBRARIES})
-----
+```
 
 When generating the makefiles, it runs better from command line, need to add the SDL2_DIR variable so cmake can find it
 
@@ -151,27 +146,26 @@ When generating the makefiles, it runs better from command line, need to add the
 
 4. Run `mingw32-make`
 
-=== external library on windows for msvc and mingw
+### external library on windows for msvc and mingw
 
 Having prepared the two previous `sdl2-config.cmake` with a common parent folder, add another `sdl2-config.cmake` there, for example:
 
 * SDL2-2.0.7
-** SDL2-2.0.7-VC
-** SDL2-2.0.7-mingw
-** sdl2-config.cmake
+    * SDL2-2.0.7-VC
+    * SDL2-2.0.7-mingw
+    * sdl2-config.cmake
 
 The new `sdl2-config.cmake` just forwards to the correct one depending on the compiler used.
 
-[source,cmake]
-----
+```cmake
 if ( MINGW )
 	include( ${CMAKE_CURRENT_LIST_DIR}/SDL2-2.0.7-mingw/sdl2-config.cmake)
 elseif ( MSVC )
 	include( ${CMAKE_CURRENT_LIST_DIR}/SDL2-2.0.7-VC/sdl2-config.cmake)
 endif ()
-----
+```
 
-=== find_package on windows
+### find_package on windows
 
 Add key to registry (SDL2 as package example)
 `HKEY_LOCAL_MACHINE\SOFTWARE\Kitware\CMake\Packages\SDL2` set default value to
@@ -179,16 +173,15 @@ path with the cmake file.
 
 Can be HKEY_LOCAL_MACHINE or HKEY_CURRENT_USER.
 
-=== c++11
+### c++11
 
 One way
 
-[source,cmake]
-----
+```cmake
 target_compile_features(targetname PRIVATE cxx_std_11)
 
 # _PRIVATE_ | _PUBLIC_ | _INTERFACE_
-----
+```
 
 Another way for older versions of cmake
 
@@ -196,13 +189,12 @@ Another way for older versions of cmake
 
 Another way for all
 
-[source,cmake]
-----
+```cmake
 set (CMAKE_CXX_STANDARD 11)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
-----
+```
 
-=== force 32bit on mingw-w64
+### force 32bit on mingw-w64
 
 Some versions doesn't support both 32 and 64 bit, for the ones that does, you need to create a _platform file_:
 https://stackoverflow.com/questions/5805874/the-proper-way-of-forcing-a-32-bit-compile-using-cmake
@@ -226,13 +218,12 @@ Now you can build any version from the base folder
     cmake --build build32
     cmake --build build64
 
-== install target
+## install target
 
-[source,cmake]
-----
+```cmake
 install(TARGET targetname ARCHIVE DESTINATION some/path)
 install(DIRECTORY dir_name/ DESTINATION some/path)
-----
+```
 
 IMPORTANT: note the '/' at the end of `DIRECTORY dir_name/`, if you don't add it,
 the contents will be copied to `some/path/dir_name` which you may or may not want.
@@ -246,42 +237,42 @@ Then when install add DESTDIR
 
     make install DESTDIR=some/other/folder
 
-== Netbeans
+## Netbeans
 
 When creating a project with existing sources with cmake, select custom,
 then you can use a different directory for the build. If you don't do like this,
 the cmake files will polute you base folder.
 
-== RPATH
+## RPATH
 
 **RPATH** will be written by default including all libraries cmake thinks it
 needs, this is good for developing. When you **install** it can be replaced:
 
-[source,cmake]
-----
+```cmake
 set_target_properties(target_name PROPERTIES INSTALL_RPATH "$ORIGIN/lib")
-----
+```
 
-== mingw
+## mingw
 
 If not on path, before running cmake add your desired mingw/bin to path
 
-== Code::Blocks ==
+## Code::Blocks
 
-Generate project::
+Generate project
+
     cmake -G "CodeBlocks - MinGW Makefiles" path/to/source
 
 Then within CodeBlocks there will be several targets.
 
 IMPORTANT: For the special targets, use **build** button and not the **run** button.
 
-edit_cache:: will launch `cmake-gui` to reconfigure
-install:: will run `make install`, change destination by `edit_cache`
+edit_cache -> will launch `cmake-gui` to reconfigure
+install -> will run `make install`, change destination by `edit_cache`
 
-== Generated Targets ==
+### Generated Targets
 
-target_name:: The normal build procedure
-target_name/fast:: Build procedure without checking external dependencies
-install:: The normal install
-install/strip:: Installs and strip the binaries
-install/local:: _Need to check_
+target_name: The normal build procedure
+target_name/fast: Build procedure without checking external dependencies
+install: The normal install
+install/strip: Installs and strip the binaries
+install/local: _Need to check_

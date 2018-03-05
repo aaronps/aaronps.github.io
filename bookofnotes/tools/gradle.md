@@ -14,13 +14,30 @@ allprojects {
     //    distributionUrl = "http://mirrors.flysnow.org/gradle/gradle-${gradleVersion}-bin.zip"
     // }
     
-    task showRepositories {
+	// task example
+    task repositories {
+		group 'help'
+		description 'List the configured repositories and their values.' 
+
         doLast {
             println repositories.collect { "${it.name} = ${it.url}"  }
         }
     }
     
+	task initSimple(type: InitBuild) {
+		group 'build setup'
+		description 'Initializes a gradle project without the wrapper.'
+	}
+
     repositories {
+
+		// create a repository for local publishing
+		ivy {
+			name "areponame"
+			url "file:///path/to/the/local/repo"
+		}
+
+		// replace standard repositories with aliyun mirrors
         all { ArtifactRepository repo ->
         
             if ( (repo.name == "BintrayJCenter") && (repo.url.toString() == "https://jcenter.bintray.com/") ) {

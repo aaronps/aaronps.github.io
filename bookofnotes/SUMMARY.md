@@ -17,9 +17,9 @@
     * [intellij](tools/intellij.md)
     * [eclipse](tools/eclipse.md)
     * [vscode](tools/vscode.md)
-    * [cmake](tools/cmake.adoc)
+    * [cmake](tools/cmake.md)
     * [mingw-w64](tools/mingw-w64.md)
-    * [browsers](tools/browsers.adoc)
+    * [browsers](tools/browsers.md)
 * [Video](video/video.md)
     * [ffmpeg](video/ffmpeg.md)
     * [Panorama](video/panorama.md)
@@ -30,9 +30,9 @@
 * Net
     * [SSL](net/ssl_certificates.md)
 * [Cloud and distributed](cloud/cloud.md)
-    * [kafka](cloud/kafka.adoc)
+    * [kafka](cloud/kafka.md)
     * [zookeeper](cloud/zookeeper.md)
 * Operating Systems
-    * [Linux](operatingsystems/linux.adoc)
-    * [Windows](operatingsystems/windows.adoc)
+    * [Linux](operatingsystems/linux.md)
+    * [Windows](operatingsystems/windows.md)
 

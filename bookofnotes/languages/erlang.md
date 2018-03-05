@@ -1,37 +1,37 @@
 # Erlang
 
-## Console commands
+console commands:
 
-Modules:
+```erlang
+%% Some help
+help().
 
-	%% Some help
-	help().
+%% show module info
+m(Module).
 
-	%% show module info
-	m(Module).
+%% compile without loading
+{ok, Mod, BinaryCode} = code:compile(FileName, [binary, MoreOptions]).
 
-	%% compile
-	{ok, Mod, BinaryCode} = code:compile(FileName, [binary, MoreOptions]).
+%% load binary module
+code:load_binary(ModuleName, UnusedFileName, BinaryCode).
 
-	%% load binary module
-	code:load_binary(ModuleName, UnusedFileName, BinaryCode).
+%% unload module 
+code:delete(Module), code:purge(Module).
 
-	%% unload module 
-	code:delete(Module), code:purge(Module).
+%% forget all bindings on the current console.
+f().
 
-Forget console bindings:
-
-	%% forget all
-	f().
-
-	%% forget X
-	f(X).
+%% forget X on the current console
+f(X).
+```
 
 ## Standard libraries and functions
 
-Get N element from tuple (starting from 1)
+```erlang
+%% Get N element from tuple (starting from 1)
+erlang:element(N,Tuple).
 
-	erlang:element(N,Tuple)
+```
 
 ## notes
 
