@@ -8,6 +8,7 @@
     * [Erlang](languages/erlang.md)
         * [Rebar3](languages/erlang/rebar3.md)
     * [Java](languages/java.md)
+        * [Spring](languages/java/spring.md)
     * [Javascript](languages/javascript.md)
     * [Haxe](languages/haxe.md)
 * Tools
@@ -20,6 +21,7 @@
     * [cmake](tools/cmake.md)
     * [mingw-w64](tools/mingw-w64.md)
     * [browsers](tools/browsers.md)
+    * [tmux](tools/tmux.md)
 * [Video](video/video.md)
     * [ffmpeg](video/ffmpeg.md)
     * [Panorama](video/panorama.md)

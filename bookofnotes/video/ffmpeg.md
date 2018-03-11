@@ -1,107 +1,53 @@
 # ffmpeg
 
-## Linux
-
-May need to build:
-
-* `yum install yasm`
-* go `nasm.us` copy the yum repos info you local installation
-* `yum install nasm`
-* build libx264
-```shell
-# git clone http://git.videolan.org/git/x264.git
-```
-* (x264) `./configure --prefix=$HOME/libs --enable-shared --enable-static`
-* (x264) `make && make install`
-* (ffmpeg) `PKG_CONFIG_PATH="$HOME/libs/lib/pkgconfig" ./configure --prefix=$HOME/libs --enable-shared --disable-doc --enable-gpl --enable-libx264`
-* (ffmpeg) `make && make install`
-
-## Windows
-
-Download files from https://ffmpeg.zeranoe.com/builds for your architecture **Dev** and **Shared**.
-It is a good idea to also get the source code.
-
-## Basic program
-
-link
-
-* avformat
-* avcodec
-* avutil
-* swscale
-
-dll
-
-* avcodec-57.dll
-* avformat-57.dll
-* avutil-55.dll
-* swresample-2.dll
-* swscale-4.dll
-
-_CHECK THE FIFO MUXER, it auto retries_
-
-
 ## Command line
 
-To list direct show devices:
+```sh
+# List directshow devices
+ffplay -f dshow -list_devices true -i dummy
+ffplay -list_options true -f dshow -i video="Microsoft Camera Front"
 
-    ffplay -f dshow -list_devices true -i dummy
+# Play from directshow device
+ffplay -f dshow -i video="Microsoft Camera Front"
+ffplay -f dshow -framerate 25 -video_size 1280x720 -i video="Microsoft Camera Front"
 
-To play one of the devices:
+#Streaming 1
+ffmpeg -f dshow -framerate 15 -video_size 1280x720 -i video="Microsoft Camera Front" -vcodec libx264 -an -vf "format=yuv420p" -profile main -tune zerolatency -f flv rtmp://127.0.0.1/live/cam
 
-    ffplay -f dshow -i video="Microsoft Camera Front"
+ffmpeg -f dshow -framerate 15 -video_size 640x360 -i video="Microsoft Camera Front" -c:v libx264 -an -vf "format=yuv420p" -profile main -tune zerolatency -me_range 16 -me_method dia -coder ac -threads 4 -rtmp_live live -f flv rtmp://127.0.0.1/live/cam
 
-To see some options:
+# Stream test pattern
+ffmpeg -re -f lavfi -i "testsrc2=size=640x360:rate=25" -c:v libx264 -an  -vf "format=yuv420p" -profile main -tune zerolatency -r 25 -f flv rtmp://127.0.0.1/live/test
 
-    ffplay -list_options true -f dshow -i video="Microsoft Camera Front"
+# Faster start
+ffmpeg -analyzeduration 1M ...
+ffmpeg -probesize 100000
 
-To see it with more changes:
+# Less delay
+ffmegp -fflags nobuffer ...
 
-    ffplay -f dshow -framerate 25 -video_size 1280x720 -i video="Microsoft Camera Front"
+# To play the result of some ffmpeg operation directly
+ffmpeg -i … -vcodec rawvideo -pix_fmt yuv420p -f sdl "Maybe window name"
 
-Streaming 1
+# Convert video for fast start
+ffmpeg -i $file -c:v libx264 -g 12 -crf 18 -an -tune zerolatency -f flv file.flv
 
-    ffmpeg -f dshow -framerate 15 -video_size 1280x720 -i video="Microsoft Camera Front" -vcodec libx264 -an -vf "format=yuv420p" -profile main -tune zerolatency -f flv rtmp://127.0.0.1/live/cam
+# Capture a window on windows
+ffmpeg -f gdigrab -framerate 30 -I title="Window Name" <output data>
+ffmpeg -f gdigrab -framerate 25 -offset_x XXX -offset_y YYY -video_size WidthxHeight -i desktop <output data>
 
-    ffmpeg -f dshow -framerate 15 -video_size 640x360 -i video="Microsoft Camera Front" -c:v libx264 -an -vf "format=yuv420p" -profile main -tune zerolatency -me_range 16 -me_method dia -coder ac -threads 4 -rtmp_live live -f flv rtmp://127.0.0.1/live/cam
+# Note: chrome uses '<html title> - Google Chrome' as window title
+ffmpeg -f gdigrab -framerate 30 -I title="" -c:v libx264 -an -vf "format=yuv420p" -tune zerolatency output.mp4
 
-Stream test pattern:
+# To limit recording or video operation by time
+ffmepg ... -t <number of seconds>
 
-    ffmpeg -re -f lavfi -i "testsrc2=size=640x360:rate=25" -c:v libx264 -an  -vf "format=yuv420p" -profile main -tune zerolatency -r 25 -f flv rtmp://127.0.0.1/live/test
-
-Reduce start time:
-
-	-analyzeduration 1M
-	or 
-	-probesize 100000
-	
-	-fflags +nobuffer
-
-To play the result of some operation directly
-
-    ffmpeg -i … -vcodec rawvideo -pix_fmt yuv420p -f sdl "Maybe window name"
-
-
-To convert for fast play:
-
-    ffmpeg -i $file -c:v libx264 -g 12 -crf 18 -an -tune zerolatency -f flv file.flv
-
-To capture a window on windows:
-
-    ffmpeg -f gdigrab -framerate 30 -I title="Window Name" <output data>
-
-	ffmpeg -f gdigrab -framerate 25 -offset_x XXX -offset_y YYY -video_size WidthxHeight -i desktop <output data>
-
-Note that for example, chrome uses `<html title> - Google Chrome`
-
-    ffmpeg -f gdigrab -framerate 30 -I title="" -c:v libx264 -an -vf "format=yuv420p" -tune zerolatency output.mp4
-
-Note that zerolantency is not needed if only recording normal video not intended for streaming
-
-To limit recording or video operation by time: `-t <number of seconds>`
-
+# capture single frame
+ffmepg -y -i "rtmp://ip:port/app/stream timeout=5" -vframes 1 output.jpg
+```
 
 ## To stich videos with filters (very slow)
+
 ```cmd
 @echo off
 
@@ -133,4 +79,46 @@ ffmpeg -probesize 100000 ^
 	-vcodec rawvideo -pix_fmt yuv420p -f sdl "SDL_OUTPUT"
 ```
 
+## Development
+
+### Linux
+
+Building ffmpeg on linux with **libx264** using **$HOME/libs** prefix:
+
+```sh
+# install yasm
+# install recent nasm (go http://nasm.us if distro hasn't recent version)
+# build libx264
+git clone http://git.videolan.org/git/x264.git
+cd x264
+./configure --prefix=$HOME/libs --enable-shared --enable-static
+make && make install
+
+# uncompress ffmpeg somewhere and cd into it
+PKG_CONFIG_PATH="$HOME/libs/lib/pkgconfig" ./configure --prefix=$HOME/libs --enable-shared --disable-doc --enable-gpl --enable-libx264
+make && make install
+
+```
+
+### Windows
+
+Download files from https://ffmpeg.zeranoe.com/builds for your architecture **Dev** and **Shared**.
+It is a good idea to also get the source code.
+
+### Basic program
+
+link
+
+* avformat
+* avcodec
+* avutil
+* swscale
+
+dll
+
+* avcodec-57.dll
+* avformat-57.dll
+* avutil-55.dll
+* swresample-2.dll
+* swscale-4.dll
 
