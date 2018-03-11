@@ -176,6 +176,25 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../languages/java/spring.html">
+            
+                <a href="../languages/java/spring.html">
+            
+                    
+                    Spring
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.2.4" data-path="../languages/javascript.html">
@@ -333,6 +352,19 @@
             
                     
                     browsers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="../tools/tmux.html">
+            
+                <a href="../tools/tmux.html">
+            
+                    
+                    tmux
             
                 </a>
             
@@ -616,73 +648,49 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="ffmpeg">ffmpeg</h1>
-<h2 id="linux">Linux</h2>
-<p>May need to build:</p>
-<ul>
-<li><code>yum install yasm</code></li>
-<li>go <code>nasm.us</code> copy the yum repos info you local installation</li>
-<li><code>yum install nasm</code></li>
-<li>build libx264<pre><code class="lang-shell"># git clone http://git.videolan.org/git/x264.git
-</code></pre>
-</li>
-<li>(x264) <code>./configure --prefix=$HOME/libs --enable-shared --enable-static</code></li>
-<li>(x264) <code>make &amp;&amp; make install</code></li>
-<li>(ffmpeg) <code>PKG_CONFIG_PATH=&quot;$HOME/libs/lib/pkgconfig&quot; ./configure --prefix=$HOME/libs --enable-shared --disable-doc --enable-gpl --enable-libx264</code></li>
-<li>(ffmpeg) <code>make &amp;&amp; make install</code></li>
-</ul>
-<h2 id="windows">Windows</h2>
-<p>Download files from <a href="https://ffmpeg.zeranoe.com/builds" target="_blank">https://ffmpeg.zeranoe.com/builds</a> for your architecture <strong>Dev</strong> and <strong>Shared</strong>.
-It is a good idea to also get the source code.</p>
-<h2 id="basic-program">Basic program</h2>
-<p>link</p>
-<ul>
-<li>avformat</li>
-<li>avcodec</li>
-<li>avutil</li>
-<li>swscale</li>
-</ul>
-<p>dll</p>
-<ul>
-<li>avcodec-57.dll</li>
-<li>avformat-57.dll</li>
-<li>avutil-55.dll</li>
-<li>swresample-2.dll</li>
-<li>swscale-4.dll</li>
-</ul>
-<p><em>CHECK THE FIFO MUXER, it auto retries</em></p>
 <h2 id="command-line">Command line</h2>
-<p>To list direct show devices:</p>
-<pre><code>ffplay -f dshow -list_devices true -i dummy
-</code></pre><p>To play one of the devices:</p>
-<pre><code>ffplay -f dshow -i video=&quot;Microsoft Camera Front&quot;
-</code></pre><p>To see some options:</p>
-<pre><code>ffplay -list_options true -f dshow -i video=&quot;Microsoft Camera Front&quot;
-</code></pre><p>To see it with more changes:</p>
-<pre><code>ffplay -f dshow -framerate 25 -video_size 1280x720 -i video=&quot;Microsoft Camera Front&quot;
-</code></pre><p>Streaming 1</p>
-<pre><code>ffmpeg -f dshow -framerate 15 -video_size 1280x720 -i video=&quot;Microsoft Camera Front&quot; -vcodec libx264 -an -vf &quot;format=yuv420p&quot; -profile main -tune zerolatency -f flv rtmp://127.0.0.1/live/cam
+<pre><code class="lang-sh"><span class="hljs-comment"># List directshow devices</span>
+ffplay <span class="hljs-_">-f</span> dshow -list_devices <span class="hljs-literal">true</span> -i dummy
+ffplay -list_options <span class="hljs-literal">true</span> <span class="hljs-_">-f</span> dshow -i video=<span class="hljs-string">&quot;Microsoft Camera Front&quot;</span>
 
-ffmpeg -f dshow -framerate 15 -video_size 640x360 -i video=&quot;Microsoft Camera Front&quot; -c:v libx264 -an -vf &quot;format=yuv420p&quot; -profile main -tune zerolatency -me_range 16 -me_method dia -coder ac -threads 4 -rtmp_live live -f flv rtmp://127.0.0.1/live/cam
-</code></pre><p>Stream test pattern:</p>
-<pre><code>ffmpeg -re -f lavfi -i &quot;testsrc2=size=640x360:rate=25&quot; -c:v libx264 -an  -vf &quot;format=yuv420p&quot; -profile main -tune zerolatency -r 25 -f flv rtmp://127.0.0.1/live/test
-</code></pre><p>Reduce start time:</p>
-<pre><code>-analyzeduration 1M
-or 
--probesize 100000
+<span class="hljs-comment"># Play from directshow device</span>
+ffplay <span class="hljs-_">-f</span> dshow -i video=<span class="hljs-string">&quot;Microsoft Camera Front&quot;</span>
+ffplay <span class="hljs-_">-f</span> dshow -framerate 25 -video_size 1280x720 -i video=<span class="hljs-string">&quot;Microsoft Camera Front&quot;</span>
 
--fflags +nobuffer
-</code></pre><p>To play the result of some operation directly</p>
-<pre><code>ffmpeg -i &#x2026; -vcodec rawvideo -pix_fmt yuv420p -f sdl &quot;Maybe window name&quot;
-</code></pre><p>To convert for fast play:</p>
-<pre><code>ffmpeg -i $file -c:v libx264 -g 12 -crf 18 -an -tune zerolatency -f flv file.flv
-</code></pre><p>To capture a window on windows:</p>
-<pre><code>ffmpeg -f gdigrab -framerate 30 -I title=&quot;Window Name&quot; &lt;output data&gt;
+<span class="hljs-comment">#Streaming 1</span>
+ffmpeg <span class="hljs-_">-f</span> dshow -framerate 15 -video_size 1280x720 -i video=<span class="hljs-string">&quot;Microsoft Camera Front&quot;</span> -vcodec libx264 -an -vf <span class="hljs-string">&quot;format=yuv420p&quot;</span> -profile main -tune zerolatency <span class="hljs-_">-f</span> flv rtmp://127.0.0.1/live/cam
 
-ffmpeg -f gdigrab -framerate 25 -offset_x XXX -offset_y YYY -video_size WidthxHeight -i desktop &lt;output data&gt;
-</code></pre><p>Note that for example, chrome uses <code>&lt;html title&gt; - Google Chrome</code></p>
-<pre><code>ffmpeg -f gdigrab -framerate 30 -I title=&quot;&quot; -c:v libx264 -an -vf &quot;format=yuv420p&quot; -tune zerolatency output.mp4
-</code></pre><p>Note that zerolantency is not needed if only recording normal video not intended for streaming</p>
-<p>To limit recording or video operation by time: <code>-t &lt;number of seconds&gt;</code></p>
+ffmpeg <span class="hljs-_">-f</span> dshow -framerate 15 -video_size 640x360 -i video=<span class="hljs-string">&quot;Microsoft Camera Front&quot;</span> -c:v libx264 -an -vf <span class="hljs-string">&quot;format=yuv420p&quot;</span> -profile main -tune zerolatency -me_range 16 -me_method dia -coder ac -threads 4 -rtmp_live live <span class="hljs-_">-f</span> flv rtmp://127.0.0.1/live/cam
+
+<span class="hljs-comment"># Stream test pattern</span>
+ffmpeg -re <span class="hljs-_">-f</span> lavfi -i <span class="hljs-string">&quot;testsrc2=size=640x360:rate=25&quot;</span> -c:v libx264 -an  -vf <span class="hljs-string">&quot;format=yuv420p&quot;</span> -profile main -tune zerolatency -r 25 <span class="hljs-_">-f</span> flv rtmp://127.0.0.1/live/<span class="hljs-built_in">test</span>
+
+<span class="hljs-comment"># Faster start</span>
+ffmpeg -analyzeduration 1M ...
+ffmpeg -probesize 100000
+
+<span class="hljs-comment"># Less delay</span>
+ffmegp -fflags nobuffer ...
+
+<span class="hljs-comment"># To play the result of some ffmpeg operation directly</span>
+ffmpeg -i &#x2026; -vcodec rawvideo -pix_fmt yuv420p <span class="hljs-_">-f</span> sdl <span class="hljs-string">&quot;Maybe window name&quot;</span>
+
+<span class="hljs-comment"># Convert video for fast start</span>
+ffmpeg -i <span class="hljs-variable">$file</span> -c:v libx264 -g 12 -crf 18 -an -tune zerolatency <span class="hljs-_">-f</span> flv file.flv
+
+<span class="hljs-comment"># Capture a window on windows</span>
+ffmpeg <span class="hljs-_">-f</span> gdigrab -framerate 30 -I title=<span class="hljs-string">&quot;Window Name&quot;</span> &lt;output data&gt;
+ffmpeg <span class="hljs-_">-f</span> gdigrab -framerate 25 -offset_x XXX -offset_y YYY -video_size WidthxHeight -i desktop &lt;output data&gt;
+
+<span class="hljs-comment"># <span class="hljs-doctag">Note:</span> chrome uses &apos;&lt;html title&gt; - Google Chrome&apos; as window title</span>
+ffmpeg <span class="hljs-_">-f</span> gdigrab -framerate 30 -I title=<span class="hljs-string">&quot;&quot;</span> -c:v libx264 -an -vf <span class="hljs-string">&quot;format=yuv420p&quot;</span> -tune zerolatency output.mp4
+
+<span class="hljs-comment"># To limit recording or video operation by time</span>
+ffmepg ... -t &lt;number of seconds&gt;
+
+<span class="hljs-comment"># capture single frame</span>
+ffmepg -y -i <span class="hljs-string">&quot;rtmp://ip:port/app/stream timeout=5&quot;</span> -vframes 1 output.jpg
+</code></pre>
 <h2 id="to-stich-videos-with-filters-very-slow">To stich videos with filters (very slow)</h2>
 <pre><code class="lang-cmd">@<span class="hljs-built_in">echo</span> off
 
@@ -713,6 +721,40 @@ ffmpeg -probesize <span class="hljs-number">100000</span> ^
     -an ^
     -vcodec rawvideo -pix_fmt yuv420p -f sdl &quot;SDL_OUTPUT&quot;
 </code></pre>
+<h2 id="development">Development</h2>
+<h3 id="linux">Linux</h3>
+<p>Building ffmpeg on linux with <strong>libx264</strong> using <strong>$HOME/libs</strong> prefix:</p>
+<pre><code class="lang-sh"><span class="hljs-comment"># install yasm</span>
+<span class="hljs-comment"># install recent nasm (go http://nasm.us if distro hasn&apos;t recent version)</span>
+<span class="hljs-comment"># build libx264</span>
+git <span class="hljs-built_in">clone</span> http://git.videolan.org/git/x264.git
+<span class="hljs-built_in">cd</span> x264
+./configure --prefix=<span class="hljs-variable">$HOME</span>/libs --enable-shared --enable-static
+make &amp;&amp; make install
+
+<span class="hljs-comment"># uncompress ffmpeg somewhere and cd into it</span>
+PKG_CONFIG_PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/libs/lib/pkgconfig&quot;</span> ./configure --prefix=<span class="hljs-variable">$HOME</span>/libs --enable-shared --disable-doc --enable-gpl --enable-libx264
+make &amp;&amp; make install
+</code></pre>
+<h3 id="windows">Windows</h3>
+<p>Download files from <a href="https://ffmpeg.zeranoe.com/builds" target="_blank">https://ffmpeg.zeranoe.com/builds</a> for your architecture <strong>Dev</strong> and <strong>Shared</strong>.
+It is a good idea to also get the source code.</p>
+<h3 id="basic-program">Basic program</h3>
+<p>link</p>
+<ul>
+<li>avformat</li>
+<li>avcodec</li>
+<li>avutil</li>
+<li>swscale</li>
+</ul>
+<p>dll</p>
+<ul>
+<li>avcodec-57.dll</li>
+<li>avformat-57.dll</li>
+<li>avutil-55.dll</li>
+<li>swresample-2.dll</li>
+<li>swscale-4.dll</li>
+</ul>
 
                                 
                                 </section>
@@ -756,7 +798,7 @@ ffmpeg -probesize <span class="hljs-number">100000</span> ^
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ffmpeg","level":"1.4.1","depth":2,"next":{"title":"Panorama","level":"1.4.2","depth":2,"path":"video/panorama.md","ref":"video/panorama.md","articles":[]},"previous":{"title":"Video","level":"1.4","depth":1,"path":"video/video.md","ref":"video/video.md","articles":[{"title":"ffmpeg","level":"1.4.1","depth":2,"path":"video/ffmpeg.md","ref":"video/ffmpeg.md","articles":[]},{"title":"Panorama","level":"1.4.2","depth":2,"path":"video/panorama.md","ref":"video/panorama.md","articles":[]},{"title":"SDL2","level":"1.4.3","depth":2,"path":"video/sdl2.md","ref":"video/sdl2.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"video/ffmpeg.md","mtime":"2018-01-31T01:27:58.513Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-05T14:29:57.750Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ffmpeg","level":"1.4.1","depth":2,"next":{"title":"Panorama","level":"1.4.2","depth":2,"path":"video/panorama.md","ref":"video/panorama.md","articles":[]},"previous":{"title":"Video","level":"1.4","depth":1,"path":"video/video.md","ref":"video/video.md","articles":[{"title":"ffmpeg","level":"1.4.1","depth":2,"path":"video/ffmpeg.md","ref":"video/ffmpeg.md","articles":[]},{"title":"Panorama","level":"1.4.2","depth":2,"path":"video/panorama.md","ref":"video/panorama.md","articles":[]},{"title":"SDL2","level":"1.4.3","depth":2,"path":"video/sdl2.md","ref":"video/sdl2.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"video/ffmpeg.md","mtime":"2018-03-11T09:49:56.755Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-11T09:57:56.420Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

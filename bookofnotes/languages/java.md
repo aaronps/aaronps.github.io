@@ -231,3 +231,15 @@ public class RestExample {
 	}
 }
 ```
+
+## mybatis
+
+```java
+public interface SomeMapper {
+	
+	// use java constants from annotations, may need review
+	@Select("select xxx from yyy where zzz = ${@full.java.class.or.enum@value}")
+	List<String> listSomething();
+
+}
+```

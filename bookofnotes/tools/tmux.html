@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>vscode · GitBook</title>
+        <title>tmux · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="cmake.html" />
+    <link rel="next" href="../video/video.html" />
     
     
-    <link rel="prev" href="eclipse.html" />
+    <link rel="prev" href="browsers.html" />
     
 
     </head>
@@ -307,7 +307,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.6" data-path="vscode.html">
+        <li class="chapter " data-level="1.3.6" data-path="vscode.html">
             
                 <a href="vscode.html">
             
@@ -359,7 +359,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.10" data-path="tmux.html">
+        <li class="chapter active" data-level="1.3.10" data-path="tmux.html">
             
                 <a href="tmux.html">
             
@@ -632,7 +632,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >vscode</a>
+        <a href=".." >tmux</a>
     </h1>
 </div>
 
@@ -647,72 +647,11 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="vscode">vscode</h1>
-<h2 id="keys">keys</h2>
-<pre><code>Keyboard shrtcuts
-    ctrl-k ctrl-s
-
-duplicate line or selected lines:
-    alt-shift-(up or down)
-
-move line or selection up/down:
-    alt-(up or down)
-
-run build task:
-    ctrl-shift-b
-
-run task:
-    ctrl-shift-p
-        search for run task
-        select task name
-
-intellisense:
-    ctrl-space
-</code></pre><h2 id="tasks">Tasks</h2>
-<p>Tasks uses a configuration file: <code>.vscode/tasks.json</code> on the current opened
-folder. You can create yourself, or select menu <code>Tasks -&gt; Configure Tasks</code>. When
-editing the file, use intellisense (<code>ctrl+space</code>) to know what to type.</p>
-<pre><code class="lang-json">{
-    <span class="hljs-comment">// See https://go.microsoft.com/fwlink/?LinkId=733558</span>
-    <span class="hljs-comment">// for the documentation about the tasks.json format</span>
-    <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;2.0.0&quot;</span>,
-    <span class="hljs-string">&quot;tasks&quot;</span>: [
-        {
-            <span class="hljs-string">&quot;group&quot;</span>: <span class="hljs-string">&quot;build&quot;</span>, <span class="hljs-comment">// will appear on ctrl-shift-b menu</span>
-            <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;task name&quot;</span>,
-            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;shell&quot;</span>,
-            <span class="hljs-string">&quot;command&quot;</span>: <span class="hljs-string">&quot;command to run&quot;</span>,
-            <span class="hljs-string">&quot;presentation&quot;</span>: {
-                <span class="hljs-string">&quot;panel&quot;</span>: <span class="hljs-string">&quot;dedicated&quot;</span> <span class="hljs-comment">// default is shared </span>
-            },
-            <span class="hljs-string">&quot;problemMatcher&quot;</span>: [] <span class="hljs-comment">// avoid vscode asking you what to do with output</span>
-
-        }
-    ]
-}
-</code></pre>
-<p>For setting keys to run tasks (<em>use intellisense, luke</em>) </p>
+                                <h1 id="tmux">tmux</h1>
+<p>tmux attach -&gt; reattach</p>
+<p><code>ctrl-b</code> for tmux commands</p>
 <ul>
-<li>Menu <code>File -&gt; Preferences -&gt; Keyboard Shortcuts</code> or <code>ctrl+k ctrl+s</code></li>
-<li>edit <code>keybindings.json</code><pre><code class="lang-json">{ <span class="hljs-string">&quot;key&quot;</span>: <span class="hljs-string">&quot;ctrl+xxx&quot;</span>, <span class="hljs-string">&quot;command&quot;</span>: <span class="hljs-string">&quot;runTask&quot;</span>, <span class="hljs-string">&quot;args&quot;</span>: <span class="hljs-string">&quot;taskname&quot;</span>}
-</code></pre>
-</li>
-</ul>
-<h2 id="plugins-selection">plugins selection</h2>
-<p>vuejs</p>
-<ul>
-<li>vetur by Pine Wu</li>
-</ul>
-<p>java</p>
-<ul>
-<li>Java Extension Pack by Microsoft </li>
-<li>Gradle lanuage support by Naco Siren</li>
-</ul>
-<p>c++</p>
-<ul>
-<li>C/C++ by Microsoft</li>
-<li>CMake by twxs</li>
-<li>CMake Tools by vector-of-bool</li>
+<li><code>d</code> - detach</li>
 </ul>
 
                                 
@@ -741,12 +680,12 @@ editing the file, use intellisense (<code>ctrl+space</code>) to know what to typ
 
             
                 
-                <a href="eclipse.html" class="navigation navigation-prev " aria-label="Previous page: eclipse">
+                <a href="browsers.html" class="navigation navigation-prev " aria-label="Previous page: browsers">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="cmake.html" class="navigation navigation-next " aria-label="Next page: cmake">
+                <a href="../video/video.html" class="navigation navigation-next " aria-label="Next page: Video">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -757,7 +696,7 @@ editing the file, use intellisense (<code>ctrl+space</code>) to know what to typ
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"vscode","level":"1.3.6","depth":2,"next":{"title":"cmake","level":"1.3.7","depth":2,"path":"tools/cmake.md","ref":"tools/cmake.md","articles":[]},"previous":{"title":"eclipse","level":"1.3.5","depth":2,"path":"tools/eclipse.md","ref":"tools/eclipse.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/vscode.md","mtime":"2018-03-11T06:04:44.594Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-11T09:57:56.420Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"tmux","level":"1.3.10","depth":2,"next":{"title":"Video","level":"1.4","depth":1,"path":"video/video.md","ref":"video/video.md","articles":[{"title":"ffmpeg","level":"1.4.1","depth":2,"path":"video/ffmpeg.md","ref":"video/ffmpeg.md","articles":[]},{"title":"Panorama","level":"1.4.2","depth":2,"path":"video/panorama.md","ref":"video/panorama.md","articles":[]},{"title":"SDL2","level":"1.4.3","depth":2,"path":"video/sdl2.md","ref":"video/sdl2.md","articles":[]}]},"previous":{"title":"browsers","level":"1.3.9","depth":2,"path":"tools/browsers.md","ref":"tools/browsers.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/tmux.md","mtime":"2018-03-08T01:49:26.781Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-11T09:57:56.420Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

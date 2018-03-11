@@ -176,6 +176,25 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../languages/java/spring.html">
+            
+                <a href="../languages/java/spring.html">
+            
+                    
+                    Spring
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.2.4" data-path="../languages/javascript.html">
@@ -333,6 +352,19 @@
             
                     
                     browsers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="tmux.html">
+            
+                <a href="tmux.html">
+            
+                    
+                    tmux
             
                 </a>
             
@@ -616,18 +648,13 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="gradle">gradle</h1>
-<h2 id="install-and-configure">Install and configure</h2>
-<ol>
-<li>Download gradle-${version}-bin.zip.</li>
-<li>Uncompress somewhere, add its &quot;bin&quot; folder to path</li>
-<li>Create <code>~/.gradle/init.gradle</code> with following contents for China</li>
-</ol>
+<p>Install:</p>
+<blockquote>
+<p>Download gradle-${version}-bin.zip, uncompress, add bin folder to path.</p>
+</blockquote>
+<p>Configuration:</p>
+<p><em>Adding this config in <code>~/.gradle/init.gradle</code> file will make some tasks more conveniente, and faster access to repositories from China.</em></p>
 <pre><code class="lang-groovy">allprojects {
-
-    <span class="hljs-comment">// flysnow.org is not good, recomend to not use wrapper and download the binary manually.</span>
-    <span class="hljs-comment">// task wrapper(type: Wrapper) {</span>
-    <span class="hljs-comment">//    distributionUrl = &quot;http://mirrors.flysnow.org/gradle/gradle-${gradleVersion}-bin.zip&quot;</span>
-    <span class="hljs-comment">// }</span>
 
     <span class="hljs-comment">// task example</span>
     task repositories {
@@ -652,7 +679,7 @@
             url <span class="hljs-string">&quot;file:///path/to/the/local/repo&quot;</span>
         }
 
-        <span class="hljs-comment">// replace standard repositories with aliyun mirrors</span>
+        <span class="hljs-comment">// replace standard repositories with aliyun mirrors for fast China access</span>
         all { ArtifactRepository repo -&gt;
 
             <span class="hljs-keyword">if</span> ( (repo.name == <span class="hljs-string">&quot;BintrayJCenter&quot;</span>) &amp;&amp; (repo.url.toString() == <span class="hljs-string">&quot;https://jcenter.bintray.com/&quot;</span>) ) {
@@ -668,9 +695,34 @@
     }  
 }
 </code></pre>
-<h3 id="create-project">Create project</h3>
-<pre><code>gradle init --type &lt;type&gt;
-</code></pre><p>Where type might be</p>
+<p>Basic commands:</p>
+<pre><code class="lang-sh"><span class="hljs-comment"># create project</span>
+gradle init --type &lt;project <span class="hljs-built_in">type</span>&gt;
+
+<span class="hljs-comment"># create project without wrapper, using previosly defined &apos;initSimple&apos; task</span>
+gradle initSimple --type &lt;project <span class="hljs-built_in">type</span>&gt;
+
+<span class="hljs-comment"># initialize gradle wrapper on current project</span>
+gradle wrapper
+
+<span class="hljs-comment"># run multiple tasks</span>
+gradle task1 task2 task3
+gradle buildFrontend war bootRepackage deploy
+
+<span class="hljs-comment"># run without daemon</span>
+gradle --no-daemon &lt;task&gt;
+
+<span class="hljs-comment"># stop daemon</span>
+gradle --stop
+
+<span class="hljs-comment"># check running daemons status</span>
+gradle --status
+
+<span class="hljs-comment"># run continuous, will rerun task when input changes</span>
+gradle --continuous &lt;task&gt;
+gradle -t &lt;task&gt;
+</code></pre>
+<p>Project types:</p>
 <ul>
 <li>basic</li>
 <li>groovy-application</li>
@@ -680,18 +732,7 @@
 <li>pom</li>
 <li>scala-library</li>
 </ul>
-<h3 id="init-without-wrapper">Init without wrapper</h3>
-<p>By default, <code>gradle init</code> depends on wrapper, if you dont&apos; want it, either delete
-wrapper files after create, modify init task to not depend on wrapper or create 
-a new tasks of type InitBuild, for example on the global configuration file:</p>
-<pre><code>task initSimple(type: InitBuild) {}
-</code></pre><p>This task will work exactly as init but without the wrapper.</p>
-<h3 id="initialize-wrapper">Initialize wrapper</h3>
-<p>As 2017-12-02 it seems mirrors.flysnow.org might be down, maybe avoid the wrapper altogether.</p>
-<pre><code>gradle wrapper --gradle-distribution-url http://mirrors.flysnow.org/gradle/gradle-4.1-bin.zip
-- or -
-gradle wrapper
-</code></pre><h3 id="add-a-repository">add a repository</h3>
+<h3 id="add-a-repository">add a repository</h3>
 <pre><code>repositories { jcenter() }
 </code></pre><h3 id="add-dependencies">add dependencies</h3>
 <ul>
@@ -791,12 +832,7 @@ uploadArchives {
         add project.repositories.somereponame
     }
 }
-</code></pre><h3 id="wrapper-mirror-for-china">wrapper mirror for China</h3>
-<p><em>note: mirrors.flysnow.org might not work</em></p>
-<p>edit <code>gradle/wrapper/gradle-wrapper.properties</code></p>
-<pre><code>distributionUrl=http://mirrors.flysnow.org/gradle/gradle-3.5-bin.zip
-</code></pre><p>(need to check) If the import of project or download shows errors, go to $HOME/.gradle and try to remove wrapper</p>
-<h3 id="to-include-other-projects-as-dependency">To include other projects as dependency</h3>
+</code></pre><h3 id="to-include-other-projects-as-dependency">To include other projects as dependency</h3>
 <p><code>settings.gradle</code></p>
 <pre><code>include &apos;:ref-project-name&apos;
 project(&apos;:ref-project-name&apos;).projectDir = file(&apos;path/to/project&apos;)
@@ -874,7 +910,7 @@ using bootRepackage.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gradle","level":"1.3.3","depth":2,"next":{"title":"intellij","level":"1.3.4","depth":2,"path":"tools/intellij.md","ref":"tools/intellij.md","articles":[]},"previous":{"title":"npm","level":"1.3.2","depth":2,"path":"tools/npm.md","ref":"tools/npm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/gradle.md","mtime":"2018-03-05T08:21:06.616Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-05T14:29:57.750Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gradle","level":"1.3.3","depth":2,"next":{"title":"intellij","level":"1.3.4","depth":2,"path":"tools/intellij.md","ref":"tools/intellij.md","articles":[]},"previous":{"title":"npm","level":"1.3.2","depth":2,"path":"tools/npm.md","ref":"tools/npm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/gradle.md","mtime":"2018-03-06T12:47:44.742Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-11T09:57:56.420Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

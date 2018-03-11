@@ -124,3 +124,17 @@ StandardOutput=null
 [Install]
 WantedBy=multi-user.target
 ----
+
+## message timeout
+
+set config value: retention.ms = milliseconds_to_keep
+
+```sh
+
+# show topic configured settings
+kafka-topics.sh --zookeeper localhost:2181 --describe --entity-type topics --entity-name the-topic-name
+
+# change topic settings
+kafka-topics.sh --zookeeper localhost:@181 --alter --entity-type topics --entity-name the-topic-name --add-config retention.ms=1234
+
+```

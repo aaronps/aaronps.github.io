@@ -1,19 +1,15 @@
 # gradle
 
-## Install and configure
+Install:
+> Download gradle-${version}-bin.zip, uncompress, add bin folder to path.
 
-1. Download gradle-${version}-bin.zip.
-2. Uncompress somewhere, add its "bin" folder to path
-3. Create `~/.gradle/init.gradle` with following contents for China
+Configuration:
+
+_Adding this config in `~/.gradle/init.gradle` file will make some tasks more conveniente, and faster access to repositories from China._
 
 ```groovy
 allprojects {
 
-	// flysnow.org is not good, recomend to not use wrapper and download the binary manually.
-    // task wrapper(type: Wrapper) {
-    //    distributionUrl = "http://mirrors.flysnow.org/gradle/gradle-${gradleVersion}-bin.zip"
-    // }
-    
 	// task example
     task repositories {
 		group 'help'
@@ -37,7 +33,7 @@ allprojects {
 			url "file:///path/to/the/local/repo"
 		}
 
-		// replace standard repositories with aliyun mirrors
+		// replace standard repositories with aliyun mirrors for fast China access
         all { ArtifactRepository repo ->
         
             if ( (repo.name == "BintrayJCenter") && (repo.url.toString() == "https://jcenter.bintray.com/") ) {
@@ -54,11 +50,41 @@ allprojects {
 }
 ```
 
-### Create project
+Basic commands:
 
-    gradle init --type <type>
+```sh
+# create project
+gradle init --type <project type>
 
-Where type might be
+# create project without wrapper, using previosly defined 'initSimple' task
+gradle initSimple --type <project type>
+
+# initialize gradle wrapper on current project
+gradle wrapper
+
+# run multiple tasks
+gradle task1 task2 task3
+gradle buildFrontend war bootRepackage deploy
+
+# run without daemon
+gradle --no-daemon <task>
+
+# stop daemon
+gradle --stop
+
+# check running daemons status
+gradle --status
+
+# run continuous, will rerun task when input changes
+gradle --continuous <task>
+gradle -t <task>
+
+
+
+```
+
+Project types:
+
 * basic
 * groovy-application
 * groovy-library
@@ -67,23 +93,6 @@ Where type might be
 * pom
 * scala-library
 
-### Init without wrapper
-
-By default, `gradle init` depends on wrapper, if you dont' want it, either delete
-wrapper files after create, modify init task to not depend on wrapper or create 
-a new tasks of type InitBuild, for example on the global configuration file:
-
-	task initSimple(type: InitBuild) {}
-
-This task will work exactly as init but without the wrapper.
-
-### Initialize wrapper
-
-As 2017-12-02 it seems mirrors.flysnow.org might be down, maybe avoid the wrapper altogether.
-
-    gradle wrapper --gradle-distribution-url http://mirrors.flysnow.org/gradle/gradle-4.1-bin.zip
-	- or -
-	gradle wrapper
 
 ### add a repository
 
@@ -221,15 +230,6 @@ _note: it can be on global `init.gradle`_
 		}
 	}
 
-### wrapper mirror for China
-
-_note: mirrors.flysnow.org might not work_
-
-edit `gradle/wrapper/gradle-wrapper.properties`
-
-    distributionUrl=http://mirrors.flysnow.org/gradle/gradle-3.5-bin.zip
-
-(need to check) If the import of project or download shows errors, go to $HOME/.gradle and try to remove wrapper
 
 ### To include other projects as dependency
 
