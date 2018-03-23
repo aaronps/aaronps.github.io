@@ -20,7 +20,7 @@ final String[] joinedArray = Stream.concat( Stream.of(array1),
 
 ```
 
-## Servlets
+## Servlet
 
 ```java
 // Add "/*" if you want to use req.getPathInfo() which will return:
@@ -31,24 +31,24 @@ final String[] joinedArray = Stream.concat( Stream.of(array1),
 @WebServlet("/something/*")
 public class MyServlet extends HttpServlet {
 
-	@Override
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-		throws ServletException, IOException {
-		
-		// to set servlet response content type
-		resp.setContentType("text/plain");
+        throws ServletException, IOException {
+        
+        // to set servlet response content type
+        resp.setContentType("text/plain");
 
-		// write something on the response with "out"
-		final PrintWriter out = resp.getWriter();
+        // write something on the response with "out"
+        final PrintWriter out = resp.getWriter();
         
         out.printf("PathInfo: %s\n", req.getPathInfo());
-		
-		// HttpServletRequest.getHeader() is case insensitive
-		out.printf( "Insensitive header example: [%s] and [%s]\n",
-					req.getHeader("Host"),
-					req.getHeader("host"));
-		
-		// use setStatus to manually change the response code
+        
+        // HttpServletRequest.getHeader() is case insensitive
+        out.printf( "Insensitive header example: [%s] and [%s]\n",
+                    req.getHeader("Host"),
+                    req.getHeader("host"));
+        
+        // use setStatus to manually change the response code
         resp.setStatus(200);
     }
 
@@ -58,7 +58,7 @@ public class MyServlet extends HttpServlet {
 ## JSP & el
 
 ```jsp
-<%-- jsp comments (doesn't appear on rendered page) --%>
+<%-- jsp comments (does not appear on rendered page) --%>
 <%-- trimDirectiveWhitespaces: remove extra whitespace from output --%>
 <%@ page contentType="text/html" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%
@@ -78,7 +78,7 @@ Old ways: Hello "<%= aName %>"
 EL ways:
 Print some attribute? &rarr; "${someAttribute}"
 Context Path: "${pageContext.request.contextPath}"
-X: ${empty param.x ? "you didn't set 'x' parameter" : param.x }
+Codition: ${empty param.x ? "you didn't set 'x' parameter" : param.x }
         </pre>
     </body>
 </html>
@@ -86,17 +86,19 @@ X: ${empty param.x ? "you didn't set 'x' parameter" : param.x }
 
 ## Tomcat
 
-* setting `antiResourceLocking="true"` on the context may inhibit reloading of JSP
+notes:
 * `CATALINA_HOME` refers to the path to tomcat, the folder uncompressed from the zip files.
 * `CATALINA_BASE` refers to the folder of the *active configuration*.
 * Tomcat sessions are saved in work folder
 
-## TomEE
+beware:
+* setting `antiResourceLocking="true"` on the context may inhibit reloading of JSP
 
-* 	Some non JavaEE jars might be scanned for EJB and other things which may
-	fail to load or report errors on TomEE. To avoid this, you need to exclude
-	thos files from scanning, add `/WEB-INF/exclusions.list`, each line is a jar
-	name prefix to skip.
+tomee:
+* Some non JavaEE jars might be scanned for EJB and other things which may
+  fail to load or report errors on TomEE. To avoid this, you need to exclude
+  those files from scanning, add `/WEB-INF/exclusions.list`, each line is a jar
+  name prefix to skip.
 
 ## Spring
 
@@ -236,10 +238,8 @@ public class RestExample {
 
 ```java
 public interface SomeMapper {
-	
-	// use java constants from annotations, may need review
-	@Select("select xxx from yyy where zzz = ${@full.java.class.or.enum@value}")
-	List<String> listSomething();
-
+    // use java constants from annotations, may need review
+    @Select("select xxx from yyy where zzz = ${@full.java.class.or.enum@value}")
+    List<String> listSomething();
 }
 ```

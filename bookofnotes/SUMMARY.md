@@ -12,6 +12,7 @@
     * [Javascript](languages/javascript.md)
     * [Haxe](languages/haxe.md)
 * Tools
+    * [browsers](tools/browsers.md)
     * [git](tools/git.md)
     * [npm](tools/npm.md)
     * [gradle](tools/gradle.md)
@@ -20,7 +21,6 @@
     * [vscode](tools/vscode.md)
     * [cmake](tools/cmake.md)
     * [mingw-w64](tools/mingw-w64.md)
-    * [browsers](tools/browsers.md)
     * [tmux](tools/tmux.md)
 * [Video](video/video.md)
     * [ffmpeg](video/ffmpeg.md)
@@ -31,10 +31,13 @@
     * [webpack](web/webpack.md)
 * Net
     * [SSL](net/ssl_certificates.md)
+    * [Tools](net/tools.md)
 * [Cloud and distributed](cloud/cloud.md)
+    * [docker](cloud/docker.md)
     * [kafka](cloud/kafka.md)
     * [zookeeper](cloud/zookeeper.md)
 * Operating Systems
     * [Linux](operatingsystems/linux.md)
+        * [Linux Dev](operatingsystems/linux-dev.md)
     * [Windows](operatingsystems/windows.md)
 

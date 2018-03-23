@@ -40,8 +40,7 @@ allprojects {
                 repo.url = "http://maven.aliyun.com/nexus/content/repositories/jcenter/"
                 println "Using Aliyun jcenter mirror: ${repo.url}"
             }
-            
-            if ( (repo.name == "MavenRepo") && (repo.url.toString() == "https://repo1.maven.org/maven2/") ) {
+            if ( (repo.name == "MavenRepo") && ((repo.url.toString() == "https://repo1.maven.org/maven2/") || (repo.url.toString() == "https://repo.maven.apache.org/maven2/")) ) {
                 repo.url = "http://maven.aliyun.com/nexus/content/repositories/central/"
                 println "Using Aliyun maven mirror: ${repo.url}"
             }
@@ -280,3 +279,25 @@ buildscript for spring and maven mirror
 	        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.6.RELEASE")
 	    }
 	}
+
+## template idea
+
+consider using Copy task for custom templates
+
+```groovy
+copy {
+   into 'build/webroot'
+   exclude '**/.svn/**'
+   from('src/main/webapp') {
+      include '**/*.jsp'
+      filter(ReplaceTokens, tokens:[copyright:'2009', version:'2.3.1'])
+   }
+   from('src/main/js') {
+      include '**/*.js'
+   }
+}
+```
+
+maybe use ~/.gradle/templates as base for downloaded
+templates, could use zip and/or full folders (including git).
+

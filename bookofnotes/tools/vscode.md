@@ -23,6 +23,13 @@ run task:
 intellisense:
     ctrl-space
 
+zoom-in/out:
+    ctrl-+ / ctrl--
+
+select theme:
+    ctrl+k ctrl-t
+    
+
 ```
 
 ## Tasks
@@ -73,3 +80,31 @@ c++
 * C/C++ by Microsoft
 * CMake by twxs
 * CMake Tools by vector-of-bool
+
+themes
+* Darcula theme by rokoroku
+
+## Settings
+
+_ctrl-, to edit_
+
+```json
+{
+    // this is changed automatically when using ctrl-+ and ctrl--
+    "window.zoomLevel": 0,
+    
+    // change default terminal to cmd (or other)
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+    
+    // add vertical lines (multiple)
+    "editor.rulers": [
+        80
+    ],
+    
+    // config java when using java plugins
+    "java.home": "C:\\Program Files\\Java\\jdk1.8.0_151",
+
+    // disable minimap
+    "editor.minimap.enabled": false
+}
+```
