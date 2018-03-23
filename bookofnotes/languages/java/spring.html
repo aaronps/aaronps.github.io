@@ -17,10 +17,6 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-asciidoc-admonition-icons/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -242,7 +238,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="../../tools/git.html">
+        <li class="chapter " data-level="1.3.1" data-path="../../tools/browsers.html">
+            
+                <a href="../../tools/browsers.html">
+            
+                    
+                    browsers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../tools/git.html">
             
                 <a href="../../tools/git.html">
             
@@ -255,7 +264,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../../tools/npm.html">
+        <li class="chapter " data-level="1.3.3" data-path="../../tools/npm.html">
             
                 <a href="../../tools/npm.html">
             
@@ -268,7 +277,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="../../tools/gradle.html">
+        <li class="chapter " data-level="1.3.4" data-path="../../tools/gradle.html">
             
                 <a href="../../tools/gradle.html">
             
@@ -281,7 +290,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="../../tools/intellij.html">
+        <li class="chapter " data-level="1.3.5" data-path="../../tools/intellij.html">
             
                 <a href="../../tools/intellij.html">
             
@@ -294,7 +303,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="../../tools/eclipse.html">
+        <li class="chapter " data-level="1.3.6" data-path="../../tools/eclipse.html">
             
                 <a href="../../tools/eclipse.html">
             
@@ -307,7 +316,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.6" data-path="../../tools/vscode.html">
+        <li class="chapter " data-level="1.3.7" data-path="../../tools/vscode.html">
             
                 <a href="../../tools/vscode.html">
             
@@ -320,7 +329,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.7" data-path="../../tools/cmake.html">
+        <li class="chapter " data-level="1.3.8" data-path="../../tools/cmake.html">
             
                 <a href="../../tools/cmake.html">
             
@@ -333,25 +342,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.8" data-path="../../tools/mingw-w64.html">
+        <li class="chapter " data-level="1.3.9" data-path="../../tools/mingw-w64.html">
             
                 <a href="../../tools/mingw-w64.html">
             
                     
                     mingw-w64
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.9" data-path="../../tools/browsers.html">
-            
-                <a href="../../tools/browsers.html">
-            
-                    
-                    browsers
             
                 </a>
             
@@ -507,6 +503,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6.2" data-path="../../net/tools.html">
+            
+                <a href="../../net/tools.html">
+            
+                    
+                    Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -526,7 +535,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../../cloud/kafka.html">
+        <li class="chapter " data-level="1.7.1" data-path="../../cloud/docker.html">
+            
+                <a href="../../cloud/docker.html">
+            
+                    
+                    docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../cloud/kafka.html">
             
                 <a href="../../cloud/kafka.html">
             
@@ -539,7 +561,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../../cloud/zookeeper.html">
+        <li class="chapter " data-level="1.7.3" data-path="../../cloud/zookeeper.html">
             
                 <a href="../../cloud/zookeeper.html">
             
@@ -581,6 +603,25 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.1" data-path="../../operatingsystems/linux-dev.html">
+            
+                <a href="../../operatingsystems/linux-dev.html">
+            
+                    
+                    Linux Dev
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -653,11 +694,10 @@
 <span class="hljs-meta">@Autowired</span> KafkaListenerEndpointRegistry registry;
 </code></pre>
 <h2 id="gradle-config">Gradle config</h2>
-<pre><code class="lang-groovy">
-<span class="hljs-comment">//-----------------------------</span>
-<span class="hljs-comment">// using old buildscript method</span>
-<span class="hljs-comment">// this method would be preffered if you want to use repo mirrors</span>
-buildscript {
+<h3 id="plugin">Plugin</h3>
+<p><em>I always add the plugin and the devtools</em></p>
+<p>Using <strong>buildscript</strong> method to add plugins we can control which repository to use</p>
+<pre><code class="lang-groovy">buildscript {
     repositories { jcenter() }
 
     dependencies {
@@ -670,25 +710,152 @@ apply <span class="hljs-string">plugin:</span> <span class="hljs-string">&apos;o
 apply <span class="hljs-string">plugin:</span> <span class="hljs-string">&apos;java&apos;</span>
 <span class="hljs-comment">// or war</span>
 apply <span class="hljs-string">plugin:</span> <span class="hljs-string">&apos;war&apos;</span>
-
-<span class="hljs-comment">//--------------------------------------------</span>
-<span class="hljs-comment">// or new method which uses plugins.gradle.org</span>
-plugins {
+</code></pre>
+<p>Using the <strong>plugins</strong> method</p>
+<pre><code class="lang-groovy">plugins {
     id <span class="hljs-string">&apos;org.springframework.boot&apos;</span> version <span class="hljs-string">&apos;1.5.10.RELEASE&apos;</span>
     id <span class="hljs-string">&apos;java&apos;</span> <span class="hljs-comment">// use java</span>
     id <span class="hljs-string">&apos;war&apos;</span>  <span class="hljs-comment">// or war</span>
 }
-<span class="hljs-comment">//--------------------------------------------</span>
-
-<span class="hljs-comment">// add this so &apos;bootRun&apos; will check for changes on src/main/resources</span>
+</code></pre>
+<h3 id="config">Config</h3>
+<pre><code class="lang-groovy"><span class="hljs-comment">// add this so &apos;bootRun&apos; will check for changes on src/main/resources</span>
 bootRun {
     addResources = <span class="hljs-literal">true</span>
 }
 
 
 dependencies {
+    <span class="hljs-comment">// add this to use devtools, very usefull for development</span>
     compile <span class="hljs-string">&apos;org.springframework.boot:spring-boot-devtools&apos;</span>
+
+    <span class="hljs-comment">// for web development</span>
     compile <span class="hljs-string">&apos;org.springframework.boot:spring-boot-starter-web&apos;</span>
+
+    <span class="hljs-comment">// websockets</span>
+    compile <span class="hljs-string">&apos;org.springframework.boot:spring-boot-starter-websocket&apos;</span>
+
+    <span class="hljs-comment">// kafka</span>
+    compile <span class="hljs-string">&apos;org.springframework.kafka:spring-kafka&apos;</span>
+
+}
+
+<span class="hljs-comment">// using undertow instead of tomcat: 1-disable tomcat</span>
+configurations {
+    compile.exclude <span class="hljs-string">module:</span> <span class="hljs-string">&quot;spring-boot-starter-tomcat&quot;</span>
+}
+
+<span class="hljs-comment">// using undertow instead of tomcat: 2-depend on undertow</span>
+dependencies {
+    compile <span class="hljs-string">&apos;org.springframework.boot:spring-boot-starter-undertow&apos;</span>
+}
+</code></pre>
+<h2 id="main">Main</h2>
+<pre><code class="lang-java"><span class="hljs-comment">// basic</span>
+<span class="hljs-meta">@SpringBootApplication</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeApplication</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        SpringApplication.run(SomeApplication.class, args);
+    }
+}
+
+<span class="hljs-comment">// scan for beans on packages not under this</span>
+<span class="hljs-meta">@SpringBootApplication</span>(scanBasePackages = {<span class="hljs-string">&quot;some.other.package&quot;</span>})
+
+<span class="hljs-comment">// better mode</span>
+<span class="hljs-meta">@SpringBootApplication</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeApplication</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">new</span> SpringApplicationBuilder(DemoApplication.class)
+            <span class="hljs-comment">// configure banner mode</span>
+            .bannerMode(Mode.OFF)
+
+            <span class="hljs-comment">// set one or more properties, this will change the config file name</span>
+            .properties(<span class="hljs-string">&quot;spring.config.name=demoapplication&quot;</span>,
+
+                        <span class="hljs-comment">// this usefull when running under tomcat, put config files in tomcat/conf</span>
+                        <span class="hljs-string">&quot;spring.config.location=classpath:/,classpath:/config/,file:./,file:./config/,file:./conf/&quot;</span>)
+
+            <span class="hljs-comment">// disable builtin servlet container</span>
+            .web(<span class="hljs-keyword">false</span>)
+
+            <span class="hljs-comment">// activate some profiles</span>
+            .profiles(<span class="hljs-string">&quot;profile1&quot;</span>, <span class="hljs-string">&quot;profile2&quot;</span>)
+
+            <span class="hljs-comment">// run the app</span>
+            .run(args);
+    }
+}
+
+<span class="hljs-comment">// initialize on a servlet container (not the embedded one)</span>
+<span class="hljs-comment">// can use the same main as previous mode to support both modes</span>
+<span class="hljs-meta">@SpringBootApplication</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeApplication</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SpringBootServletInitializer</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> SpringApplicationBuilder <span class="hljs-title">configure</span><span class="hljs-params">(SpringApplicationBuilder application)</span> </span>{
+        <span class="hljs-keyword">return</span> application.sources(SomeApplication.class)
+                          <span class="hljs-comment">// parameters same as main</span>
+                          .properties(<span class="hljs-string">&quot;...&quot;</span>)
+                          .profiles(<span class="hljs-string">&quot;...&quot;</span>)
+                          ;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-comment">// same as the previous main</span>
+    }
+}
+</code></pre>
+<h2 id="components">Components</h2>
+<pre><code class="lang-java">
+<span class="hljs-meta">@Component</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeComponent</span> </span>{
+
+    <span class="hljs-comment">// Injects the bean automatically</span>
+    <span class="hljs-meta">@Autowired</span>
+    AnotherComponent anotherComponent;
+
+    <span class="hljs-comment">// without autowired</span>
+    <span class="hljs-keyword">private</span> AnotherBean anotherBean;
+
+    <span class="hljs-comment">// can inject using setter</span>
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAnotherBean</span><span class="hljs-params">(AnotherBean anotherBean)</span> </span>{
+        <span class="hljs-keyword">this</span>.anotherBean = anotherBean;
+    }
+
+    <span class="hljs-comment">// or can inject if there is only one constructor which requires parameters</span>
+    <span class="hljs-comment">// if more than one constructor, requires Autowired annotation</span>
+    <span class="hljs-comment">// also: can mix autowired members and constructors</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">SomeComponent</span><span class="hljs-params">(AnotherBean anotherBean)</span> </span>{
+        <span class="hljs-keyword">this</span>.anotherBean = anotherBean;
+    }
+
+    <span class="hljs-comment">// this also works.</span>
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">anyNameGoes</span><span class="hljs-params">(AnotherBean anotherBean)</span> </span>{
+        <span class="hljs-keyword">this</span>.anotherBean = anotherBean;
+    }
+
+    <span class="hljs-meta">@PostConstruct</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initialize</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// this will run after constructor and injection</span>
+    }
+
+    <span class="hljs-meta">@PreDestroy</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">destroy</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// ...</span>
+    }
+
+}
+</code></pre>
+<h2 id="controllers">Controllers</h2>
+<pre><code class="lang-java">
+<span class="hljs-comment">// fix @PathVariable missing extension on controllers</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">X</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WebMvcConfigurerAdapter</span> </span>{
+    <span class="hljs-meta">@Override</span> configurePathMatch(PathMatchConfigurer matcher)
+    {
+        matcher.setUseRegisteredSuffixPatternMatch(<span class="hljs-keyword">true</span>);
+    }
 }
 </code></pre>
 
@@ -734,7 +901,7 @@ dependencies {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Spring","level":"1.2.3.1","depth":3,"next":{"title":"Javascript","level":"1.2.4","depth":2,"path":"languages/javascript.md","ref":"languages/javascript.md","articles":[]},"previous":{"title":"Java","level":"1.2.3","depth":2,"path":"languages/java.md","ref":"languages/java.md","articles":[{"title":"Spring","level":"1.2.3.1","depth":3,"path":"languages/java/spring.md","ref":"languages/java/spring.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"languages/java/spring.md","mtime":"2018-03-06T13:51:57.569Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-11T09:57:56.420Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Spring","level":"1.2.3.1","depth":3,"next":{"title":"Javascript","level":"1.2.4","depth":2,"path":"languages/javascript.md","ref":"languages/javascript.md","articles":[]},"previous":{"title":"Java","level":"1.2.3","depth":2,"path":"languages/java.md","ref":"languages/java.md","articles":[{"title":"Spring","level":"1.2.3.1","depth":3,"path":"languages/java/spring.md","ref":"languages/java/spring.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"languages/java/spring.md","mtime":"2018-03-23T14:27:27.956Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-23T14:42:50.861Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

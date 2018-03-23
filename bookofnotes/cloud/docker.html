@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>SDL2 · GitBook</title>
+        <title>docker · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../web/web.html" />
+    <link rel="next" href="kafka.html" />
     
     
-    <link rel="prev" href="panorama.html" />
+    <link rel="prev" href="cloud.html" />
     
 
     </head>
@@ -373,9 +373,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="video.html">
+        <li class="chapter " data-level="1.4" data-path="../video/video.html">
             
-                <a href="video.html">
+                <a href="../video/video.html">
             
                     
                     Video
@@ -387,9 +387,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="ffmpeg.html">
+        <li class="chapter " data-level="1.4.1" data-path="../video/ffmpeg.html">
             
-                <a href="ffmpeg.html">
+                <a href="../video/ffmpeg.html">
             
                     
                     ffmpeg
@@ -400,9 +400,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="panorama.html">
+        <li class="chapter " data-level="1.4.2" data-path="../video/panorama.html">
             
-                <a href="panorama.html">
+                <a href="../video/panorama.html">
             
                     
                     Panorama
@@ -413,9 +413,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.3" data-path="sdl2.html">
+        <li class="chapter " data-level="1.4.3" data-path="../video/sdl2.html">
             
-                <a href="sdl2.html">
+                <a href="../video/sdl2.html">
             
                     
                     SDL2
@@ -521,9 +521,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="../cloud/cloud.html">
+        <li class="chapter " data-level="1.7" data-path="cloud.html">
             
-                <a href="../cloud/cloud.html">
+                <a href="cloud.html">
             
                     
                     Cloud and distributed
@@ -535,9 +535,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../cloud/docker.html">
+        <li class="chapter active" data-level="1.7.1" data-path="docker.html">
             
-                <a href="../cloud/docker.html">
+                <a href="docker.html">
             
                     
                     docker
@@ -548,9 +548,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../cloud/kafka.html">
+        <li class="chapter " data-level="1.7.2" data-path="kafka.html">
             
-                <a href="../cloud/kafka.html">
+                <a href="kafka.html">
             
                     
                     kafka
@@ -561,9 +561,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3" data-path="../cloud/zookeeper.html">
+        <li class="chapter " data-level="1.7.3" data-path="zookeeper.html">
             
-                <a href="../cloud/zookeeper.html">
+                <a href="zookeeper.html">
             
                     
                     zookeeper
@@ -673,7 +673,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >SDL2</a>
+        <a href=".." >docker</a>
     </h1>
 </div>
 
@@ -688,63 +688,138 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="sdl-2">SDL 2</h1>
-<h2 id="download">Download</h2>
-<table>
-<thead>
-<tr>
-<th>Description</th>
-<th>File</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Source code for reference</td>
-<td>SDL2-X.X.X.zip</td>
-</tr>
-<tr>
-<td>Compiling with Visual Studio</td>
-<td>SDL2-devel-X.X.X-VC.zip</td>
-</tr>
-<tr>
-<td>Compiling with mingw-w64</td>
-<td>SDL2-devel-X.x.x-minwg.tar.gz</td>
-</tr>
-<tr>
-<td>64bit binary</td>
-<td>SDL2-X.X.X-win32-x64.zip</td>
-</tr>
-<tr>
-<td>32bit binary</td>
-<td>SDL2-X.X.X-win32-x86.zip</td>
-</tr>
-</tbody>
-</table>
-<h2 id="codeblocks-mingw-w64">Code::Blocks mingw-w64</h2>
-<p>Download and uncompress <code>SDL2-devel-2.x.x-minwg.tar.gz</code> somewhere.</p>
-<p>In Code::Blocks app type: <em>console application</em></p>
-<h3 id="build-options">Build Options</h3>
-<p>Note: replace <code>x86_64</code> to <code>i686</code> for 32bit builds.</p>
-<ul>
-<li>Search directories -&gt; Compiler: add path to <code>SDL2-X.X.X/x86_64-w64-mingw32/include/SDL2</code>.</li>
-<li>Search directories -&gt; Linker: add path to <code>SDL2-X.X.X/x86_64-w64-mingw32/include/SDL2</code>.</li>
-<li>Linker Settings -&gt; Link libraries<ul>
-<li>mingw32</li>
-<li>SDL2main</li>
-<li>SDL</li>
-</ul>
-</li>
-</ul>
-<p>After building, copy <code>SDL2.dll</code> (and the Readme) from <code>SDL2-X.X.X-win32-x64.zip</code> (or <code>x86</code> for 32bits) to your binary output. </p>
-<h2 id="visual-studio-2017">Visual Studio 2017</h2>
-<p>Download and uncompress <code>SDL2-devel-X.X.X-VC.zip</code> somewhere.</p>
-<h3 id="project-properties">Project properties</h3>
-<ul>
-<li>(All Platforms) C/C++ -&gt; General -&gt; Additional include directories: add path to <code>SDL2-X.X.X-VC\include</code></li>
-<li>(All Platforms) Linker -&gt; Input -&gt; Additional Dependencies: add <code>SDL2.lib;SDL2Main.lib</code> </li>
-<li>Linker -&gt; General -&gt; Additional library directories: add path to <code>SDL2-X.X.X-VC\lib\x64</code> (or <code>x86</code> for 32bits)</li>
-</ul>
-<p>After bulding copy the same dll files as mingw build.</p>
+                                <h1 id="docker">Docker</h1>
+<p>ports:</p>
+<pre><code>2376/tcp - docker config port?
+
+2377/tcp - cluster management comms
+7946/{tcp,udp} - comm between nodes
+4789/udp overlay network
+</code></pre><p>if encripted network uses ip proto 50 (ESP)</p>
+<p>user: docker/tcuser</p>
+<p>docker image pull swarm (before creation)</p>
+<p>shell has some environment variables regarding to which docker-machine to connect
+env | grep DOCKER</p>
+<p>set environment to work with machine
+eval <code>docker-machine env machine_name</code></p>
+<p>if weird errors happens about connecting, check environment variables, maybe not set correctly</p>
+<h2 id="centos">centos</h2>
+<pre><code class="lang-sh">
+<span class="hljs-comment"># bad, dont do: yum install docker</span>
+
+<span class="hljs-comment"># add mirror repo</span>
+wget https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/docker-ce.repo
+<span class="hljs-comment">#replace download.docker.com with mirrors.tuna.tsinghua.edu.cn/docker-ce</span>
+yum install docker-ce
+
+<span class="hljs-comment">#in centos 7.2</span>
+yum install docker-ce-17.06.1.ce
+
+<span class="hljs-comment"># in the centos i tested centos would complay about overlay2 and xfs needing to reformat</span>
+edit daemon.json, add:
+<span class="hljs-string">&quot;storage-driver&quot;</span>: <span class="hljs-string">&quot;overlay&quot;</span>
+
+
+
+
+<span class="hljs-comment"># For china, edit /etc/docker/daemon.json, add:</span>
+<span class="hljs-comment"># &quot;registry-mirrors&quot;: [&quot;https://registry.docker-cn.com&quot;]</span>
+<span class="hljs-comment"># this also works on docker tools, you must docker-machine ssh and do there</span>
+
+systemctl start docker
+
+
+docker image pull mysql:5.7
+</code></pre>
+<h2 id="windows">windows</h2>
+<p>win10 pro: docker-for-windows (uses hyperv)
+other windows: docker toolbox (uses virtualbox)</p>
+<p>After install run Docker quickstart terminal it does some initial configuration
+and downloads some files</p>
+<p>If want to save machines on a custom folder (not default ~/.docker/machine/...)
+then set environment variable MACHINE_STORAGE_PATH and it is what it will use.</p>
+<pre><code class="lang-sh">
+docker --version
+docker info
+
+docker image  ...
+
+docker container ...
+
+docker run ...
+
+<span class="hljs-comment"># remove container after finish</span>
+docker run ... --rm
+
+<span class="hljs-comment"># run interactive session</span>
+docker run -it &lt;image&gt; &lt;<span class="hljs-built_in">command</span>&gt;
+
+<span class="hljs-comment"># detach from interactive session: Press ctrl+p ctrl+q</span>
+<span class="hljs-comment"># attach to running session: press enter twice after this command</span>
+docker attach &lt;session&gt;
+
+<span class="hljs-comment"># list sessions</span>
+docker ps
+
+<span class="hljs-comment"># download image locally. Note that this is automatic when you &quot;run&quot;.</span>
+<span class="hljs-comment"># docker image pull == docker pull</span>
+docker image pull image/name
+docker pull mysql:5.6
+
+<span class="hljs-comment"># get things from china registry</span>
+docker pull registry.docker-cn.com/library/mysql:5.6
+
+docker run --name testmysql -p 3306:3306 <span class="hljs-_">-e</span> MYSQL_ROOT_PASSWORD=root <span class="hljs-_">-d</span> mysql:5.6
+docker run -it --link some-mysql:mysql --rm mysql:5.6 sh -c <span class="hljs-string">&apos;exec mysql -h&quot;$MYSQL_PORT_3306_TCP_ADDR&quot; -P&quot;$MYSQL_PORT_3306_TCP_PORT&quot; -uroot -p&quot;$MYSQL_ENV_MYSQL_ROOT_PASSWORD&quot;&apos;</span>
+docker run -it --rm mysql mysql -hsome.mysql.host -usome-mysql-user -p
+
+<span class="hljs-comment"># run with -p port:port to share a port, -P is not sharing it</span>
+
+<span class="hljs-comment"># shell has some environment variables regarding to which docker-machine to connect</span>
+env | grep DOCKER
+
+<span class="hljs-comment"># set environment to work with machine</span>
+<span class="hljs-built_in">eval</span> `docker-machine env machine_name`
+
+
+<span class="hljs-comment"># add remote host to docker-machine: 1- create keys if don&apos;t have</span>
+ssh-keygen -t rsa
+
+<span class="hljs-comment"># add remote host to docker-machine: 2- add it</span>
+docker-machine create <span class="hljs-_">-d</span> generic
+    --generic-ip-address &lt;ip&gt;       <span class="hljs-comment"># MUST: the accesible ip of the machine</span>
+    --generic-engine-port &lt;port&gt;    <span class="hljs-comment"># default: 2376</span>
+    --generic-ssh-key &lt;path/to/key&gt; <span class="hljs-comment"># default to user default</span>
+    --generic-ssh-port &lt;port&gt;       <span class="hljs-comment"># default 22</span>
+    --generic-ssh-user &lt;user&gt;       <span class="hljs-comment"># default: &apos;root&apos;</span>
+
+
+<span class="hljs-comment"># to check: when doing reprovisioning, the hostname might be rewritten</span>
+<span class="hljs-comment"># checked: regenerate-certs does change the hostname</span>
+</code></pre>
+<h2 id="swarm">swarm</h2>
+<pre><code class="lang-sh">
+<span class="hljs-comment">#docker-machine ssh name</span>
+<span class="hljs-comment">#docker swarm init --advertise-addr </span>
+
+<span class="hljs-comment"># when create machine, add the --swarm parameter, otherwise somethings might fail</span>
+docker-machine create ... --swarm
+
+<span class="hljs-comment"># NOTE the ports must be forwarded and not firewalled</span>
+
+<span class="hljs-comment"># init the master</span>
+<span class="hljs-comment"># if it is a virtual machine, the advertise ip:port should be public and forwarded</span>
+<span class="hljs-comment"># and listen-addr should be the one of the the virtual network card which receives</span>
+<span class="hljs-comment"># the forward</span>
+docker swarm init --advertise-addr &lt;ip:port&gt; --listen-addr &lt;ip:port&gt;
+
+<span class="hljs-comment"># to get the token or command needed to add workers or managers</span>
+docker swarm join-token &lt;worker|manager&gt;
+
+<span class="hljs-comment"># on the workers run the command (remember the manager port should be forwarded</span>
+<span class="hljs-comment"># and not firewalled)</span>
+docker swarm join --advertise-addr ip:port --token &lt;token&gt; ip:port
+</code></pre>
 
                                 
                                 </section>
@@ -772,12 +847,12 @@
 
             
                 
-                <a href="panorama.html" class="navigation navigation-prev " aria-label="Previous page: Panorama">
+                <a href="cloud.html" class="navigation navigation-prev " aria-label="Previous page: Cloud and distributed">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../web/web.html" class="navigation navigation-next " aria-label="Next page: Web">
+                <a href="kafka.html" class="navigation navigation-next " aria-label="Next page: kafka">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -788,7 +863,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SDL2","level":"1.4.3","depth":2,"next":{"title":"Web","level":"1.5","depth":1,"path":"web/web.md","ref":"web/web.md","articles":[{"title":"vuejs","level":"1.5.1","depth":2,"path":"web/vuejs.md","ref":"web/vuejs.md","articles":[]},{"title":"webpack","level":"1.5.2","depth":2,"path":"web/webpack.md","ref":"web/webpack.md","articles":[]}]},"previous":{"title":"Panorama","level":"1.4.2","depth":2,"path":"video/panorama.md","ref":"video/panorama.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"video/sdl2.md","mtime":"2017-11-20T13:59:51.434Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-23T14:42:50.861Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"docker","level":"1.7.1","depth":2,"next":{"title":"kafka","level":"1.7.2","depth":2,"path":"cloud/kafka.md","ref":"cloud/kafka.md","articles":[]},"previous":{"title":"Cloud and distributed","level":"1.7","depth":1,"path":"cloud/cloud.md","ref":"cloud/cloud.md","articles":[{"title":"docker","level":"1.7.1","depth":2,"path":"cloud/docker.md","ref":"cloud/docker.md","articles":[]},{"title":"kafka","level":"1.7.2","depth":2,"path":"cloud/kafka.md","ref":"cloud/kafka.md","articles":[]},{"title":"zookeeper","level":"1.7.3","depth":2,"path":"cloud/zookeeper.md","ref":"cloud/zookeeper.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud/docker.md","mtime":"2018-03-22T13:28:38.655Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-23T14:42:50.861Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

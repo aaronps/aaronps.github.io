@@ -21,3 +21,13 @@ net use drive: /delete
 rem `echo` multiple lines and pipe output
 C:\> (echo line one & echo line two) | otherprogram
 ```
+
+## VIM
+
+Set default language to english and utf8: write on ~/.vimrc
+
+```
+set encoding=utf-8
+set langmenu=en_US.UTF-8
+language english
+```

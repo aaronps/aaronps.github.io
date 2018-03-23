@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>SDL2 · GitBook</title>
+        <title>Tools · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../web/web.html" />
+    <link rel="next" href="../cloud/cloud.html" />
     
     
-    <link rel="prev" href="panorama.html" />
+    <link rel="prev" href="ssl_certificates.html" />
     
 
     </head>
@@ -373,9 +373,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="video.html">
+        <li class="chapter " data-level="1.4" data-path="../video/video.html">
             
-                <a href="video.html">
+                <a href="../video/video.html">
             
                     
                     Video
@@ -387,9 +387,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="ffmpeg.html">
+        <li class="chapter " data-level="1.4.1" data-path="../video/ffmpeg.html">
             
-                <a href="ffmpeg.html">
+                <a href="../video/ffmpeg.html">
             
                     
                     ffmpeg
@@ -400,9 +400,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="panorama.html">
+        <li class="chapter " data-level="1.4.2" data-path="../video/panorama.html">
             
-                <a href="panorama.html">
+                <a href="../video/panorama.html">
             
                     
                     Panorama
@@ -413,9 +413,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.3" data-path="sdl2.html">
+        <li class="chapter " data-level="1.4.3" data-path="../video/sdl2.html">
             
-                <a href="sdl2.html">
+                <a href="../video/sdl2.html">
             
                     
                     SDL2
@@ -490,9 +490,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../net/ssl_certificates.html">
+        <li class="chapter " data-level="1.6.1" data-path="ssl_certificates.html">
             
-                <a href="../net/ssl_certificates.html">
+                <a href="ssl_certificates.html">
             
                     
                     SSL
@@ -503,9 +503,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../net/tools.html">
+        <li class="chapter active" data-level="1.6.2" data-path="tools.html">
             
-                <a href="../net/tools.html">
+                <a href="tools.html">
             
                     
                     Tools
@@ -673,7 +673,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >SDL2</a>
+        <a href=".." >Tools</a>
     </h1>
 </div>
 
@@ -688,63 +688,11 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="sdl-2">SDL 2</h1>
-<h2 id="download">Download</h2>
-<table>
-<thead>
-<tr>
-<th>Description</th>
-<th>File</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Source code for reference</td>
-<td>SDL2-X.X.X.zip</td>
-</tr>
-<tr>
-<td>Compiling with Visual Studio</td>
-<td>SDL2-devel-X.X.X-VC.zip</td>
-</tr>
-<tr>
-<td>Compiling with mingw-w64</td>
-<td>SDL2-devel-X.x.x-minwg.tar.gz</td>
-</tr>
-<tr>
-<td>64bit binary</td>
-<td>SDL2-X.X.X-win32-x64.zip</td>
-</tr>
-<tr>
-<td>32bit binary</td>
-<td>SDL2-X.X.X-win32-x86.zip</td>
-</tr>
-</tbody>
-</table>
-<h2 id="codeblocks-mingw-w64">Code::Blocks mingw-w64</h2>
-<p>Download and uncompress <code>SDL2-devel-2.x.x-minwg.tar.gz</code> somewhere.</p>
-<p>In Code::Blocks app type: <em>console application</em></p>
-<h3 id="build-options">Build Options</h3>
-<p>Note: replace <code>x86_64</code> to <code>i686</code> for 32bit builds.</p>
-<ul>
-<li>Search directories -&gt; Compiler: add path to <code>SDL2-X.X.X/x86_64-w64-mingw32/include/SDL2</code>.</li>
-<li>Search directories -&gt; Linker: add path to <code>SDL2-X.X.X/x86_64-w64-mingw32/include/SDL2</code>.</li>
-<li>Linker Settings -&gt; Link libraries<ul>
-<li>mingw32</li>
-<li>SDL2main</li>
-<li>SDL</li>
-</ul>
-</li>
-</ul>
-<p>After building, copy <code>SDL2.dll</code> (and the Readme) from <code>SDL2-X.X.X-win32-x64.zip</code> (or <code>x86</code> for 32bits) to your binary output. </p>
-<h2 id="visual-studio-2017">Visual Studio 2017</h2>
-<p>Download and uncompress <code>SDL2-devel-X.X.X-VC.zip</code> somewhere.</p>
-<h3 id="project-properties">Project properties</h3>
-<ul>
-<li>(All Platforms) C/C++ -&gt; General -&gt; Additional include directories: add path to <code>SDL2-X.X.X-VC\include</code></li>
-<li>(All Platforms) Linker -&gt; Input -&gt; Additional Dependencies: add <code>SDL2.lib;SDL2Main.lib</code> </li>
-<li>Linker -&gt; General -&gt; Additional library directories: add path to <code>SDL2-X.X.X-VC\lib\x64</code> (or <code>x86</code> for 32bits)</li>
-</ul>
-<p>After bulding copy the same dll files as mingw build.</p>
+                                <h1 id="network-tools">Network tools</h1>
+<pre><code class="lang-sh">
+<span class="hljs-comment"># send multipart form and files using curl</span>
+curl -F <span class="hljs-string">&quot;field1=@path/to/file;filename=another/name&quot;</span> -F <span class="hljs-string">&quot;field2=value2&quot;</span> http://...
+</code></pre>
 
                                 
                                 </section>
@@ -772,12 +720,12 @@
 
             
                 
-                <a href="panorama.html" class="navigation navigation-prev " aria-label="Previous page: Panorama">
+                <a href="ssl_certificates.html" class="navigation navigation-prev " aria-label="Previous page: SSL">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../web/web.html" class="navigation navigation-next " aria-label="Next page: Web">
+                <a href="../cloud/cloud.html" class="navigation navigation-next " aria-label="Next page: Cloud and distributed">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -788,7 +736,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SDL2","level":"1.4.3","depth":2,"next":{"title":"Web","level":"1.5","depth":1,"path":"web/web.md","ref":"web/web.md","articles":[{"title":"vuejs","level":"1.5.1","depth":2,"path":"web/vuejs.md","ref":"web/vuejs.md","articles":[]},{"title":"webpack","level":"1.5.2","depth":2,"path":"web/webpack.md","ref":"web/webpack.md","articles":[]}]},"previous":{"title":"Panorama","level":"1.4.2","depth":2,"path":"video/panorama.md","ref":"video/panorama.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"video/sdl2.md","mtime":"2017-11-20T13:59:51.434Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-23T14:42:50.861Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Tools","level":"1.6.2","depth":2,"next":{"title":"Cloud and distributed","level":"1.7","depth":1,"path":"cloud/cloud.md","ref":"cloud/cloud.md","articles":[{"title":"docker","level":"1.7.1","depth":2,"path":"cloud/docker.md","ref":"cloud/docker.md","articles":[]},{"title":"kafka","level":"1.7.2","depth":2,"path":"cloud/kafka.md","ref":"cloud/kafka.md","articles":[]},{"title":"zookeeper","level":"1.7.3","depth":2,"path":"cloud/zookeeper.md","ref":"cloud/zookeeper.md","articles":[]}]},"previous":{"title":"SSL","level":"1.6.1","depth":2,"path":"net/ssl_certificates.md","ref":"net/ssl_certificates.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"net/tools.md","mtime":"2018-03-23T14:38:07.139Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-23T14:42:50.861Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

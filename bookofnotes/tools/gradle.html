@@ -17,10 +17,6 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-asciidoc-admonition-icons/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -242,7 +238,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="git.html">
+        <li class="chapter " data-level="1.3.1" data-path="browsers.html">
+            
+                <a href="browsers.html">
+            
+                    
+                    browsers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="git.html">
             
                 <a href="git.html">
             
@@ -255,7 +264,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="npm.html">
+        <li class="chapter " data-level="1.3.3" data-path="npm.html">
             
                 <a href="npm.html">
             
@@ -268,7 +277,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.3" data-path="gradle.html">
+        <li class="chapter active" data-level="1.3.4" data-path="gradle.html">
             
                 <a href="gradle.html">
             
@@ -281,7 +290,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="intellij.html">
+        <li class="chapter " data-level="1.3.5" data-path="intellij.html">
             
                 <a href="intellij.html">
             
@@ -294,7 +303,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="eclipse.html">
+        <li class="chapter " data-level="1.3.6" data-path="eclipse.html">
             
                 <a href="eclipse.html">
             
@@ -307,7 +316,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.6" data-path="vscode.html">
+        <li class="chapter " data-level="1.3.7" data-path="vscode.html">
             
                 <a href="vscode.html">
             
@@ -320,7 +329,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.7" data-path="cmake.html">
+        <li class="chapter " data-level="1.3.8" data-path="cmake.html">
             
                 <a href="cmake.html">
             
@@ -333,25 +342,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.8" data-path="mingw-w64.html">
+        <li class="chapter " data-level="1.3.9" data-path="mingw-w64.html">
             
                 <a href="mingw-w64.html">
             
                     
                     mingw-w64
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.9" data-path="browsers.html">
-            
-                <a href="browsers.html">
-            
-                    
-                    browsers
             
                 </a>
             
@@ -507,6 +503,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.6.2" data-path="../net/tools.html">
+            
+                <a href="../net/tools.html">
+            
+                    
+                    Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -526,7 +535,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../cloud/kafka.html">
+        <li class="chapter " data-level="1.7.1" data-path="../cloud/docker.html">
+            
+                <a href="../cloud/docker.html">
+            
+                    
+                    docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../cloud/kafka.html">
             
                 <a href="../cloud/kafka.html">
             
@@ -539,7 +561,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../cloud/zookeeper.html">
+        <li class="chapter " data-level="1.7.3" data-path="../cloud/zookeeper.html">
             
                 <a href="../cloud/zookeeper.html">
             
@@ -581,6 +603,25 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.1" data-path="../operatingsystems/linux-dev.html">
+            
+                <a href="../operatingsystems/linux-dev.html">
+            
+                    
+                    Linux Dev
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -686,8 +727,7 @@
                 repo.url = <span class="hljs-string">&quot;http://maven.aliyun.com/nexus/content/repositories/jcenter/&quot;</span>
                 println <span class="hljs-string">&quot;Using Aliyun jcenter mirror: ${repo.url}&quot;</span>
             }
-
-            <span class="hljs-keyword">if</span> ( (repo.name == <span class="hljs-string">&quot;MavenRepo&quot;</span>) &amp;&amp; (repo.url.toString() == <span class="hljs-string">&quot;https://repo1.maven.org/maven2/&quot;</span>) ) {
+            <span class="hljs-keyword">if</span> ( (repo.name == <span class="hljs-string">&quot;MavenRepo&quot;</span>) &amp;&amp; ((repo.url.toString() == <span class="hljs-string">&quot;https://repo1.maven.org/maven2/&quot;</span>) || (repo.url.toString() == <span class="hljs-string">&quot;https://repo.maven.apache.org/maven2/&quot;</span>)) ) {
                 repo.url = <span class="hljs-string">&quot;http://maven.aliyun.com/nexus/content/repositories/central/&quot;</span>
                 println <span class="hljs-string">&quot;Using Aliyun maven mirror: ${repo.url}&quot;</span>
             }
@@ -867,7 +907,23 @@ using bootRepackage.</p>
         classpath(&quot;org.springframework.boot:spring-boot-gradle-plugin:1.5.6.RELEASE&quot;)
     }
 }
+</code></pre><h2 id="template-idea">template idea</h2>
+<p>consider using Copy task for custom templates</p>
+<pre><code class="lang-groovy">copy {
+   into <span class="hljs-string">&apos;build/webroot&apos;</span>
+   exclude <span class="hljs-string">&apos;**/.svn/**&apos;</span>
+   from(<span class="hljs-string">&apos;src/main/webapp&apos;</span>) {
+      include <span class="hljs-string">&apos;**/*.jsp&apos;</span>
+      filter(ReplaceTokens, <span class="hljs-string">tokens:</span>[<span class="hljs-string">copyright:</span><span class="hljs-string">&apos;2009&apos;</span>, <span class="hljs-string">version:</span><span class="hljs-string">&apos;2.3.1&apos;</span>])
+   }
+   from(<span class="hljs-string">&apos;src/main/js&apos;</span>) {
+      include <span class="hljs-string">&apos;**/*.js&apos;</span>
+   }
+}
 </code></pre>
+<p>maybe use ~/.gradle/templates as base for downloaded
+templates, could use zip and/or full folders (including git).</p>
+
                                 
                                 </section>
                             
@@ -910,7 +966,7 @@ using bootRepackage.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gradle","level":"1.3.3","depth":2,"next":{"title":"intellij","level":"1.3.4","depth":2,"path":"tools/intellij.md","ref":"tools/intellij.md","articles":[]},"previous":{"title":"npm","level":"1.3.2","depth":2,"path":"tools/npm.md","ref":"tools/npm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["asciidoc-admonition-icons"],"pluginsConfig":{"asciidoc-admonition-icons":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/gradle.md","mtime":"2018-03-06T12:47:44.742Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-11T09:57:56.420Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gradle","level":"1.3.4","depth":2,"next":{"title":"intellij","level":"1.3.5","depth":2,"path":"tools/intellij.md","ref":"tools/intellij.md","articles":[]},"previous":{"title":"npm","level":"1.3.3","depth":2,"path":"tools/npm.md","ref":"tools/npm.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tools/gradle.md","mtime":"2018-03-23T14:29:03.488Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-23T14:42:50.861Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

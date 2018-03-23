@@ -169,9 +169,16 @@ endif ()
 
 Add key to registry (SDL2 as package example)
 `HKEY_LOCAL_MACHINE\SOFTWARE\Kitware\CMake\Packages\SDL2` set default value to
-path with the cmake file.
+path with the `.cmake` file.
 
 Can be HKEY_LOCAL_MACHINE or HKEY_CURRENT_USER.
+
+### find_package linux for user packages
+
+Save the path to the `.cmake` file on a file with any name located on:
+
+~/.cmake/packages/<package_name>/
+
 
 ### c++11
 
