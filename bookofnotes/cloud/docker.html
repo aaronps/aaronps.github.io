@@ -698,38 +698,32 @@
 </code></pre><p>if encripted network uses ip proto 50 (ESP)</p>
 <p>user: docker/tcuser</p>
 <p>docker image pull swarm (before creation)</p>
-<p>shell has some environment variables regarding to which docker-machine to connect
-env | grep DOCKER</p>
-<p>set environment to work with machine
-eval <code>docker-machine env machine_name</code></p>
-<p>if weird errors happens about connecting, check environment variables, maybe not set correctly</p>
+<p>shell has some environment variables regarding to which docker-machine to connect</p>
+<pre><code>env | grep DOCKER
+</code></pre><p>set environment to work with machine</p>
+<pre><code>eval `docker-machine env machine_name`
+</code></pre><p>if weird errors happens about connecting, check environment variables, maybe not
+be set correctly.</p>
 <h2 id="centos">centos</h2>
-<pre><code class="lang-sh">
-<span class="hljs-comment"># bad, dont do: yum install docker</span>
+<pre><code class="lang-sh"><span class="hljs-comment"># bad, dont do: yum install docker</span>
 
 <span class="hljs-comment"># add mirror repo</span>
 wget https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/docker-ce.repo
 <span class="hljs-comment">#replace download.docker.com with mirrors.tuna.tsinghua.edu.cn/docker-ce</span>
 yum install docker-ce
 
-<span class="hljs-comment">#in centos 7.2</span>
-yum install docker-ce-17.06.1.ce
-
-<span class="hljs-comment"># in the centos i tested centos would complay about overlay2 and xfs needing to reformat</span>
-edit daemon.json, add:
-<span class="hljs-string">&quot;storage-driver&quot;</span>: <span class="hljs-string">&quot;overlay&quot;</span>
-
-
-
-
 <span class="hljs-comment"># For china, edit /etc/docker/daemon.json, add:</span>
 <span class="hljs-comment"># &quot;registry-mirrors&quot;: [&quot;https://registry.docker-cn.com&quot;]</span>
 <span class="hljs-comment"># this also works on docker tools, you must docker-machine ssh and do there</span>
 
+<span class="hljs-comment">#in centos 7.2, use older version</span>
+yum install docker-ce-17.06.1.ce
+
+<span class="hljs-comment"># in the centos i tested centos would complay about overlay2 and xfs needing to reformat</span>
+<span class="hljs-comment"># edit daemon.json, add:</span>
+<span class="hljs-comment"># &quot;storage-driver&quot;: &quot;overlay&quot;</span>
+
 systemctl start docker
-
-
-docker image pull mysql:5.7
 </code></pre>
 <h2 id="windows">windows</h2>
 <p>win10 pro: docker-for-windows (uses hyperv)
@@ -738,25 +732,25 @@ other windows: docker toolbox (uses virtualbox)</p>
 and downloads some files</p>
 <p>If want to save machines on a custom folder (not default ~/.docker/machine/...)
 then set environment variable MACHINE_STORAGE_PATH and it is what it will use.</p>
-<pre><code class="lang-sh">
-docker --version
+<h2 id="commands">commands</h2>
+<pre><code class="lang-sh">docker --version
 docker info
-
 docker image  ...
-
 docker container ...
-
 docker run ...
 
-<span class="hljs-comment"># remove container after finish</span>
+<span class="hljs-comment"># run and remove container after finish</span>
 docker run ... --rm
 
-<span class="hljs-comment"># run interactive session</span>
+<span class="hljs-comment"># run interactive session, for example bash</span>
 docker run -it &lt;image&gt; &lt;<span class="hljs-built_in">command</span>&gt;
 
 <span class="hljs-comment"># detach from interactive session: Press ctrl+p ctrl+q</span>
 <span class="hljs-comment"># attach to running session: press enter twice after this command</span>
 docker attach &lt;session&gt;
+
+<span class="hljs-comment"># docker attach on windows might complain about mintty</span>
+winpty attach &lt;session&gt;
 
 <span class="hljs-comment"># list sessions</span>
 docker ps
@@ -764,23 +758,27 @@ docker ps
 <span class="hljs-comment"># download image locally. Note that this is automatic when you &quot;run&quot;.</span>
 <span class="hljs-comment"># docker image pull == docker pull</span>
 docker image pull image/name
-docker pull mysql:5.6
+docker pull mysql:5.7
 
-<span class="hljs-comment"># get things from china registry</span>
-docker pull registry.docker-cn.com/library/mysql:5.6
+<span class="hljs-comment"># get things from china registry (not using configured mirror)</span>
+docker pull registry.docker-cn.com/library/mysql:5.7
 
-docker run --name testmysql -p 3306:3306 <span class="hljs-_">-e</span> MYSQL_ROOT_PASSWORD=root <span class="hljs-_">-d</span> mysql:5.6
-docker run -it --link some-mysql:mysql --rm mysql:5.6 sh -c <span class="hljs-string">&apos;exec mysql -h&quot;$MYSQL_PORT_3306_TCP_ADDR&quot; -P&quot;$MYSQL_PORT_3306_TCP_PORT&quot; -uroot -p&quot;$MYSQL_ENV_MYSQL_ROOT_PASSWORD&quot;&apos;</span>
+docker run --name testmysql -p 3306:3306 <span class="hljs-_">-e</span> MYSQL_ROOT_PASSWORD=root <span class="hljs-_">-d</span> mysql:5.7
+docker run -it --link some-mysql:mysql --rm mysql:5.7 sh -c <span class="hljs-string">&apos;exec mysql -h&quot;$MYSQL_PORT_3306_TCP_ADDR&quot; -P&quot;$MYSQL_PORT_3306_TCP_PORT&quot; -uroot -p&quot;$MYSQL_ENV_MYSQL_ROOT_PASSWORD&quot;&apos;</span>
 docker run -it --rm mysql mysql -hsome.mysql.host -usome-mysql-user -p
 
 <span class="hljs-comment"># run with -p port:port to share a port, -P is not sharing it</span>
+
+<span class="hljs-comment"># create image with current container changes</span>
+docker container commit ...
+
+
 
 <span class="hljs-comment"># shell has some environment variables regarding to which docker-machine to connect</span>
 env | grep DOCKER
 
 <span class="hljs-comment"># set environment to work with machine</span>
 <span class="hljs-built_in">eval</span> `docker-machine env machine_name`
-
 
 <span class="hljs-comment"># add remote host to docker-machine: 1- create keys if don&apos;t have</span>
 ssh-keygen -t rsa
@@ -795,14 +793,10 @@ docker-machine create <span class="hljs-_">-d</span> generic
 
 
 <span class="hljs-comment"># to check: when doing reprovisioning, the hostname might be rewritten</span>
-<span class="hljs-comment"># checked: regenerate-certs does change the hostname</span>
+<span class="hljs-comment"># checked: regenerate-certs does change the hostname to default value</span>
 </code></pre>
 <h2 id="swarm">swarm</h2>
-<pre><code class="lang-sh">
-<span class="hljs-comment">#docker-machine ssh name</span>
-<span class="hljs-comment">#docker swarm init --advertise-addr </span>
-
-<span class="hljs-comment"># when create machine, add the --swarm parameter, otherwise somethings might fail</span>
+<pre><code class="lang-sh"><span class="hljs-comment"># when create machine, add the --swarm parameter, otherwise somethings might fail</span>
 docker-machine create ... --swarm
 
 <span class="hljs-comment"># NOTE the ports must be forwarded and not firewalled</span>
@@ -819,6 +813,52 @@ docker swarm join-token &lt;worker|manager&gt;
 <span class="hljs-comment"># on the workers run the command (remember the manager port should be forwarded</span>
 <span class="hljs-comment"># and not firewalled)</span>
 docker swarm join --advertise-addr ip:port --token &lt;token&gt; ip:port
+</code></pre>
+<h2 id="dockerfile">Dockerfile</h2>
+<p>reference: <a href="https://docs.docker.com/engine/reference/builder/" target="_blank">https://docs.docker.com/engine/reference/builder/</a></p>
+<h3 id="simple-ssh-server">Simple ssh server</h3>
+<p>Docker file:</p>
+<pre><code>FROM centos:7
+
+RUN yum -y install openssh-server
+RUN ssh-keygen -A
+RUN echo &quot;root:root&quot; | chpasswd
+
+ENTRYPOINT [ &quot;/usr/sbin/sshd&quot;, &quot;-D&quot;, &quot;-e&quot; ] 
+
+EXPOSE 22
+</code></pre><p>Commands:</p>
+<pre><code class="lang-sh"><span class="hljs-comment"># build container</span>
+docker build -t sshserver .
+
+<span class="hljs-comment"># create container (listen on port 10022), run detacched</span>
+docker run --name mySSH -p 10022:22 <span class="hljs-_">-d</span> sshserver
+
+<span class="hljs-comment"># ssh-in</span>
+ssh root@ip -p 10022
+
+<span class="hljs-comment"># run bash on running container</span>
+docker <span class="hljs-built_in">exec</span> -it mySSH bash
+
+<span class="hljs-comment"># stop container</span>
+docker stop mySSH
+
+<span class="hljs-comment"># start container (already created one)</span>
+docker start mySSH
+</code></pre>
+<h3 id="simple-mounted-folder">Simple mounted folder</h3>
+<p>Dockerfile:</p>
+<pre><code>FROM centos:7
+
+VOLUME /code
+
+ENTRYPOINT bash
+</code></pre><p>Commands:</p>
+<pre><code class="lang-sh"><span class="hljs-comment"># build container</span>
+docker build -t shareddir .
+
+<span class="hljs-comment"># create container</span>
+docker run --name mySharedDir -it -v /<span class="hljs-built_in">local</span>/path:/container/path shareddir
 </code></pre>
 
                                 
@@ -863,7 +903,7 @@ docker swarm join --advertise-addr ip:port --token &lt;token&gt; ip:port
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"docker","level":"1.7.1","depth":2,"next":{"title":"kafka","level":"1.7.2","depth":2,"path":"cloud/kafka.md","ref":"cloud/kafka.md","articles":[]},"previous":{"title":"Cloud and distributed","level":"1.7","depth":1,"path":"cloud/cloud.md","ref":"cloud/cloud.md","articles":[{"title":"docker","level":"1.7.1","depth":2,"path":"cloud/docker.md","ref":"cloud/docker.md","articles":[]},{"title":"kafka","level":"1.7.2","depth":2,"path":"cloud/kafka.md","ref":"cloud/kafka.md","articles":[]},{"title":"zookeeper","level":"1.7.3","depth":2,"path":"cloud/zookeeper.md","ref":"cloud/zookeeper.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud/docker.md","mtime":"2018-03-22T13:28:38.655Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-23T14:42:50.861Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"docker","level":"1.7.1","depth":2,"next":{"title":"kafka","level":"1.7.2","depth":2,"path":"cloud/kafka.md","ref":"cloud/kafka.md","articles":[]},"previous":{"title":"Cloud and distributed","level":"1.7","depth":1,"path":"cloud/cloud.md","ref":"cloud/cloud.md","articles":[{"title":"docker","level":"1.7.1","depth":2,"path":"cloud/docker.md","ref":"cloud/docker.md","articles":[]},{"title":"kafka","level":"1.7.2","depth":2,"path":"cloud/kafka.md","ref":"cloud/kafka.md","articles":[]},{"title":"zookeeper","level":"1.7.3","depth":2,"path":"cloud/zookeeper.md","ref":"cloud/zookeeper.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cloud/docker.md","mtime":"2018-03-25T08:40:07.150Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-01T15:39:33.509Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

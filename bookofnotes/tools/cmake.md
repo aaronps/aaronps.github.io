@@ -283,3 +283,10 @@ target_name/fast: Build procedure without checking external dependencies
 install: The normal install
 install/strip: Installs and strip the binaries
 install/local: _Need to check_
+
+
+## more notes
+
+CMAKE_PREFIX_PATH=/my/path/to/base
+
+CMAKE_PREFIX_PATH/lib/cmake/<names>

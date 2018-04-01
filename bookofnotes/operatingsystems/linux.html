@@ -705,6 +705,16 @@ lsb_release <span class="hljs-_">-a</span>
 <ul>
 <li>If after long time of not using centos, <code>yum update</code> fails, use <code>yum clean all</code>.</li>
 </ul>
+<pre><code class="lang-sh"><span class="hljs-comment"># list yum packages</span>
+yum grouplist
+
+<span class="hljs-comment"># list yum package contents</span>
+yum groupinfo &lt;group&gt;
+</code></pre>
+<h2 id="rpm">RPM</h2>
+<pre><code class="lang-sh"><span class="hljs-comment"># list information and content of .rpm file</span>
+rpm -qilp &lt;filename&gt;
+</code></pre>
 <h2 id="systemd">systemd</h2>
 <ul>
 <li><p>if the <strong>service</strong> has autorecovery code, for example, you connecto to a JMS
@@ -766,7 +776,7 @@ you still need to link them, otherwise won&apos;t be searched on RPATH:</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.8.1","depth":2,"next":{"title":"Linux Dev","level":"1.8.1.1","depth":3,"path":"operatingsystems/linux-dev.md","ref":"operatingsystems/linux-dev.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.8","depth":1,"ref":"","articles":[{"title":"Linux","level":"1.8.1","depth":2,"path":"operatingsystems/linux.md","ref":"operatingsystems/linux.md","articles":[{"title":"Linux Dev","level":"1.8.1.1","depth":3,"path":"operatingsystems/linux-dev.md","ref":"operatingsystems/linux-dev.md","articles":[]}]},{"title":"Windows","level":"1.8.2","depth":2,"path":"operatingsystems/windows.md","ref":"operatingsystems/windows.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"operatingsystems/linux.md","mtime":"2018-03-05T01:13:03.569Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-23T14:42:50.861Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linux","level":"1.8.1","depth":2,"next":{"title":"Linux Dev","level":"1.8.1.1","depth":3,"path":"operatingsystems/linux-dev.md","ref":"operatingsystems/linux-dev.md","articles":[]},"previous":{"title":"Operating Systems","level":"1.8","depth":1,"ref":"","articles":[{"title":"Linux","level":"1.8.1","depth":2,"path":"operatingsystems/linux.md","ref":"operatingsystems/linux.md","articles":[{"title":"Linux Dev","level":"1.8.1.1","depth":3,"path":"operatingsystems/linux-dev.md","ref":"operatingsystems/linux-dev.md","articles":[]}]},{"title":"Windows","level":"1.8.2","depth":2,"path":"operatingsystems/windows.md","ref":"operatingsystems/windows.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"operatingsystems/linux.md","mtime":"2018-03-28T05:51:56.749Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-01T15:39:33.509Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
