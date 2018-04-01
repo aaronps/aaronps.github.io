@@ -21,6 +21,22 @@ lsb_release -a
 
 * If after long time of not using centos, `yum update` fails, use `yum clean all`.
 
+```sh
+# list yum packages
+yum grouplist
+
+# list yum package contents
+yum groupinfo <group>
+
+```
+
+## RPM
+
+```sh
+# list information and content of .rpm file
+rpm -qilp <filename>
+```
+
 ## systemd
 
 * if the **service** has autorecovery code, for example, you connecto to a JMS

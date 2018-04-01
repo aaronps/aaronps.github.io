@@ -44,6 +44,34 @@ ffmepg ... -t <number of seconds>
 
 # capture single frame
 ffmepg -y -i "rtmp://ip:port/app/stream timeout=5" -vframes 1 output.jpg
+
+# sending and receiving streams
+
+# using mpegts: this allows stopping and continuing the stream anytime, for
+# example, the listener always waits and the sender starts or stops any time.
+
+# wait for udp mpegts data with ffplay (ffmpeg should be the same)
+# 	add '-max_delay 0' -> don't wait to reorder udp_packets... maybe
+ffplay -i udp://ip:port
+
+# send udp mpegts stream using ffmpeg
+ffmpeg -i <stream> -c:v copy -f mpegts udp://ip:port
+
+# using rtsp: when the stream closes, both sender and receiver needs to be restarted
+
+# wait rtsp stream with ffplay
+ffplay -rtsp_flags listen rtsp://ownIp:ownPort/target_name.sdp
+
+# send rtsp stream ith ffmpeg: ownIp and targetIp shall be the same
+ffmpeg -i <stream> -f rtsp rtsp://targetIp:targetPort/target_name.sdp
+
+
+# reduce start delay:
+ffmpeg -fflags nobuffer -analyzeduration 0 -max_delay 0
+ffplay ...
+
+
+
 ```
 
 ## To stich videos with filters (very slow)
