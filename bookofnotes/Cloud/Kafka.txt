@@ -1,0 +1,144 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+
+====== Kafka ======
+
+https://kafka.apache.org/
+
+===== Setup =====
+
+Download the tgz, uncompress
+
+1. start zookeper:
+	* config is in `config/zookeper.properties`
+		* may need to change dataDir for windows
+		* port is defined here too
+	* `bin/zookeper-server-start.sh config/zookeper.properties`
+	* note: stopping zookeper also stops all the clients connected to it (at
+	  least the kafka console-consumer/producer I was running)
+	* note: zookeeper-shell to do some operations on the server
+	
+2. start kafka:
+	* config is in config/server.properties:
+		* may need to set broker.id for each broker
+		* may need to change log.dirs for windows
+		* zookeper.connect to set the port configured on zookeper
+		* If want to change the port (default is 9092) change "listeners"
+		* If want to be able to delete topics set: delete.topic.enable=true
+		* listeners example for ip address: `PLAINTEXT://ipaddress:9092`
+	* `bin/kafka-server-start.sh config/server.properties`
+
+IMPORTANT: If you don't change **listeners**, kafka will use your hostname by
+default, and this is what will be registered on zookeeper, and because of this
+the clients will need some way to resolve the name, usually the `hosts` file.
+
+Zookeeper default ports:: Open on firewall: 2181, 2888, 3888
+Kaka default port:: 9092
+
+===== Commands =====
+
+NOTE: In Linux use `bin/script-name.sh` in Windows `bin\windows\script-name`
+
+Topics: _--zookeeper is always needed_
+
+	bin/kafka-topics.sh --zookeeper localhost:2181 <command>
+	
+	commands:::
+
+	* --list
+	* --create --topic <topic_name> --replication-factor 1 --partitions 1
+	* --delete --topic <topic_name> _(note it requires config change to work)_
+	* --describe --topic <topic_name>
+
+	# increase partitions count for a topic (cannot decrease)
+	bin/kafka-topics.sh ... --alter --topic _name_ --partitions N
+
+Send messages from console:: _this will read from stdin and publish on topic_
+
+	bin/kafka-console-producer.sh --broker-list localhost:9092 --topic <name>
+
+Receive messages on console::
+
+	# localhost:9092 has to be exactly what is in the configuration
+	bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <name>
+
+	other parameters:::
+	
+	* --from-beginning if want to receive starting from the earliest present in the log
+	* --property print.key=true if want to see the keys
+	* --property key.separator="<separator>" to set the separator, default \t 
+
+WARNING: Receiving messages encoded in UTF-8 might show incorrect values (at least on Windows)
+
+===== Recover after kafka-server-stop on Windows =====
+
+After stopping with this command, when trying to start again it complains some file.timeindex (from a topic) is used by another program:
+
+	* stopping zookeeper and starting again doesn't help
+	* seems related to https://issues.apache.org/jira/browse/KAFKA-6044
+	* To fix just delete the kafka-logs data folder…
+	
+
+===== Start multiple nodes in a cluster =====
+
+Use different configuration files (config/server.properties) with different id and different listener port:
+{{{code: linenumbers="True"
+broker.id = 1
+listeners=PLAINTEXT://:9093
+log.dir=/another/dir/for/this/one
+}}}
+
+Now when creating a topic we could add a replication factor bigger than one
+
+===== Usage notes =====
+
+Consumer should poll() at least once every session.timeout.ms or it will get CommitFailedException, this is also usefull if the binary fails to work or hangs somewhere.
+ 
+
+==== Systemd example service files ====
+
+''kafka.service''
+{{{code: lang="ini" linenumbers="True"
+[Unit]
+Description=Kafka service
+After=network.target
+Wants=kafka-zookeeper.service
+
+[Service]
+ExecStart=/path/to/kafka/bin/kafka-server-start.sh /path/to/kafka/config/server.properties
+SuccessExitStatus=143
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
+}}}
+
+
+''kafka-zookeeper.service''
+{{{code: lang="ini" linenumbers="True"
+[Unit]
+Description=Kafka Zookeeper service
+After=network.target
+
+[Service]
+ExecStart=/path/to/kafka/bin/zookeeper-server-start.sh /path/to/kafka/config/zookeeper.properties
+SuccessExitStatus=143
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
+}}}
+
+
+===== Message timeout =====
+
+set config value: retention.ms = milliseconds_to_keep
+
+{{{code: lang="sh"
+# show topic configured settings
+kafka-topics.sh --zookeeper localhost:2181 --describe --entity-type topics --entity-name the-topic-name
+
+# change topic settings
+kafka-topics.sh --zookeeper localhost:@181 --alter --entity-type topics --entity-name the-topic-name --add-config retention.ms=1234
+
+}}}

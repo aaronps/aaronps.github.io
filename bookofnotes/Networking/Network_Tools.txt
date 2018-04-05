@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+
+====== Network tools ======
+
+{{{code: lang="sh" linenumbers="True"
+# send multipart form and files using curl
+curl -F "field1=@path/to/file;filename=another/name" -F "field2=value2" http://...
+}}}

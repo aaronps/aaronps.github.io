@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+
+====== Vuejs ======
+
+===== Basic Steps =====
+1. require nodejs (and npm) (>=8.0.0 seems working)
+2. ensure taobao's npm registry or using proxy
+3. ensure git use proxy or hosts configured properly
+4. npm install --global vue-cli
+5. git clone https://github.com/vuejs-templates/webpack webpack-template
+6. vue init ./webpack-template new-project-name
+7. cd new-project-name
+8. npm install
+9. npm run dev
+
+===== Notes =====
+{{{code: lang="html" linenumbers="True"
+<template>
+	<div>
+		<bindings>
+			<element v-bind:something="someVueObject"/>
+			<element :something="someVueObject"/>
+		</bindings>
+		<events>
+			<element v-on:click="fun">
+			<element @click="fun">
+		</events>
+	</div>
+</template>
+}}}
+
+
+===== element-ui =====
+{{{code: lang="html" linenumbers="True"
+<!-- Menu using Vue Router -->
+<el-menu :router="true" :default-active="$route.path"/>`
+}}}

@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+
+====== Javascript ======
+
+`throw <expression>`
+
+Codemirror: code editor component on browser
+
+HTML Kickstart: http://www.99lime.com/elements/ 
+

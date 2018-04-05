@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-04-04T16:35:30+08:00
+
+====== Python ======
+Created Wednesday 04 April 2018
+
+Modify python search path with simple environment variables modification.
+
+This works because python will always ''import site'' which the operating system should provide, what we do is override it to use our copy, run our initialization code and then reimport the global site module.
+
+1. On your execution directory add file named ''site.py''
+{{{code: lang="python" linenumbers="True"
+import sys
+
+# remove dot folder as in this case we are not using it anymore
+sys.path.remove('.')
+sys.path.insert(0, 'some/extra/path')
+
+del sys.modules['site']
+import site
+}}}
+
+
+2. Run with ''PYTHONPATH=.'':
+{{{code: lang="sh" linenumbers="True"
+# custom program
+PYTHONPATH=. ./yourProgram
+
+#the 
+PYTHONPATH=. python
+}}}
