@@ -1,8 +1,8 @@
 [Notebook]
 version=0.4
-name=aaronps.com
+name=bookofnotes
 interwiki=
-home=Home
+home=index
 icon=
 document_root=
 shared=True
