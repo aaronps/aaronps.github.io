@@ -1,3 +1,0 @@
-# Video Notes
-
-* 2017-11-09 depending on the *scene* in front of camera it might be needed to increase the bitrate for getting nice video.
