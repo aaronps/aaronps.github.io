@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-04-12T13:33:52+08:00
+
+====== tools ======
+Created Thursday 12 April 2018
+
+=== postgresql ===
+backup with pgadmin3
+	1. format custom
+	2. encoding utf8
+	3. role postgres
+	4. click backup
+
+restore
+	1. format custom or tar
+	2. role postgres
+

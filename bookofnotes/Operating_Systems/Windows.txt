@@ -24,7 +24,14 @@ mklink /J filename path/to/link/target
 
 
 rem `echo` multiple lines and pipe output
-C:\> (echo line one & echo line two) | otherprogram
+(echo line one & echo line two) | otherprogram
+}}}
+
+
+===== Batch files =====
+{{{code: lang="dosbatch" linenumbers="True"
+rem rest of parameters like $@ in Linux
+echo %*
 }}}
 
 

@@ -26,6 +26,11 @@ set environment to work with machine
 if weird errors happens about connecting, check environment variables, maybe not
 be set correctly.
 
+Running containers with systemd
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_atomic_host/7/html/managing_containers/using_systemd_with_containers
+
+http://blog.marcnuri.com/docker-container-as-linux-system-service/
+
 ===== centos =====
 
 {{{code: lang="sh" linenumbers="True"
@@ -48,7 +53,7 @@ yum install docker-ce-17.06.1.ce
 # edit daemon.json, add:
 # "storage-driver": "overlay"
 
-systemctl start docke
+systemctl start docker
 }}}
 
 

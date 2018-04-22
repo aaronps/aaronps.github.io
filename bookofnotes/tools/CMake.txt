@@ -3,46 +3,140 @@ Wiki-Format: zim 0.4
 
 ====== CMake ======
 
-Config goes on file `CMakeLists.txt`.
+Uses a configuration file (''CMakeLists.txt'') to generate build files (Makefiles, ninja files, etc), then use native build tools to compile. The advantage is independence of build method, with enought care its possible to compile the same source with gcc on linux, mingw on windows, visual studio, codeblocks, etc.
 
-If generate for Visual Studio (17) is ok but when try to generate for mingw-w64
-It fails (tries to use mingw32-make from codeblocks, but after reconfigure
-still failinig). 
-
-===== Basic usage like Makefile =====
-//untested example//
-{{{code: lang="cmake" linenumbers="True"
-cmake_minimum_required(VERSION 2.8)
-project(cmakesdltest)
-add_executable(myExeName src/file1.cpp src/file2.cpp)
-
-target_include_directories(myExeName PRIVATE /some/include/path)
-link_directories(/some/lib/dir)
-target_link_libraries(myExeName lib1name lib2name)
+The recommended building way is to create a separate directory for the build, then generate the files on that directory. For example:
+{{{code: lang="sh" linenumbers="False"
+mkdir build
+cd build
+cmake ..
+make
 }}}
 
 
-===== Show the build commands =====
+===== Installing =====
+https://cmake.org/download/
 
-Multiple methods
+//Recommend to add CMake to PATH if not already//
 
-* `make VERBOSE=1`
-* `cmake --build 'folder' -- VERBOSE=1`
-* `CMakeLists.txt`: `set( CMAKE_VERBOSE_MAKEFILE on )`
+**Windows**:
+	download and install
+	
+**Linux**:
+	download and run command
+	./''cmake-<version>-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir''
 
-===== Build in release mode =====
 
-	cmake -D CMAKE_BUILD_TYPE=Release source_folder
+===== Basic usage =====
+CMakeLists.txt:
+{{{code: lang="cmake" linenumbers="False"
+cmake_minimum_required(VERSION 2.8)
+
+project(basic_cmake_example)
+
+add_executable(basic_executable src/file1.cpp src/file2.cpp)
+}}}
 
 
-===== Build with gprof =====
+Building with make
+{{{code: lang="sh" linenumbers="False"
+mkdir build
+cd build
+cmake ..
+make 
+}}}
 
-	cmake -DCMAKE_CXX_FLAGS=-pg -DCMAKE_EXE_LINKER_FLAGS=-pg -DCMAKE_SHARED_LINKER_FLAGS=-pg <SOURCE_DIR>
 
-Build and run the program normally, after it finishes
+Building for debug and for release
+{{{code: lang="sh" linenumbers="False"
+mkdir debug
+cd debug
+cmake -DCMAKE_BUILD_TYPE=Debug ..
 
-	gprof your_executable program > report.txt
+cd ..
+mkdir release
+cd release
+cmake -DCMAKE_BUILD_TYPE=Release ..
 
+# from within each folder just run make
+make
+
+# cmake can also be used here
+cmake --build .
+
+# from base folder you can use cmake like this
+cd ..
+cmake --build debug
+cmake --build release
+}}}
+
+
+===== Command Line notes =====
+{{{code: lang="sh" linenumbers="False"
+# when building with make, the build commands are not show, to see them run like this
+make VERBOSE=1
+
+# it is also possible to add 'set( CMAKE_VERBOSE_MAKEFILE on )' to CMakeLists.xt
+
+# build and profile with gprof
+cmake -DCMAKE_CXX_FLAGS=-pg -DCMAKE_EXE_LINKER_FLAGS=-pg -DCMAKE_SHARED_LINKER_FLAGS=-pg <SOURCE_DIR>
+make
+./executable_name
+# after your program finishes
+gprof executable_name > report.txt 
+
+}}}
+
+
+===== CMakeLists.txt notes =====
+{{{code: lang="cmake" linenumbers="False"
+# Comments begins with #
+
+# enable c++11
+# enable c++11: if cmake version >= 3.8
+target_compile_features(target_name PRIVATE cxx_std_11)
+
+# enable c++11: if cmake version >= 3.1 
+set_target_properties(target_name PROPERTIES CXX_STANDARD 11)
+
+# enable c++11: cmake version >= 3.1 for all targets:
+set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD_REQUIRED ON)
+# or set the variables from the command line with '-DCMAKE_CXX_STANDARD=11'
+
+# to autodetect build for 32 or 64bit
+if (${CMAKE_SIZEOF_VOID_P} MATCHES 8)
+	# here is 64bits
+else ()
+	# here is 32bits
+endif ()
+
+}}}
+
+
+===== Custom Lib =====
+old but review: https://cmake.org/Wiki/CMake:How_To_Find_Libraries
+XXX_INCLUDE_DIRS
+XXX_LIBRARIES
+
+CMAKE_PREFIX_PATH environment var
+
+find_package() with version numbers will create variables with the user provided name but comparison is case sensitive:
+user says: find_package(asdf)
+package asdf is found and a variable is set asdf_VERSION
+user says: find_package(ASDF)
+same package is found and variable is set as ASDF_VERSION
+for this reason there is needed some logic ...
+
+If want to get latests versions, add these two lines before find_package
+set(CMAKE_FIND_PACKAGE_SORT_ORDER NATURAL)
+set(CMAKE_FIND_PACKAGE_SORT_DIRECTION DEC)
+
+
+CXX_STANDARD requires cmake 3.1
+project(DESCRIPTION) requires cmake 3.9
+
+cmake generating files: https://crascit.com/2017/04/18/generated-sources-in-cmake-builds/
 
 ===== Visual studio =====
 
@@ -52,11 +146,24 @@ If using generated project files and need to **install** to copy `.dll` files,
 run `cmake-gui` again and select the output folder as `CMAKE_INSTALL_PREFIX`
 regenerate the project files then **build** `INSTALL` target on vs. 
 
+Change run directory, 2 ways
+1. Edit launch settings (Menu CMake -> Debug and Launch Settings -> name) add
+'''
+"currentDir": "${workspaceRoot}"
+'''
+
+2. Add to CMakeLists.txt (Cmake >= 3.8) **NOT WORKING**
+'''
+set_target_properties(<target> PROPERTIES
+    VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_LIST_DIR}")
+'''
+
+
 ===== External library example =====
 
 SDL2, uncompress the VC file, create `sdl2-config.cmake` on that folder
 
-{{{code: lang="cmake" linenumbers="True"
+{{{code: lang="cmake" linenumbers="False"
 set(SDL2_INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/include")
 
 # Support both 32 and 64 bit builds
@@ -97,7 +204,7 @@ for 64bit:
 **WARNING**: This seems doesn't work on vs2017 anymore, maybe my fault, check another way below.
 
 Edit settings and add something like this to each configuration:
-{{{code: lang="js" linenumbers="True"
+{{{code: lang="js" linenumbers="False"
 "variables": [
 	{
 		"name": "SDL2_DIR",
@@ -119,7 +226,7 @@ If don't want some of the targets, select **Project -> Edit Settings -> CppPrope
 ==== External library on windows with mingw-w64 ====
 
 Uncompress SDL2 for mingw and add this `sdl2-config.cmake` to its folder:
-{{{code: lang="cmake" linenumbers="True"
+{{{code: lang="cmake" linenumbers="False"
 # Support both 32 and 64 bit builds
 if (${CMAKE_SIZEOF_VOID_P} MATCHES 8)
   set(SDL2_BASE "${CMAKE_CURRENT_LIST_DIR}/x86_64-w64-mingw32")
@@ -135,7 +242,7 @@ string(STRIP "${SDL2_LIBRARIES}" SDL2_LIBRARIES)
 
 
 Then to use it
-{{{code: lang="cmake" linenumbers="True"
+{{{code: lang="cmake" linenumbers="False"
 find_package(SDL2 REQUIRED)
 target_include_directories(targetname PRIVATE ${SDL2_INCLUDE_DIRS})
 target_link_libraries(targetname ${SDL2_LIBRARIES})
@@ -172,6 +279,8 @@ endif ()
 
 ==== find_package on windows ====
 
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Kitware\CMake\Packages\ffmpeg
+
 Add key to registry (SDL2 as package example)
 `HKEY_LOCAL_MACHINE\SOFTWARE\Kitware\CMake\Packages\SDL2` set default value to
 path with the `.cmake` file.
@@ -183,22 +292,6 @@ Can be HKEY_LOCAL_MACHINE or HKEY_CURRENT_USER.
 Save the path to the `.cmake` file on a file with any name located on:
 
 ~/.cmake/packages/<package_name>/
-
-
-==== c++11 ====
-{{{code: lang="cmake" linenumbers="True"
-# First method requires newer cmake
-target_compile_features(targetname PRIVATE cxx_std_11)
-# _PRIVATE_ | _PUBLIC_ | _INTERFACE_
-
-# for older versions could use this
-set_target_properties(target_name PROPERTIES CXX_STANDARD 11)
-
-# there is also another version which seems to affect all targets
-set (CMAKE_CXX_STANDARD 11)
-set (CMAKE_CXX_STANDARD_REQUIRED ON)
-}}}
-
 
 ==== force 32bit on mingw-w64 ====
 

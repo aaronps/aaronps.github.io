@@ -3,6 +3,11 @@ Wiki-Format: zim 0.4
 
 ====== c++ ======
 
+Related:
+	[[tools:CMake]]
+	[[tools:mingw-w64]]
+
+
 ===== Timing (c++11) =====
 {{{code: lang="cpp" linenumbers="True"
 #include <chrono>
@@ -29,6 +34,16 @@ std::this_thread::sleep_for(wait_time);
 {{{code: lang="cpp" linenumbers="True"
 // Read line on loop
 while ( std::getline(std::cin, line).good() ) { }
+
+// ostream overload, prepend friend if need to access private members
+std::ostream& operator<<(std::ostream& os, const SomeClass& obt);
+
+std::ostream& operator<<(std::ostream& os, const SomeClass& obj)  
+{  
+    os << "Obj{" << obj.x << ',' << obj.y << '}';  
+    return os;
+}
+
 }}}
 
 
@@ -44,6 +59,25 @@ struct MyException : public std::runtime_error
 try   { throw MyException("bye"); }
 catch ( MyException &ex ) {}
 catch ( std::runtime_error &ex } {}
+}}}
+
+
+===== new nothrow =====
+{{{code: lang="cpp" linenumbers="True"
+// new may throw
+try
+{
+	Obj * obj = new Obj();
+}
+catch (const std::bad_alloc& ex)
+{
+	// do something
+}
+
+// If want to avoid exceptions
+Obj * obj = new (std::nothrow) Obj();
+if ( ! obj ) ...
+
 }}}
 
 

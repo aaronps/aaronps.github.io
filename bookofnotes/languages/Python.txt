@@ -30,3 +30,26 @@ PYTHONPATH=. ./yourProgram
 #the 
 PYTHONPATH=. python
 }}}
+
+
+== Install opencv python on windows ==
+
+	Goto opencv/build/python/2.7 folder.
+	Copy cv2.pyd to C:/Python27/lib/site-packeges.
+	Copy opencv/build/bin/opencv_ffmpeg* to c:/Python27
+	''pip install numpy''
+	Open Python IDLE and type following codes in Python terminal. 
+>>> import cv2
+>>> print cv2. __version__
+
+
+
+'''
+for fname in os.listdir("ori"):
+    print "  " + fname
+    cv2.imwrite("cut/"+fname, cv2.imread("ori/"+fname)[30:720,8:1280])
+'''
+
+
+
+

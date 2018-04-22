@@ -6,7 +6,9 @@ Wiki-Format: zim 0.4
 ===== Google Chrome =====
 
 Start with proxy:
-	chrome --proxy-server=socks5://127.0.0.1:1080 --host-resolver-rules="MAP * ~NOTFOUND, EXCLUDE 127.0.0.1"
+	''chrome --proxy-server=socks5://127.0.0.1:1080 --host-resolver-rules="MAP * ~NOTFOUND, EXCLUDE 127.0.0.1"''
+[ ] @todo Check difference with:
+	''chrome.exe --proxy-server="socks5://127.0.0.1:20099" --host-resolver-rules="MAP * 0.0.0.0, EXCLUDE 127.0.0.1"''
 
 See current proxy config status:
 	chrome://net-internals/#proxy

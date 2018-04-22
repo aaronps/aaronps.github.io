@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-04-08T10:09:01+08:00
+
+====== nginx ======
+Created Sunday 08 April 2018
+
+Enable directory listing
+{{{code:
+server {
+	location /someLocation {
+		autoindex on;
+	}
+}
+}}}
+

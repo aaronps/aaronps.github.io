@@ -48,3 +48,12 @@ Shorter .cmd file to run `escripts`
 * adding default shebang and comment, on extract is ok.
 * "escript" documentation is wrong, parameter "-smp disable" is not supported, use "+S 1" instead
 * NOTIFY ESCRIPT CHANGE: if it doens't start with a unix shebang it cannot contain comments or parameters, implore to allow to work as before.
+
+===== IDE =====
+
+IntelliJ Idea
+
+1. select plugins, install erlang, restart idea.
+2. select settings, tools, erlang, configure rebar.
+3. settings -> project defaults -> project structure
+	a. New SDK -> Erlang SDK
