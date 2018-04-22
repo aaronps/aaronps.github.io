@@ -182,7 +182,13 @@ ffmpeg -analyzeduration 1M ...
 ffmpeg -probesize 100000
 
 # Less delay
-ffmegp -fflags nobuffer ...
+ffmpeg -fflags nobuffer ...
+
+# list available encoders
+ffmpeg -encoders
+
+# see options of encoder
+ffmpeg -h encoder=encoder_name
 
 # To play the result of some ffmpeg operation directly
 ffmpeg -i … -vcodec rawvideo -pix_fmt yuv420p -f sdl "Maybe window name"
@@ -291,6 +297,13 @@ make &amp;&amp; make install
 # uncompress ffmpeg somewhere and cd into it
 PKG_CONFIG_PATH="$HOME/libs/lib/pkgconfig" ./configure --prefix=$HOME/libs --enable-shared --disable-doc --enable-gpl --enable-libx264
 make &amp;&amp; make install
+
+
+# if want do add nvidia hw support add
+./configure &lt;...&gt; --enable-cuda --enable-cuvid --enable-nvenc --enable-nonfree --enable-libnpp --extra-cflags=-I/usr/local/cuda/include --extra-ldflags=-L/usr/local/cuda/lib64
+
+# add rpath if want to test the shared libraries
+./configure &lt;...&gt; --enable-rpath
 </code></pre>
 </div>
 
@@ -335,6 +348,16 @@ dll
 <li>swscale-4.dll</li>
 </ul>
 </p>
+
+<h3>Important notes</h3>
+
+<br>
+
+<p>
+After opening an input source: AVStream-&gt;codecpar-&gt;format MIGHT LIE (looking at you NVENC!), best case is to wait for first frame then check that format does it have.
+</p>
+
+<br>
 
 
 

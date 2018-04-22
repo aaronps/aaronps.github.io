@@ -203,6 +203,38 @@ PYTHONPATH=. ./yourProgram
 PYTHONPATH=. python</code></pre>
 </div>
 
+<br>
+
+<h5>Install opencv python on windows</h5>
+
+<br>
+
+<p>
+<div style='padding-left: 30pt'>
+Goto opencv/build/python/2.7 folder.<br>
+Copy cv2.pyd to C:/Python27/lib/site-packeges.<br>
+Copy opencv/build/bin/opencv_ffmpeg* to c:/Python27<br>
+<tt>pip install numpy</tt><br>
+Open Python IDLE and type following codes in Python terminal. 
+</div>
+&gt;&gt;&gt; import cv2<br>
+&gt;&gt;&gt; print cv2. <u>version</u>
+</p>
+
+<br>
+<br>
+
+<pre>
+for fname in os.listdir("ori"):
+    print "  " + fname
+    cv2.imwrite("cut/"+fname, cv2.imread("ori/"+fname)[30:720,8:1280])
+</pre>
+
+<br>
+<br>
+<br>
+
+
 
 			<br>
 			<span class="backlinks">

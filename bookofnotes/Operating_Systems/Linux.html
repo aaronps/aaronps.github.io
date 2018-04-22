@@ -171,7 +171,12 @@ ntpdate _server_
 
 # view system version
 lsb_release -a
-</code></pre>
+
+# convert between file encodings, f = from, t = to...
+iconv -f GB2312 -t UTF-8 -o outfile.txt infile.txt
+
+# run program simulating tty (some programs doesn't show output if not)
+script -qfc "some command" output_file</code></pre>
 </div>
 
 <br>

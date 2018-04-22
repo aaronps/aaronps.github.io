@@ -172,7 +172,13 @@
 <p>
 Start with proxy:<br>
 <div style='padding-left: 30pt'>
-chrome --proxy-server=<a href="socks5://127.0.0.1:1080" title="socks5://127.0.0.1:1080" class="socks5">socks5://127.0.0.1:1080</a> --host-resolver-rules="MAP * ~NOTFOUND, EXCLUDE 127.0.0.1"
+<tt>chrome --proxy-server=socks5://127.0.0.1:1080 --host-resolver-rules="MAP * ~NOTFOUND, EXCLUDE 127.0.0.1"</tt>
+</div>
+<ul>
+<li class="unchecked-box"><span class="zim-tag">@todo</span> Check difference with:</li>
+</ul>
+<div style='padding-left: 30pt'>
+<tt>chrome.exe --proxy-server="socks5://127.0.0.1:20099" --host-resolver-rules="MAP * 0.0.0.0, EXCLUDE 127.0.0.1"</tt>
 </div>
 </p>
 

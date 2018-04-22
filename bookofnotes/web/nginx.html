@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>Erlang</title>
+	<title>nginx</title>
 	<meta name="generator" content="Zim 0.68-rc1">
 	<meta name="viewport" content="width=device-width">
 	<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,greek,latin-ext' rel='stylesheet' type='text/css'> -->
@@ -140,111 +140,39 @@
 		<div id="navigation"> <ul>
 <li><a href="../Cloud.html" title="Cloud" class="page">Cloud</a></li>
 <li><a href="../index.html" title="index" class="page">index</a></li>
-<li><a href="../languages.html" title="languages" class="page">languages</a>
-<ul>
-<li><a href="./c++.html" title="c++" class="page">c++</a></li>
-<li><b>erlang</b>
-<ul>
-<li><a href="./erlang/rebar3.html" title="rebar3" class="page">rebar3</a></li>
-</ul>
-</li>
-<li><a href="./haxe.html" title="haxe" class="page">haxe</a></li>
-<li><a href="./java.html" title="java" class="page">java</a></li>
-<li><a href="./javascript.html" title="javascript" class="page">javascript</a></li>
-<li><a href="./Python.html" title="Python" class="page">Python</a></li>
-</ul>
-</li>
+<li><a href="../languages.html" title="languages" class="page">languages</a></li>
 <li><a href="../Networking.html" title="Networking" class="page">Networking</a></li>
 <li><a href="../Operating_Systems.html" title="Operating Systems" class="page">Operating Systems</a></li>
 <li><a href="../tools.html" title="tools" class="page">tools</a></li>
 <li><a href="../video.html" title="video" class="page">video</a></li>
-<li><a href="../web.html" title="web" class="page">web</a></li>
+<li><a href="../web.html" title="web" class="page">web</a>
+<ul>
+<li><b>nginx</b></li>
+<li><a href="./vuejs.html" title="vuejs" class="page">vuejs</a></li>
+<li><a href="./web.html" title="web" class="page">web</a></li>
+<li><a href="./Webpack.html" title="Webpack" class="page">Webpack</a></li>
+</ul></li>
 </ul>
  </div>
 		<div id="content">
-			<h1>Erlang <a name='languages:erlang'></a></h1>
+			<h1>nginx <a name='web:nginx'></a></h1>
 
-			<h2>Console commands</h2>
+			<p>
+Created Sunday 08 April 2018
+</p>
 
+<p>
+Enable directory listing
+</p>
 <div class="zim-object">
-<pre><code class="erlang">%% Some help
-help().
-
-%% show module info
-m(Module).
-
-%% compile without loading
-{ok, Mod, BinaryCode} = code:compile(FileName, [binary, MoreOptions]).
-
-%% load binary module
-code:load_binary(ModuleName, UnusedFileName, BinaryCode).
-
-%% unload module 
-code:delete(Module), code:purge(Module).
-
-%% forget all bindings on the current console.
-f().
-
-%% forget X on the current console
-f(X).</code></pre>
+<pre>
+server {
+	location /someLocation {
+		autoindex on;
+	}
+}</pre>
 </div>
 
-<br>
-
-<h2>Standard libraries and functions</h2>
-
-<div class="zim-object">
-<pre><code class="erlang">%% Get N element from tuple (starting from 1)
-erlang:element(N,Tuple).</code></pre>
-</div>
-
-<br>
-
-<h2>Notes</h2>
-
-<p>
-Shorter .cmd file to run `escripts`
-</p>
-
-<p>
-<div style='padding-left: 30pt'>
-<span class="zim-tag">@escript</span> %~dpn0.erl %*
-</div>
-</p>
-
-<br>
-
-<h2>Known bugs</h2>
-
-<p>
-<ul>
-<li>"escript" with zip file cannot run, returns error about utf8, if change encoding to latin1, returns source code errors, so it is not trying to run, but to compile source code -&gt; fail</li>
-<li>Adding emulator args to the archive makes escript unrunnable, it complains: cannot translate from UTF-8.</li>
-<li>Adding only a comment is ok, but on extract comment is undefined</li>
-<li>adding default shebang and comment, on extract is ok.</li>
-<li>"escript" documentation is wrong, parameter "-smp disable" is not supported, use "+S 1" instead</li>
-<li>NOTIFY ESCRIPT CHANGE: if it doens't start with a unix shebang it cannot contain comments or parameters, implore to allow to work as before.</li>
-</ul>
-</p>
-
-<h2>IDE</h2>
-
-<br>
-
-<p>
-IntelliJ Idea
-</p>
-
-<p>
-<ol type="1" start="1">
-<li>select plugins, install erlang, restart idea.</li>
-<li>select settings, tools, erlang, configure rebar.</li>
-<li>settings -&gt; project defaults -&gt; project structure
-<ol type="a" start="1">
-<li>New SDK -&gt; Erlang SDK</li>
-</ol></li>
-</ol>
-</p>
 
 
 			<br>

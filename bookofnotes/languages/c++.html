@@ -160,7 +160,17 @@
 		<div id="content">
 			<h1>c++ <a name='languages:c++'></a></h1>
 
-			<h2>Timing (c++11)</h2>
+			<p>
+Related:<br>
+<div style='padding-left: 30pt'>
+<a href="../tools/CMake.html" title="tools:CMake" class="page">tools:CMake</a><br>
+<a href="../tools/mingw-w64.html" title="tools:mingw-w64" class="page">tools:mingw-w64</a>
+</div>
+</p>
+
+<br>
+
+<h2>Timing (c++11)</h2>
 
 <div class="zim-object">
 <pre><code class="cpp">#include &lt;chrono&gt;
@@ -188,7 +198,17 @@ std::this_thread::sleep_for(wait_time);</code></pre>
 
 <div class="zim-object">
 <pre><code class="cpp">// Read line on loop
-while ( std::getline(std::cin, line).good() ) { }</code></pre>
+while ( std::getline(std::cin, line).good() ) { }
+
+// ostream overload, prepend friend if need to access private members
+std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, const SomeClass&amp; obt);
+
+std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, const SomeClass&amp; obj)  
+{  
+    os &lt;&lt; "Obj{" &lt;&lt; obj.x &lt;&lt; ',' &lt;&lt; obj.y &lt;&lt; '}';  
+    return os;
+}
+</code></pre>
 </div>
 
 <br>
@@ -206,6 +226,27 @@ struct MyException : public std::runtime_error
 try   { throw MyException("bye"); }
 catch ( MyException &amp;ex ) {}
 catch ( std::runtime_error &amp;ex } {}</code></pre>
+</div>
+
+<br>
+
+<h2>new nothrow</h2>
+
+<div class="zim-object">
+<pre><code class="cpp">// new may throw
+try
+{
+	Obj * obj = new Obj();
+}
+catch (const std::bad_alloc&amp; ex)
+{
+	// do something
+}
+
+// If want to avoid exceptions
+Obj * obj = new (std::nothrow) Obj();
+if ( ! obj ) ...
+</code></pre>
 </div>
 
 <br>

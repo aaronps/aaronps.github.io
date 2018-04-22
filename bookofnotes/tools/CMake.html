@@ -166,81 +166,186 @@
 			<h1>CMake <a name='tools:CMake'></a></h1>
 
 			<p>
-Config goes on file `CMakeLists.txt`.
+Uses a configuration file (<tt>CMakeLists.txt</tt>) to generate build files (Makefiles, ninja files, etc), then use native build tools to compile. The advantage is independence of build method, with enought care its possible to compile the same source with gcc on linux, mingw on windows, visual studio, codeblocks, etc.
 </p>
 
 <p>
-If generate for Visual Studio (17) is ok but when try to generate for mingw-w64<br>
-It fails (tries to use mingw32-make from codeblocks, but after reconfigure<br>
-still failinig). 
+The recommended building way is to create a separate directory for the build, then generate the files on that directory. For example:
 </p>
+<div class="zim-object">
+<pre><code class="sh">mkdir build
+cd build
+cmake ..
+make</code></pre>
+</div>
 
-<h2>Basic usage like Makefile</h2>
+<br>
+
+<h2>Installing</h2>
 
 <p>
-<i>untested example</i>
+<a href="https://cmake.org/download/" title="https://cmake.org/download/" class="https">https://cmake.org/download/</a>
+</p>
+
+<p>
+<i>Recommend to add CMake to PATH if not already</i>
+</p>
+
+<p>
+<b>Windows</b>:<br>
+<div style='padding-left: 30pt'>
+download and install
+</div>
+</p>
+
+<p>
+<b>Linux</b>:<br>
+<div style='padding-left: 30pt'>
+download and run command<br>
+./<tt>cmake-&lt;version&gt;-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir</tt>
+</div>
+</p>
+
+<br>
+
+<h2>Basic usage</h2>
+
+<p>
+CMakeLists.txt:
 </p>
 <div class="zim-object">
 <pre><code class="cmake">cmake_minimum_required(VERSION 2.8)
-project(cmakesdltest)
-add_executable(myExeName src/file1.cpp src/file2.cpp)
 
-target_include_directories(myExeName PRIVATE /some/include/path)
-link_directories(/some/lib/dir)
-target_link_libraries(myExeName lib1name lib2name)</code></pre>
+project(basic_cmake_example)
+
+add_executable(basic_executable src/file1.cpp src/file2.cpp)</code></pre>
 </div>
 
 <br>
 
-<h2>Show the build commands</h2>
-
-<br>
-
 <p>
-Multiple methods
+Building with make
 </p>
-
-<p>
-<ul>
-<li>`make VERBOSE=1`</li>
-<li>`cmake --build 'folder' -- VERBOSE=1`</li>
-<li>`CMakeLists.txt`: `set( CMAKE_VERBOSE_MAKEFILE on )`</li>
-</ul>
-</p>
-
-<h2>Build in release mode</h2>
-
-<br>
-
-<p>
-<div style='padding-left: 30pt'>
-cmake -D CMAKE_BUILD_TYPE=Release source_folder
+<div class="zim-object">
+<pre><code class="sh">mkdir build
+cd build
+cmake ..
+make </code></pre>
 </div>
-</p>
-
-<br>
-
-<h2>Build with gprof</h2>
 
 <br>
 
 <p>
-<div style='padding-left: 30pt'>
+Building for debug and for release
+</p>
+<div class="zim-object">
+<pre><code class="sh">mkdir debug
+cd debug
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+
+cd ..
+mkdir release
+cd release
+cmake -DCMAKE_BUILD_TYPE=Release ..
+
+# from within each folder just run make
+make
+
+# cmake can also be used here
+cmake --build .
+
+# from base folder you can use cmake like this
+cd ..
+cmake --build debug
+cmake --build release</code></pre>
+</div>
+
+<br>
+
+<h2>Command Line notes</h2>
+
+<div class="zim-object">
+<pre><code class="sh"># when building with make, the build commands are not show, to see them run like this
+make VERBOSE=1
+
+# it is also possible to add 'set( CMAKE_VERBOSE_MAKEFILE on )' to CMakeLists.xt
+
+# build and profile with gprof
 cmake -DCMAKE_CXX_FLAGS=-pg -DCMAKE_EXE_LINKER_FLAGS=-pg -DCMAKE_SHARED_LINKER_FLAGS=-pg &lt;SOURCE_DIR&gt;
+make
+./executable_name
+# after your program finishes
+gprof executable_name &gt; report.txt 
+</code></pre>
 </div>
+
+<br>
+
+<h2>CMakeLists.txt notes</h2>
+
+<div class="zim-object">
+<pre><code class="cmake"># Comments begins with #
+
+# enable c++11
+# enable c++11: if cmake version &gt;= 3.8
+target_compile_features(target_name PRIVATE cxx_std_11)
+
+# enable c++11: if cmake version &gt;= 3.1 
+set_target_properties(target_name PROPERTIES CXX_STANDARD 11)
+
+# enable c++11: cmake version &gt;= 3.1 for all targets:
+set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD_REQUIRED ON)
+# or set the variables from the command line with '-DCMAKE_CXX_STANDARD=11'
+
+# to autodetect build for 32 or 64bit
+if (${CMAKE_SIZEOF_VOID_P} MATCHES 8)
+	# here is 64bits
+else ()
+	# here is 32bits
+endif ()
+</code></pre>
+</div>
+
+<br>
+
+<h2>Custom Lib</h2>
+
+<p>
+old but review: <a href="https://cmake.org/Wiki/CMake:How_To_Find_Libraries" title="https://cmake.org/Wiki/CMake:How_To_Find_Libraries" class="https">https://cmake.org/Wiki/CMake:How_To_Find_Libraries</a><br>
+XXX_INCLUDE_DIRS<br>
+XXX_LIBRARIES
 </p>
 
 <p>
-Build and run the program normally, after it finishes
+CMAKE_PREFIX_PATH environment var
 </p>
 
 <p>
-<div style='padding-left: 30pt'>
-gprof your_executable program &gt; report.txt
-</div>
+find_package() with version numbers will create variables with the user provided name but comparison is case sensitive:<br>
+user says: find_package(asdf)<br>
+package asdf is found and a variable is set asdf_VERSION<br>
+user says: find_package(ASDF)<br>
+same package is found and variable is set as ASDF_VERSION<br>
+for this reason there is needed some logic ...
+</p>
+
+<p>
+If want to get latests versions, add these two lines before find_package<br>
+set(CMAKE_FIND_PACKAGE_SORT_ORDER NATURAL)<br>
+set(CMAKE_FIND_PACKAGE_SORT_DIRECTION DEC)
 </p>
 
 <br>
+
+<p>
+CXX_STANDARD requires cmake 3.1<br>
+project(DESCRIPTION) requires cmake 3.9
+</p>
+
+<p>
+cmake generating files: <a href="https://crascit.com/2017/04/18/generated-sources-in-cmake-builds/" title="https://crascit.com/2017/04/18/generated-sources-in-cmake-builds/" class="https">https://crascit.com/2017/04/18/generated-sources-in-cmake-builds/</a>
+</p>
 
 <h2>Visual studio</h2>
 
@@ -255,6 +360,28 @@ If using generated project files and need to <b>install</b> to copy `.dll` files
 run `cmake-gui` again and select the output folder as `CMAKE_INSTALL_PREFIX`<br>
 regenerate the project files then <b>build</b> `INSTALL` target on vs. 
 </p>
+
+<p>
+Change run directory, 2 ways<br>
+<ol type="1" start="1">
+<li>Edit launch settings (Menu CMake -&gt; Debug and Launch Settings -&gt; name) add</li>
+</ol>
+</p>
+<pre>
+"currentDir": "${workspaceRoot}"
+</pre>
+
+<p>
+<ol type="1" start="2">
+<li>Add to CMakeLists.txt (Cmake &gt;= 3.8) <b>NOT WORKING</b></li>
+</ol>
+</p>
+<pre>
+set_target_properties(&lt;target&gt; PROPERTIES
+    VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_LIST_DIR}")
+</pre>
+
+<br>
 
 <h2>External library example</h2>
 
@@ -455,6 +582,10 @@ endif ()</code></pre>
 <br>
 
 <p>
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Kitware\CMake\Packages\ffmpeg
+</p>
+
+<p>
 Add key to registry (SDL2 as package example)<br>
 `HKEY_LOCAL_MACHINE\SOFTWARE\Kitware\CMake\Packages\SDL2` set default value to<br>
 path with the `.cmake` file.
@@ -475,25 +606,6 @@ Save the path to the `.cmake` file on a file with any name located on:
 <p>
 ~/.cmake/packages/&lt;package_name&gt;/
 </p>
-
-<br>
-
-<h3>c++11</h3>
-
-<div class="zim-object">
-<pre><code class="cmake"># First method requires newer cmake
-target_compile_features(targetname PRIVATE cxx_std_11)
-# _PRIVATE_ | _PUBLIC_ | _INTERFACE_
-
-# for older versions could use this
-set_target_properties(target_name PROPERTIES CXX_STANDARD 11)
-
-# there is also another version which seems to affect all targets
-set (CMAKE_CXX_STANDARD 11)
-set (CMAKE_CXX_STANDARD_REQUIRED ON)</code></pre>
-</div>
-
-<br>
 
 <h3>force 32bit on mingw-w64</h3>
 
@@ -661,6 +773,10 @@ CMAKE_PREFIX_PATH/lib/cmake/&lt;names&gt;
 
 			<br>
 			<span class="backlinks">
+				<hr class='footnotes'>
+				<b>Backlinks:</b>
+				<a href='../languages/c++.html'>languages:c++</a>
+				<br /><br />
 			</span>
 
 			
